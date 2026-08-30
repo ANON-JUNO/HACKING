@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SECURITY OPERATIONS CONSOLE</title>
+<title>SOCIAL MEDIA HACKING</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -16,6 +13,7 @@
 html,
 body {
     margin: 0;
+    width: 100%;
     min-height: 100%;
     background: #010201;
     color: #9cffaa;
@@ -26,35 +24,29 @@ body {
     overflow-x: hidden;
 }
 
-/* CRT SCANLINES */
-
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 9999;
-
+    z-index: 99999;
     background:
         repeating-linear-gradient(
             to bottom,
-            rgba(0,255,70,0.025) 0px,
-            rgba(0,255,70,0.025) 1px,
+            rgba(0,255,70,.025) 0px,
+            rgba(0,255,70,.025) 1px,
             transparent 2px,
             transparent 4px
         );
 }
 
-/* =========================
-   MAIN SCREEN
-========================= */
-
-.screen {
+#home {
     min-height: 100vh;
-    padding: 35px;
+    padding: 30px;
 }
 
 .header {
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto 35px;
     padding-bottom: 20px;
@@ -64,67 +56,63 @@ body::after {
 .header h1 {
     margin: 0;
     color: #8cff9b;
-    font-size: 24px;
+    font-size: 25px;
     font-weight: normal;
     letter-spacing: 5px;
 }
 
 .header p {
-    margin-top: 10px;
+    margin: 10px 0 0;
     color: #46664c;
     font-size: 11px;
     letter-spacing: 2px;
 }
 
-/* =========================
-   TARGET MENU
-========================= */
+.legal-warning {
+    margin-top: 18px;
+    padding: 12px 15px;
+    border: 1px solid #5c4f17;
+    background: #080801;
+    color: #d7d36c;
+    font-size: 9px;
+    line-height: 1.7;
+    letter-spacing: 1px;
+}
 
 .menu {
+    width: 100%;
     max-width: 1100px;
     margin: auto;
-
     display: grid;
-
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(250px, 1fr)
-        );
-
+        repeat(auto-fit, minmax(240px, 1fr));
     gap: 12px;
 }
 
 .option {
+    min-height: 130px;
+    padding: 20px;
     background: #020503;
-
     border: 1px solid #163d1e;
-
     color: #8cff9b;
-
-    padding: 22px;
-
     font-family: inherit;
     text-align: left;
-
     cursor: pointer;
-
     transition: .15s;
 }
 
 .option:hover {
-    border-color: #62ff78;
     background: #061008;
-
+    border-color: #62ff78;
     box-shadow:
-        0 0 20px rgba(0,255,60,.08),
+        0 0 20px rgba(0,255,60,.1),
         inset 0 0 20px rgba(0,255,60,.03);
 }
 
 .option-number {
     color: #355a3d;
     font-size: 10px;
-    margin-bottom: 9px;
+    margin-bottom: 10px;
 }
 
 .option-title {
@@ -133,36 +121,44 @@ body::after {
 }
 
 .option-description {
-    margin-top: 9px;
+    margin-top: 10px;
     color: #496a50;
     font-size: 10px;
 }
 
-/* =========================
-   PANELS
-========================= */
+.footer {
+    width: 100%;
+    max-width: 1100px;
+    margin: 35px auto 0;
+    padding-top: 15px;
+    border-top: 1px solid #163d1e;
+    text-align: center;
+    color: #355a3d;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.footer-warning {
+    margin-bottom: 10px;
+    color: #6d6a35;
+    font-size: 9px;
+    line-height: 1.6;
+}
 
 .panel {
     display: none;
-
+    width: calc(100% - 40px);
     max-width: 900px;
-
-    margin: 50px auto;
-
+    margin: 40px auto;
     background: #020503;
-
     border: 1px solid #163d1e;
 }
 
 .panel-header {
     padding: 15px 20px;
-
     border-bottom: 1px solid #163d1e;
-
     color: #7dff8e;
-
     font-size: 12px;
-
     letter-spacing: 3px;
 }
 
@@ -171,17 +167,12 @@ body::after {
 }
 
 .back {
+    margin-bottom: 25px;
     border: 0;
-
     background: transparent;
-
     color: #45694d;
-
     font-family: inherit;
-
     cursor: pointer;
-
-    margin-bottom: 30px;
 }
 
 .back:hover {
@@ -190,87 +181,55 @@ body::after {
 
 .target-name {
     color: #8cff9b;
-
     font-size: 19px;
-
-    letter-spacing: 3px;
-
     font-weight: normal;
+    letter-spacing: 3px;
 }
 
 .description {
+    margin: 10px 0 25px;
     color: #496a50;
-
     font-size: 11px;
-
-    margin:
-        10px 0 28px;
 }
 
 label {
     display: block;
-
-    color: #668c6d;
-
-    font-size: 11px;
-
     margin-bottom: 8px;
+    color: #668c6d;
+    font-size: 11px;
 }
 
 input {
     width: 100%;
-
-    background: #010201;
-
-    border: 1px solid #234d2b;
-
     padding: 14px;
-
-    color: #a5ffb0;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
+    background: #010201;
+    border: 1px solid #234d2b;
     outline: none;
+    color: #a5ffb0;
+    font-family: inherit;
+    font-size: 14px;
 }
 
 input:focus {
     border-color: #61d971;
-
-    box-shadow:
-        0 0 15px
-        rgba(0,255,70,.07);
+    box-shadow: 0 0 15px rgba(0,255,70,.08);
 }
 
 .start {
-    margin-top: 22px;
-
+    margin-top: 20px;
+    padding: 14px 24px;
     background: #061008;
-
     border: 1px solid #397746;
-
-    padding:
-        14px 25px;
-
     color: #8cff9b;
-
     font-family: inherit;
-
     letter-spacing: 2px;
-
     cursor: pointer;
 }
 
 .start:hover {
     background: #0a180d;
-
     border-color: #69ff7d;
 }
-
-/* =========================
-   TERMINAL
-========================= */
 
 .terminal-panel {
     max-width: 1250px;
@@ -278,37 +237,25 @@ input:focus {
 
 .progress-container {
     width: 100%;
-
     height: 3px;
-
     background: #0b1b0e;
 }
 
 .progress {
+    width: 0;
     height: 100%;
-
-    width: 0%;
-
     background: #55ff6c;
-
-    box-shadow:
-        0 0 10px #55ff6c;
-
-    transition:
-        width .4s linear;
+    box-shadow: 0 0 10px #55ff6c;
+    transition: width .3s;
 }
 
 .terminal {
     height: 70vh;
-
     padding: 22px;
-
     overflow-y: auto;
-
     background: #010201;
-
+    color: #76a67e;
     font-size: 12px;
-
     line-height: 1.7;
 }
 
@@ -350,76 +297,122 @@ input:focus {
 
 .status {
     display: flex;
-
-    justify-content:
-        space-between;
-
-    padding:
-        8px 15px;
-
-    border-top:
-        1px solid #102514;
-
+    justify-content: space-between;
+    padding: 8px 15px;
+    border-top: 1px solid #102514;
     color: #3f5f45;
-
     font-size: 9px;
-
     letter-spacing: 1px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+.final-result {
+    margin-top: 25px;
+    padding: 20px;
+    background: #080202;
+    border: 1px solid #5c1717;
+}
+
+.final-title {
+    margin-bottom: 20px;
+    color: #ff4545;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.result-row {
+    margin: 15px 0;
+}
+
+.result-label {
+    margin-bottom: 6px;
+    color: #704444;
+    font-size: 10px;
+}
+
+.result-value {
+    color: #ff4545;
+    font-size: 13px;
+    word-break: break-all;
+}
+
+.hash {
+    color: #ff3030;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255,0,0,.25);
+}
+
+.home-button {
+    margin-top: 25px;
+    padding: 14px 22px;
+    background: #080202;
+    border: 1px solid #7a2424;
+    color: #ff4545;
+    font-family: inherit;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.home-button:hover {
+    background: #160505;
+    border-color: #ff5555;
+    box-shadow: 0 0 15px rgba(255,0,0,.08);
+}
 
 @media(max-width:600px) {
 
-    .screen {
+    #home {
         padding: 18px;
     }
 
     .header h1 {
         font-size: 17px;
+        letter-spacing: 3px;
+    }
+
+    .panel {
+        width: calc(100% - 20px);
+        margin: 20px auto;
+    }
+
+    .panel-body {
+        padding: 20px;
     }
 
     .terminal {
-        height: 72vh;
-
+        height: 70vh;
+        padding: 14px;
         font-size: 10px;
     }
+
+    .legal-warning {
+        font-size: 8px;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =================================
-     HOME
-================================= -->
-
-<div
-    class="screen"
-    id="home"
->
+<div id="home">
 
     <div class="header">
 
-        <h1>
-            SECURITY OPERATIONS CONSOLE
-        </h1>
+        <h1>SOCIAL MEDIA HACKING</h1>
 
         <p>
-            REMOTE ACCESS CONTROL // OPERATIONS TERMINAL
+            SOCIAL ENGINEERING // SECURITY OPERATIONS TERMINAL
         </p>
+
+        <div class="legal-warning">
+            ⚠ AUTHORIZED USE ONLY // THIS INTERFACE IS FOR
+            EDUCATIONAL AND ENTERTAINMENT PURPOSES.
+            DO NOT USE FOR UNAUTHORIZED ACCESS, ACCOUNT
+            COMPROMISE, CREDENTIAL THEFT, OR ANY ILLEGAL ACTIVITY.
+        </div>
 
     </div>
 
-
     <div class="menu">
-
 
         <button
             class="option"
@@ -429,21 +422,12 @@ input:focus {
                 'EMAIL ADDRESS'
             )"
         >
-
-            <div class="option-number">
-                [01]
-            </div>
-
-            <div class="option-title">
-                GOOGLE ACCOUNT
-            </div>
-
+            <div class="option-number">[01]</div>
+            <div class="option-title">GOOGLE ACCOUNT</div>
             <div class="option-description">
                 Account endpoint analysis
             </div>
-
         </button>
-
 
         <button
             class="option"
@@ -453,21 +437,12 @@ input:focus {
                 'PROFILE URL'
             )"
         >
-
-            <div class="option-number">
-                [02]
-            </div>
-
-            <div class="option-title">
-                FACEBOOK ACCOUNT
-            </div>
-
+            <div class="option-number">[02]</div>
+            <div class="option-title">FACEBOOK ACCOUNT</div>
             <div class="option-description">
-                Account endpoint analysis
+                Profile endpoint analysis
             </div>
-
         </button>
-
 
         <button
             class="option"
@@ -477,21 +452,12 @@ input:focus {
                 'USERNAME'
             )"
         >
-
-            <div class="option-number">
-                [03]
-            </div>
-
-            <div class="option-title">
-                INSTAGRAM ACCOUNT
-            </div>
-
+            <div class="option-number">[03]</div>
+            <div class="option-title">INSTAGRAM ACCOUNT</div>
             <div class="option-description">
                 Identity endpoint analysis
             </div>
-
         </button>
-
 
         <button
             class="option"
@@ -501,21 +467,12 @@ input:focus {
                 'USERNAME'
             )"
         >
-
-            <div class="option-number">
-                [04]
-            </div>
-
-            <div class="option-title">
-                TIKTOK ACCOUNT
-            </div>
-
+            <div class="option-number">[04]</div>
+            <div class="option-title">TIKTOK ACCOUNT</div>
             <div class="option-description">
                 Endpoint analysis
             </div>
-
         </button>
-
 
         <button
             class="option"
@@ -525,21 +482,12 @@ input:focus {
                 'USERNAME'
             )"
         >
-
-            <div class="option-number">
-                [05]
-            </div>
-
-            <div class="option-title">
-                DISCORD ACCOUNT
-            </div>
-
+            <div class="option-number">[05]</div>
+            <div class="option-title">DISCORD ACCOUNT</div>
             <div class="option-description">
                 Session architecture analysis
             </div>
-
         </button>
-
 
         <button
             class="option"
@@ -549,21 +497,12 @@ input:focus {
                 'NETWORK IDENTIFIER'
             )"
         >
-
-            <div class="option-number">
-                [06]
-            </div>
-
-            <div class="option-title">
-                NETWORK ACCESS
-            </div>
-
+            <div class="option-number">[06]</div>
+            <div class="option-title">NETWORK ACCESS</div>
             <div class="option-description">
                 Network perimeter analysis
             </div>
-
         </button>
-
 
         <button
             class="option"
@@ -573,21 +512,12 @@ input:focus {
                 'EMAIL ADDRESS'
             )"
         >
-
-            <div class="option-number">
-                [07]
-            </div>
-
-            <div class="option-title">
-                EMAIL ACCOUNT
-            </div>
-
+            <div class="option-number">[07]</div>
+            <div class="option-title">EMAIL ACCOUNT</div>
             <div class="option-description">
                 Authentication analysis
             </div>
-
         </button>
-
 
         <button
             class="option"
@@ -597,73 +527,57 @@ input:focus {
                 'SERVER IDENTIFIER'
             )"
         >
-
-            <div class="option-number">
-                [08]
-            </div>
-
-            <div class="option-title">
-                SERVER ACCESS
-            </div>
-
+            <div class="option-number">[08]</div>
+            <div class="option-title">SERVER ACCESS</div>
             <div class="option-description">
                 Infrastructure analysis
             </div>
-
         </button>
+
+    </div>
+
+    <div class="footer">
+
+        <div class="footer-warning">
+            ⚠ DO NOT USE THIS WEBSITE FOR ILLEGAL OR
+            UNAUTHORIZED ACTIVITIES.
+        </div>
+
+        <div>
+            BUILT BY JUNO
+        </div>
 
     </div>
 
 </div>
 
-
-<!-- =================================
-     INPUT PANEL
-================================= -->
-
-<div
-    class="panel"
-    id="inputPanel"
->
+<div class="panel" id="inputPanel">
 
     <div class="panel-header">
         TARGET CONFIGURATION
     </div>
 
-
     <div class="panel-body">
 
-        <button
-            class="back"
-            onclick="returnHome()"
-        >
-
+        <button class="back" onclick="returnHome()">
             &lt; RETURN
-
         </button>
-
 
         <h2
             class="target-name"
             id="targetName"
-        >
-        </h2>
-
+        ></h2>
 
         <div
             class="description"
-            id="targetDescription"
+            id="description"
         >
             Configure operation parameters.
         </div>
 
-
-        <label
-            id="targetLabel"
-        >
+        <label id="targetLabel">
             TARGET
         </label>
-
 
         <input
             id="targetInput"
@@ -672,24 +586,16 @@ input:focus {
             spellcheck="false"
         >
 
-
         <button
             class="start"
             onclick="beginOperation()"
         >
-
             INITIALIZE OPERATION
-
         </button>
 
     </div>
 
 </div>
-
-
-<!-- =================================
-     TERMINAL PANEL
-================================= -->
 
 <div
     class="panel terminal-panel"
@@ -700,204 +606,112 @@ input:focus {
         OPERATION TERMINAL
     </div>
 
-
     <div class="progress-container">
-
         <div
             class="progress"
             id="progress"
         ></div>
-
     </div>
-
 
     <div
         class="terminal"
         id="terminal"
     ></div>
 
-
     <div class="status">
 
         <span id="operationStatus">
-            STATUS: INITIALIZING
+            STATUS: READY
         </span>
 
         <span id="clock">
-            --
+            --:--:--
         </span>
 
     </div>
 
 </div>
 
-
 <script>
-
-/* =================================
-   GLOBAL VARIABLES
-================================= */
-
 var selectedType = "";
 var selectedName = "";
 var selectedField = "";
-
 var operationRunning = false;
 
-
-/* =================================
-   TARGET SELECTION
-================================= */
-
-function selectTarget(
-    type,
-    name,
-    field
-) {
+function selectTarget(type, name, field) {
 
     selectedType = type;
     selectedName = name;
     selectedField = field;
 
+    document.getElementById("home").style.display = "none";
+    document.getElementById("inputPanel").style.display = "block";
+    document.getElementById("terminalPanel").style.display = "none";
 
-    document.getElementById("home")
-        .style.display = "none";
+    document.getElementById("targetName").textContent = name;
+    document.getElementById("targetLabel").textContent = field;
 
+    document.getElementById("targetInput").value = "";
 
-    document.getElementById("inputPanel")
-        .style.display = "block";
+    document.getElementById("description").style.color =
+        "#496a50";
 
+    document.getElementById("description").textContent =
+        "Configure operation parameters.";
 
-    document.getElementById("targetName")
-        .textContent = name;
-
-
-    document.getElementById("targetLabel")
-        .textContent = field;
-
-
-    document.getElementById("targetInput")
-        .value = "";
-
-
-    document.getElementById("targetInput")
-        .focus();
+    setTimeout(function() {
+        document.getElementById("targetInput").focus();
+    }, 50);
 }
-
-
-/* =================================
-   RETURN HOME
-================================= */
 
 function returnHome() {
 
     operationRunning = false;
 
+    document.getElementById("home").style.display = "block";
+    document.getElementById("inputPanel").style.display = "none";
+    document.getElementById("terminalPanel").style.display = "none";
 
-    document.getElementById("inputPanel")
-        .style.display = "none";
-
-
-    document.getElementById("terminalPanel")
-        .style.display = "none";
-
-
-    document.getElementById("home")
-        .style.display = "block";
+    document.getElementById("progress").style.width = "0%";
 }
-
-
-/* =================================
-   CLOCK
-================================= */
 
 function updateClock() {
 
     var now = new Date();
 
-    document.getElementById("clock")
-        .textContent =
+    document.getElementById("clock").textContent =
         now.toLocaleTimeString();
 }
 
-setInterval(
-    updateClock,
-    1000
-);
-
-
-/* =================================
-   INPUT VALIDATION
-================================= */
+setInterval(updateClock, 1000);
+updateClock();
 
 function validateTarget(value) {
 
-    var trimmed =
-        value.trim();
-
-
-    if (!trimmed) {
-
-        return {
-            valid: false,
-            message:
-                "TARGET PARAMETER IS EMPTY."
-        };
+    if (!value) {
+        return "TARGET PARAMETER IS EMPTY.";
     }
-
-
-    /*
-       GOOGLE / EMAIL
-    */
 
     if (
         selectedType === "GOOGLE" ||
         selectedType === "EMAIL"
     ) {
 
-        var emailPattern =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-        if (!emailPattern.test(trimmed)) {
-
-            return {
-                valid: false,
-                message:
-                    "INVALID EMAIL ADDRESS FORMAT."
-            };
+        if (
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+        ) {
+            return "INVALID EMAIL ADDRESS FORMAT.";
         }
     }
 
-
-    /*
-       FACEBOOK
-    */
-
-    if (
-        selectedType === "FACEBOOK"
-    ) {
-
-        var facebookPattern =
-            /^https?:\/\/(www\.)?facebook\.com\/.+/i;
-
+    if (selectedType === "FACEBOOK") {
 
         if (
-            !facebookPattern.test(trimmed)
+            !/^https?:\/\/(www\.)?facebook\.com\/.+/i.test(value)
         ) {
-
-            return {
-                valid: false,
-                message:
-                    "INVALID FACEBOOK PROFILE URL."
-            };
+            return "INVALID FACEBOOK PROFILE URL.";
         }
     }
-
-
-    /*
-       USERNAME SERVICES
-    */
 
     if (
         selectedType === "INSTAGRAM" ||
@@ -905,90 +719,32 @@ function validateTarget(value) {
         selectedType === "DISCORD"
     ) {
 
-        var usernamePattern =
-            /^[a-zA-Z0-9._-]{2,40}$/;
-
-
         if (
-            !usernamePattern.test(trimmed)
+            !/^[a-zA-Z0-9._-]{2,40}$/.test(value)
         ) {
-
-            return {
-                valid: false,
-                message:
-                    "INVALID USERNAME FORMAT."
-            };
+            return "INVALID USERNAME FORMAT.";
         }
     }
 
-
-    /*
-       NETWORK
-    */
-
     if (
-        selectedType === "NETWORK"
-    ) {
-
-        var networkPattern =
-            /^[a-zA-Z0-9._:-]{2,80}$/;
-
-
-        if (
-            !networkPattern.test(trimmed)
-        ) {
-
-            return {
-                valid: false,
-                message:
-                    "INVALID NETWORK IDENTIFIER."
-            };
-        }
-    }
-
-
-    /*
-       SERVER
-    */
-
-    if (
+        selectedType === "NETWORK" ||
         selectedType === "SERVER"
     ) {
 
-        var serverPattern =
-            /^[a-zA-Z0-9._:-]{2,80}$/;
-
-
         if (
-            !serverPattern.test(trimmed)
+            !/^[a-zA-Z0-9._:-]{2,80}$/.test(value)
         ) {
-
-            return {
-                valid: false,
-                message:
-                    "INVALID SERVER IDENTIFIER."
-            };
+            return "INVALID IDENTIFIER FORMAT.";
         }
     }
 
-
-    return {
-        valid: true,
-        message: ""
-    };
+    return "";
 }
-
-
-/* =================================
-   RANDOM HEX
-================================= */
 
 function randomHex(length) {
 
-    var chars =
-        "0123456789ABCDEF";
-
-    var result = "";
+    var chars = "0123456789ABCDEF";
+    var output = "";
 
     for (
         var i = 0;
@@ -996,92 +752,49 @@ function randomHex(length) {
         i++
     ) {
 
-        result +=
-            chars[
-                Math.floor(
-                    Math.random() *
-                    chars.length
-                )
-            ];
+        output += chars.charAt(
+            Math.floor(
+                Math.random() * chars.length
+            )
+        );
     }
 
-    return result;
+    return output;
 }
 
+function randomNumber(min, max) {
 
-/* =================================
-   RANDOM IP
-================================= */
-
-function randomIP() {
-
-    return (
-        Math.floor(Math.random() * 220 + 10)
-        + "." +
-        Math.floor(Math.random() * 255)
-        + "." +
-        Math.floor(Math.random() * 255)
-        + "." +
-        Math.floor(Math.random() * 255)
-    );
+    return Math.floor(
+        Math.random() * (max - min + 1)
+    ) + min;
 }
 
+function typeLine(text, className, callback) {
 
-/* =================================
-   RANDOM LATENCY
-================================= */
-
-function randomLatency() {
-
-    return (
-        Math.floor(
-            Math.random() * 180
-        ) + 20
-    );
-}
-
-
-/* =================================
-   TYPEWRITER
-================================= */
-
-function typeLine(
-    text,
-    className,
-    callback
-) {
+    if (!operationRunning) {
+        return;
+    }
 
     var terminal =
-        document.getElementById(
-            "terminal"
-        );
-
+        document.getElementById("terminal");
 
     var line =
         document.createElement("div");
 
-
     line.className =
         "line " + className;
 
-
     terminal.appendChild(line);
-
 
     var position = 0;
 
-
-    function typeCharacter() {
+    function write() {
 
         if (!operationRunning) {
             return;
         }
 
-
-        if (
-            position >=
-            text.length
-        ) {
+        if (position >= text.length) {
 
             if (callback) {
                 callback();
@@ -1090,153 +803,78 @@ function typeLine(
             return;
         }
 
-
         line.textContent +=
             text.charAt(position);
 
-
         position++;
-
 
         terminal.scrollTop =
             terminal.scrollHeight;
 
-
-        setTimeout(
-            typeCharacter,
-            8
-        );
-
+        setTimeout(write, 5);
     }
 
-
-    typeCharacter();
+    write();
 }
 
+function delay(callback, milliseconds) {
 
-/* =================================
-   WAIT
-================================= */
+    setTimeout(function() {
 
-function wait(
-    milliseconds,
-    callback
-) {
+        if (operationRunning) {
+            callback();
+        }
 
-    setTimeout(
-        function() {
-
-            if (
-                operationRunning &&
-                callback
-            ) {
-
-                callback();
-
-            }
-
-        },
-        milliseconds
-    );
+    }, milliseconds);
 }
-
-
-/* =================================
-   BEGIN OPERATION
-================================= */
 
 function beginOperation() {
 
     var target =
-        document.getElementById(
-            "targetInput"
-        ).value.trim();
+        document.getElementById("targetInput")
+        .value
+        .trim();
 
-
-    var validation =
+    var error =
         validateTarget(target);
 
-
-    if (!validation.valid) {
-
-        /*
-           Show serious error directly
-           in the input screen.
-        */
+    if (error) {
 
         var description =
-            document.getElementById(
-                "targetDescription"
-            );
-
+            document.getElementById("description");
 
         description.style.color =
             "#ff4545";
 
-
         description.textContent =
-            "[ERROR] " +
-            validation.message;
-
+            "[ERROR] " + error;
 
         return;
     }
 
-
     operationRunning = true;
 
+    document.getElementById("inputPanel")
+        .style.display = "none";
 
-    document.getElementById(
-        "inputPanel"
-    ).style.display = "none";
+    document.getElementById("terminalPanel")
+        .style.display = "block";
 
+    document.getElementById("terminal")
+        .innerHTML = "";
 
-    document.getElementById(
-        "terminalPanel"
-    ).style.display = "block";
+    document.getElementById("progress")
+        .style.width = "0%";
 
+    document.getElementById("operationStatus")
+        .textContent = "STATUS: ACTIVE";
 
-    document.getElementById(
-        "terminal"
-    ).innerHTML = "";
-
-
-    document.getElementById(
-        "progress"
-    ).style.width = "0%";
-
-
-    document.getElementById(
-        "operationStatus"
-    ).textContent =
-        "STATUS: ACTIVE";
-
-
-    executeOperation(target);
+    runOperation(target);
 }
 
+function runOperation(target) {
 
-/* =================================
-   RANDOMIZED OPERATION LINES
-================================= */
-
-function createStages(target) {
-
-    var session =
-        randomHex(12);
-
-
-    var node =
-        randomHex(6);
-
-
-    var port =
-        Math.floor(
-            Math.random() * 40000
-        ) + 1000;
-
-
-    var stages = [
+    var lines = [
 
         [
             "INITIALIZING SECURITY ENGINE...",
@@ -1249,20 +887,20 @@ function createStages(target) {
         ],
 
         [
-            "ASSIGNING SESSION ID: " +
-            session,
+            "GENERATING SESSION ID: " +
+            randomHex(12),
             "dim"
         ],
 
         [
-            "RESOLVING TARGET IDENTIFIER: " +
+            "TARGET IDENTIFIER: " +
             target,
             "green"
         ],
 
         [
-            "TARGET NODE: " +
-            node,
+            "NODE SIGNATURE: " +
+            randomHex(8),
             "dim"
         ],
 
@@ -1272,8 +910,8 @@ function createStages(target) {
         ],
 
         [
-            "REMOTE LATENCY: " +
-            randomLatency() +
+            "LATENCY: " +
+            randomNumber(20, 180) +
             " ms",
             "normal"
         ],
@@ -1310,8 +948,8 @@ function createStages(target) {
         ],
 
         [
-            "ACCESS CONTROL SIGNATURE: " +
-            randomHex(10),
+            "ACCESS SIGNATURE: " +
+            randomHex(12),
             "dim"
         ],
 
@@ -1327,7 +965,7 @@ function createStages(target) {
 
         [
             "HANDLER CHANNEL: " +
-            port,
+            randomNumber(1000, 50000),
             "dim"
         ],
 
@@ -1343,10 +981,7 @@ function createStages(target) {
 
         [
             "VARIANCE INDEX: " +
-            (
-                Math.random()
-                .toFixed(4)
-            ),
+            Math.random().toFixed(4),
             "dim"
         ],
 
@@ -1399,153 +1034,64 @@ function createStages(target) {
             "FATAL ERROR: OPERATION TERMINATED.",
             "error"
         ]
-
     ];
 
+    var index = 0;
 
-    return stages;
-}
-
-
-/* =================================
-   RUN OPERATION
-================================= */
-
-function executeOperation(target) {
-
-    var stages =
-        createStages(target);
-
-
-    /*
-       5 seconds per line.
-    */
-
-    var STAGE_TIME = 5000;
-
-
-    var currentStage = 0;
-
-
-    function runNextStage() {
+    function next() {
 
         if (!operationRunning) {
             return;
         }
 
+        if (index >= lines.length) {
 
-        if (
-            currentStage >=
-            stages.length
-        ) {
-
-            finishOperation();
+            finishOperation(target);
 
             return;
         }
 
+        var percentage =
+            Math.round(
+                (index / lines.length) * 100
+            );
 
-        var stage =
-            stages[currentStage];
-
+        document.getElementById("progress")
+            .style.width =
+            percentage + "%";
 
         var number =
-            String(
-                currentStage + 1
-            ).padStart(2, "0");
-
+            String(index + 1)
+            .padStart(2, "0");
 
         var message =
             "[" +
             number +
             "/30] " +
-            stage[0];
-
-
-        /*
-           Progress
-        */
-
-        var percentage =
-            Math.round(
-                (
-                    currentStage /
-                    stages.length
-                ) * 100
-            );
-
-
-        document.getElementById(
-            "progress"
-        ).style.width =
-            percentage + "%";
-
-
-        /*
-           Type the line.
-        */
+            lines[index][0];
 
         typeLine(
             message,
-            stage[1],
+            lines[index][1],
             function() {
 
-                /*
-                   After typing,
-                   wait until the
-                   5-second stage
-                   completes.
-                */
+                index++;
 
-                var typingTime =
-                    message.length * 8;
-
-
-                var remaining =
-                    Math.max(
-                        300,
-                        STAGE_TIME -
-                        typingTime
-                    );
-
-
-                wait(
-                    remaining,
-                    function() {
-
-                        currentStage++;
-
-                        runNextStage();
-
-                    }
+                delay(
+                    next,
+                    700
                 );
-
             }
         );
-
     }
 
-
-    runNextStage();
+    next();
 }
 
+function finishOperation(target) {
 
-/* =================================
-   FINAL ERROR
-================================= */
-
-function finishOperation() {
-
-    if (!operationRunning) {
-        return;
-    }
-
-
-    document.getElementById(
-        "progress"
-    ).style.width =
-        "100%";
-
+    document.getElementById("progress")
+        .style.width = "100%";
 
     typeLine(
         "",
@@ -1577,55 +1123,8 @@ function finishOperation() {
                                                 "dim",
                                                 function() {
 
-                                                    document.getElementById(
-                                                        "operationStatus"
-                                                    ).textContent =
-                                                        "STATUS: TERMINATED";
-
-
-                                                    /*
-                                                       Return home
-                                                       after 4 seconds.
-                                                    */
-
-                                                    setTimeout(
-                                                        function() {
-
-                                                            operationRunning =
-                                                                false;
-
-
-                                                            document.getElementById(
-                                                                "terminalPanel"
-                                                            ).style.display =
-                                                                "none";
-
-
-                                                            document.getElementById(
-                                                                "home"
-                                                            ).style.display =
-                                                                "block";
-
-
-                                                            document.getElementById(
-                                                                "progress"
-                                                            ).style.width =
-                                                                "0%";
-
-
-                                                            document.getElementById(
-                                                                "targetDescription"
-                                                            ).style.color =
-                                                                "#496a50";
-
-
-                                                            document.getElementById(
-                                                                "targetDescription"
-                                                            ).textContent =
-                                                                "Configure operation parameters.";
-
-                                                        },
-                                                        4000
+                                                    showResult(
+                                                        target
                                                     );
 
                                                 }
@@ -1645,9 +1144,172 @@ function finishOperation() {
 
         }
     );
-
 }
 
+function showResult(target) {
+
+    document.getElementById(
+        "operationStatus"
+    ).textContent =
+        "STATUS: TERMINATED";
+
+    var terminal =
+        document.getElementById("terminal");
+
+    var result =
+        document.createElement("div");
+
+    result.className =
+        "final-result";
+
+    var title =
+        document.createElement("div");
+
+    title.className =
+        "final-title";
+
+    title.textContent =
+        "[ ERROR ] AUTHENTICATION FAILURE";
+
+    result.appendChild(title);
+
+    var usernameRow =
+        document.createElement("div");
+
+    usernameRow.className =
+        "result-row";
+
+    var usernameLabel =
+        document.createElement("div");
+
+    usernameLabel.className =
+        "result-label";
+
+    usernameLabel.textContent =
+        "USERNAME / TARGET";
+
+    var usernameValue =
+        document.createElement("div");
+
+    usernameValue.className =
+        "result-value";
+
+    usernameValue.textContent =
+        target;
+
+    usernameRow.appendChild(
+        usernameLabel
+    );
+
+    usernameRow.appendChild(
+        usernameValue
+    );
+
+    result.appendChild(
+        usernameRow
+    );
+
+    var hashRow =
+        document.createElement("div");
+
+    hashRow.className =
+        "result-row";
+
+    var hashLabel =
+        document.createElement("div");
+
+    hashLabel.className =
+        "result-label";
+
+    hashLabel.textContent =
+        "GENERATED HASH";
+
+    var hashValue =
+        document.createElement("div");
+
+    hashValue.className =
+        "result-value hash";
+
+    hashValue.textContent =
+        randomHex(64);
+
+    hashRow.appendChild(
+        hashLabel
+    );
+
+    hashRow.appendChild(
+        hashValue
+    );
+
+    result.appendChild(
+        hashRow
+    );
+
+    var errorRow =
+        document.createElement("div");
+
+    errorRow.className =
+        "result-row";
+
+    var errorLabel =
+        document.createElement("div");
+
+    errorLabel.className =
+        "result-label";
+
+    errorLabel.textContent =
+        "SYSTEM RESPONSE";
+
+    var errorValue =
+        document.createElement("div");
+
+    errorValue.className =
+        "result-value";
+
+    errorValue.textContent =
+        "ACCESS DENIED // INVALID AUTHENTICATION RESPONSE";
+
+    errorRow.appendChild(
+        errorLabel
+    );
+
+    errorRow.appendChild(
+        errorValue
+    );
+
+    result.appendChild(
+        errorRow
+    );
+
+    var button =
+        document.createElement("button");
+
+    button.className =
+        "home-button";
+
+    button.textContent =
+        "RETURN TO HOMEPAGE";
+
+    button.onclick =
+        function() {
+
+            returnHome();
+
+        };
+
+    result.appendChild(
+        button
+    );
+
+    terminal.appendChild(
+        result
+    );
+
+    terminal.scrollTop =
+        terminal.scrollHeight;
+
+    operationRunning = false;
+}
 </script>
 
 </body>
