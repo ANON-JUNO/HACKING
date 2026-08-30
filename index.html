@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SECURITY OPERATIONS CONSOLE</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    background: #010201;
+    color: #9cffaa;
+    font-family: "Courier New", Courier, monospace;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* CRT SCANLINES */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(0,255,70,0.025) 0px,
+            rgba(0,255,70,0.025) 1px,
+            transparent 2px,
+            transparent 4px
+        );
+}
+
+/* =========================
+   MAIN SCREEN
+========================= */
+
+.screen {
+    min-height: 100vh;
+    padding: 35px;
+}
+
+.header {
+    max-width: 1100px;
+    margin: 0 auto 35px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #163d1e;
+}
+
+.header h1 {
+    margin: 0;
+    color: #8cff9b;
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 5px;
+}
+
+.header p {
+    margin-top: 10px;
+    color: #46664c;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   TARGET MENU
+========================= */
+
+.menu {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 12px;
+}
+
+.option {
+    background: #020503;
+
+    border: 1px solid #163d1e;
+
+    color: #8cff9b;
+
+    padding: 22px;
+
+    font-family: inherit;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+.option:hover {
+    border-color: #62ff78;
+    background: #061008;
+
+    box-shadow:
+        0 0 20px rgba(0,255,60,.08),
+        inset 0 0 20px rgba(0,255,60,.03);
+}
+
+.option-number {
+    color: #355a3d;
+    font-size: 10px;
+    margin-bottom: 9px;
+}
+
+.option-title {
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.option-description {
+    margin-top: 9px;
+    color: #496a50;
+    font-size: 10px;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.panel {
+    display: none;
+
+    max-width: 900px;
+
+    margin: 50px auto;
+
+    background: #020503;
+
+    border: 1px solid #163d1e;
+}
+
+.panel-header {
+    padding: 15px 20px;
+
+    border-bottom: 1px solid #163d1e;
+
+    color: #7dff8e;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+.panel-body {
+    padding: 28px;
+}
+
+.back {
+    border: 0;
+
+    background: transparent;
+
+    color: #45694d;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    margin-bottom: 30px;
+}
+
+.back:hover {
+    color: #9cffaa;
+}
+
+.target-name {
+    color: #8cff9b;
+
+    font-size: 19px;
+
+    letter-spacing: 3px;
+
+    font-weight: normal;
+}
+
+.description {
+    color: #496a50;
+
+    font-size: 11px;
+
+    margin:
+        10px 0 28px;
+}
+
+label {
+    display: block;
+
+    color: #668c6d;
+
+    font-size: 11px;
+
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+
+    background: #010201;
+
+    border: 1px solid #234d2b;
+
+    padding: 14px;
+
+    color: #a5ffb0;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+input:focus {
+    border-color: #61d971;
+
+    box-shadow:
+        0 0 15px
+        rgba(0,255,70,.07);
+}
+
+.start {
+    margin-top: 22px;
+
+    background: #061008;
+
+    border: 1px solid #397746;
+
+    padding:
+        14px 25px;
+
+    color: #8cff9b;
+
+    font-family: inherit;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+.start:hover {
+    background: #0a180d;
+
+    border-color: #69ff7d;
+}
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal-panel {
+    max-width: 1250px;
+}
+
+.progress-container {
+    width: 100%;
+
+    height: 3px;
+
+    background: #0b1b0e;
+}
+
+.progress {
+    height: 100%;
+
+    width: 0%;
+
+    background: #55ff6c;
+
+    box-shadow:
+        0 0 10px #55ff6c;
+
+    transition:
+        width .4s linear;
+}
+
+.terminal {
+    height: 70vh;
+
+    padding: 22px;
+
+    overflow-y: auto;
+
+    background: #010201;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+.terminal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal::-webkit-scrollbar-track {
+    background: #010201;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+    background: #173b1d;
+}
+
+.line {
+    white-space: pre-wrap;
+}
+
+.dim {
+    color: #3e5c43;
+}
+
+.normal {
+    color: #76a67e;
+}
+
+.green {
+    color: #8cff9b;
+}
+
+.warning {
+    color: #d7d36c;
+}
+
+.error {
+    color: #ff4545;
+}
+
+.status {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        8px 15px;
+
+    border-top:
+        1px solid #102514;
+
+    color: #3f5f45;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .screen {
+        padding: 18px;
+    }
+
+    .header h1 {
+        font-size: 17px;
+    }
+
+    .terminal {
+        height: 72vh;
+
+        font-size: 10px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     HOME
+================================= -->
+
+<div
+    class="screen"
+    id="home"
+>
+
+    <div class="header">
+
+        <h1>
+            SECURITY OPERATIONS CONSOLE
+        </h1>
+
+        <p>
+            REMOTE ACCESS CONTROL // OPERATIONS TERMINAL
+        </p>
+
+    </div>
+
+
+    <div class="menu">
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'GOOGLE',
+                'GOOGLE ACCOUNT',
+                'EMAIL ADDRESS'
+            )"
+        >
+
+            <div class="option-number">
+                [01]
+            </div>
+
+            <div class="option-title">
+                GOOGLE ACCOUNT
+            </div>
+
+            <div class="option-description">
+                Account endpoint analysis
+            </div>
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'FACEBOOK',
+                'FACEBOOK ACCOUNT',
+                'PROFILE URL'
+            )"
+        >
+
+            <div class="option-number">
+                [02]
+            </div>
+
+            <div class="option-title">
+                FACEBOOK ACCOUNT
+            </div>
+
+            <div class="option-description">
+                Account endpoint analysis
+            </div>
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'INSTAGRAM',
+                'INSTAGRAM ACCOUNT',
+                'USERNAME'
+            )"
+        >
+
+            <div class="option-number">
+                [03]
+            </div>
+
+            <div class="option-title">
+                INSTAGRAM ACCOUNT
+            </div>
+
+            <div class="option-description">
+                Identity endpoint analysis
+            </div>
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'TIKTOK',
+                'TIKTOK ACCOUNT',
+                'USERNAME'
+            )"
+        >
+
+            <div class="option-number">
+                [04]
+            </div>
+
+            <div class="option-title">
+                TIKTOK ACCOUNT
+            </div>
+
+            <div class="option-description">
+                Endpoint analysis
+            </div>
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'DISCORD',
+                'DISCORD ACCOUNT',
+                'USERNAME'
+            )"
+        >
+
+            <div class="option-number">
+                [05]
+            </div>
+
+            <div class="option-title">
+                DISCORD ACCOUNT
+            </div>
+
+            <div class="option-description">
+                Session architecture analysis
+            </div>
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'NETWORK',
+                'NETWORK ACCESS',
+                'NETWORK IDENTIFIER'
+            )"
+        >
+
+            <div class="option-number">
+                [06]
+            </div>
+
+            <div class="option-title">
+                NETWORK ACCESS
+            </div>
+
+            <div class="option-description">
+                Network perimeter analysis
+            </div>
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'EMAIL',
+                'EMAIL ACCOUNT',
+                'EMAIL ADDRESS'
+            )"
+        >
+
+            <div class="option-number">
+                [07]
+            </div>
+
+            <div class="option-title">
+                EMAIL ACCOUNT
+            </div>
+
+            <div class="option-description">
+                Authentication analysis
+            </div>
+
+        </button>
+
+
+        <button
+            class="option"
+            onclick="selectTarget(
+                'SERVER',
+                'SERVER ACCESS',
+                'SERVER IDENTIFIER'
+            )"
+        >
+
+            <div class="option-number">
+                [08]
+            </div>
+
+            <div class="option-title">
+                SERVER ACCESS
+            </div>
+
+            <div class="option-description">
+                Infrastructure analysis
+            </div>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
+     INPUT PANEL
+================================= -->
+
+<div
+    class="panel"
+    id="inputPanel"
+>
+
+    <div class="panel-header">
+        TARGET CONFIGURATION
+    </div>
+
+
+    <div class="panel-body">
+
+        <button
+            class="back"
+            onclick="returnHome()"
+        >
+
+            &lt; RETURN
+
+        </button>
+
+
+        <h2
+            class="target-name"
+            id="targetName"
+        >
+        </h2>
+
+
+        <div
+            class="description"
+            id="targetDescription"
+        >
+            Configure operation parameters.
+        </div>
+
+
+        <label
+            id="targetLabel"
+        >
+            TARGET
+        </label>
+
+
+        <input
+            id="targetInput"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+        >
+
+
+        <button
+            class="start"
+            onclick="beginOperation()"
+        >
+
+            INITIALIZE OPERATION
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
+     TERMINAL PANEL
+================================= -->
+
+<div
+    class="panel terminal-panel"
+    id="terminalPanel"
+>
+
+    <div class="panel-header">
+        OPERATION TERMINAL
+    </div>
+
+
+    <div class="progress-container">
+
+        <div
+            class="progress"
+            id="progress"
+        ></div>
+
+    </div>
+
+
+    <div
+        class="terminal"
+        id="terminal"
+    ></div>
+
+
+    <div class="status">
+
+        <span id="operationStatus">
+            STATUS: INITIALIZING
+        </span>
+
+        <span id="clock">
+            --
+        </span>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =================================
+   GLOBAL VARIABLES
+================================= */
+
+var selectedType = "";
+var selectedName = "";
+var selectedField = "";
+
+var operationRunning = false;
+
+
+/* =================================
+   TARGET SELECTION
+================================= */
+
+function selectTarget(
+    type,
+    name,
+    field
+) {
+
+    selectedType = type;
+    selectedName = name;
+    selectedField = field;
+
+
+    document.getElementById("home")
+        .style.display = "none";
+
+
+    document.getElementById("inputPanel")
+        .style.display = "block";
+
+
+    document.getElementById("targetName")
+        .textContent = name;
+
+
+    document.getElementById("targetLabel")
+        .textContent = field;
+
+
+    document.getElementById("targetInput")
+        .value = "";
+
+
+    document.getElementById("targetInput")
+        .focus();
+}
+
+
+/* =================================
+   RETURN HOME
+================================= */
+
+function returnHome() {
+
+    operationRunning = false;
+
+
+    document.getElementById("inputPanel")
+        .style.display = "none";
+
+
+    document.getElementById("terminalPanel")
+        .style.display = "none";
+
+
+    document.getElementById("home")
+        .style.display = "block";
+}
+
+
+/* =================================
+   CLOCK
+================================= */
+
+function updateClock() {
+
+    var now = new Date();
+
+    document.getElementById("clock")
+        .textContent =
+        now.toLocaleTimeString();
+}
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/* =================================
+   INPUT VALIDATION
+================================= */
+
+function validateTarget(value) {
+
+    var trimmed =
+        value.trim();
+
+
+    if (!trimmed) {
+
+        return {
+            valid: false,
+            message:
+                "TARGET PARAMETER IS EMPTY."
+        };
+    }
+
+
+    /*
+       GOOGLE / EMAIL
+    */
+
+    if (
+        selectedType === "GOOGLE" ||
+        selectedType === "EMAIL"
+    ) {
+
+        var emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (!emailPattern.test(trimmed)) {
+
+            return {
+                valid: false,
+                message:
+                    "INVALID EMAIL ADDRESS FORMAT."
+            };
+        }
+    }
+
+
+    /*
+       FACEBOOK
+    */
+
+    if (
+        selectedType === "FACEBOOK"
+    ) {
+
+        var facebookPattern =
+            /^https?:\/\/(www\.)?facebook\.com\/.+/i;
+
+
+        if (
+            !facebookPattern.test(trimmed)
+        ) {
+
+            return {
+                valid: false,
+                message:
+                    "INVALID FACEBOOK PROFILE URL."
+            };
+        }
+    }
+
+
+    /*
+       USERNAME SERVICES
+    */
+
+    if (
+        selectedType === "INSTAGRAM" ||
+        selectedType === "TIKTOK" ||
+        selectedType === "DISCORD"
+    ) {
+
+        var usernamePattern =
+            /^[a-zA-Z0-9._-]{2,40}$/;
+
+
+        if (
+            !usernamePattern.test(trimmed)
+        ) {
+
+            return {
+                valid: false,
+                message:
+                    "INVALID USERNAME FORMAT."
+            };
+        }
+    }
+
+
+    /*
+       NETWORK
+    */
+
+    if (
+        selectedType === "NETWORK"
+    ) {
+
+        var networkPattern =
+            /^[a-zA-Z0-9._:-]{2,80}$/;
+
+
+        if (
+            !networkPattern.test(trimmed)
+        ) {
+
+            return {
+                valid: false,
+                message:
+                    "INVALID NETWORK IDENTIFIER."
+            };
+        }
+    }
+
+
+    /*
+       SERVER
+    */
+
+    if (
+        selectedType === "SERVER"
+    ) {
+
+        var serverPattern =
+            /^[a-zA-Z0-9._:-]{2,80}$/;
+
+
+        if (
+            !serverPattern.test(trimmed)
+        ) {
+
+            return {
+                valid: false,
+                message:
+                    "INVALID SERVER IDENTIFIER."
+            };
+        }
+    }
+
+
+    return {
+        valid: true,
+        message: ""
+    };
+}
+
+
+/* =================================
+   RANDOM HEX
+================================= */
+
+function randomHex(length) {
+
+    var chars =
+        "0123456789ABCDEF";
+
+    var result = "";
+
+    for (
+        var i = 0;
+        i < length;
+        i++
+    ) {
+
+        result +=
+            chars[
+                Math.floor(
+                    Math.random() *
+                    chars.length
+                )
+            ];
+    }
+
+    return result;
+}
+
+
+/* =================================
+   RANDOM IP
+================================= */
+
+function randomIP() {
+
+    return (
+        Math.floor(Math.random() * 220 + 10)
+        + "." +
+        Math.floor(Math.random() * 255)
+        + "." +
+        Math.floor(Math.random() * 255)
+        + "." +
+        Math.floor(Math.random() * 255)
+    );
+}
+
+
+/* =================================
+   RANDOM LATENCY
+================================= */
+
+function randomLatency() {
+
+    return (
+        Math.floor(
+            Math.random() * 180
+        ) + 20
+    );
+}
+
+
+/* =================================
+   TYPEWRITER
+================================= */
+
+function typeLine(
+    text,
+    className,
+    callback
+) {
+
+    var terminal =
+        document.getElementById(
+            "terminal"
+        );
+
+
+    var line =
+        document.createElement("div");
+
+
+    line.className =
+        "line " + className;
+
+
+    terminal.appendChild(line);
+
+
+    var position = 0;
+
+
+    function typeCharacter() {
+
+        if (!operationRunning) {
+            return;
+        }
+
+
+        if (
+            position >=
+            text.length
+        ) {
+
+            if (callback) {
+                callback();
+            }
+
+            return;
+        }
+
+
+        line.textContent +=
+            text.charAt(position);
+
+
+        position++;
+
+
+        terminal.scrollTop =
+            terminal.scrollHeight;
+
+
+        setTimeout(
+            typeCharacter,
+            8
+        );
+
+    }
+
+
+    typeCharacter();
+}
+
+
+/* =================================
+   WAIT
+================================= */
+
+function wait(
+    milliseconds,
+    callback
+) {
+
+    setTimeout(
+        function() {
+
+            if (
+                operationRunning &&
+                callback
+            ) {
+
+                callback();
+
+            }
+
+        },
+        milliseconds
+    );
+}
+
+
+/* =================================
+   BEGIN OPERATION
+================================= */
+
+function beginOperation() {
+
+    var target =
+        document.getElementById(
+            "targetInput"
+        ).value.trim();
+
+
+    var validation =
+        validateTarget(target);
+
+
+    if (!validation.valid) {
+
+        /*
+           Show serious error directly
+           in the input screen.
+        */
+
+        var description =
+            document.getElementById(
+                "targetDescription"
+            );
+
+
+        description.style.color =
+            "#ff4545";
+
+
+        description.textContent =
+            "[ERROR] " +
+            validation.message;
+
+
+        return;
+    }
+
+
+    operationRunning = true;
+
+
+    document.getElementById(
+        "inputPanel"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "terminalPanel"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "terminal"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "progress"
+    ).style.width = "0%";
+
+
+    document.getElementById(
+        "operationStatus"
+    ).textContent =
+        "STATUS: ACTIVE";
+
+
+    executeOperation(target);
+}
+
+
+/* =================================
+   RANDOMIZED OPERATION LINES
+================================= */
+
+function createStages(target) {
+
+    var session =
+        randomHex(12);
+
+
+    var node =
+        randomHex(6);
+
+
+    var port =
+        Math.floor(
+            Math.random() * 40000
+        ) + 1000;
+
+
+    var stages = [
+
+        [
+            "INITIALIZING SECURITY ENGINE...",
+            "normal"
+        ],
+
+        [
+            "LOADING SESSION ARCHITECTURE...",
+            "normal"
+        ],
+
+        [
+            "ASSIGNING SESSION ID: " +
+            session,
+            "dim"
+        ],
+
+        [
+            "RESOLVING TARGET IDENTIFIER: " +
+            target,
+            "green"
+        ],
+
+        [
+            "TARGET NODE: " +
+            node,
+            "dim"
+        ],
+
+        [
+            "ANALYZING NETWORK RESPONSE...",
+            "normal"
+        ],
+
+        [
+            "REMOTE LATENCY: " +
+            randomLatency() +
+            " ms",
+            "normal"
+        ],
+
+        [
+            "RESPONSE SIGNATURE: " +
+            randomHex(16),
+            "dim"
+        ],
+
+        [
+            "ANALYZING REQUEST STRUCTURE...",
+            "normal"
+        ],
+
+        [
+            "MAPPING SERVICE RESPONSE...",
+            "normal"
+        ],
+
+        [
+            "SERVICE NODE RESPONSE RECEIVED.",
+            "green"
+        ],
+
+        [
+            "PROCESSING SESSION PARAMETERS...",
+            "normal"
+        ],
+
+        [
+            "VALIDATING ACCESS CONTROL RESPONSE...",
+            "normal"
+        ],
+
+        [
+            "ACCESS CONTROL SIGNATURE: " +
+            randomHex(10),
+            "dim"
+        ],
+
+        [
+            "BUILDING SECONDARY ANALYSIS PATH...",
+            "normal"
+        ],
+
+        [
+            "INITIALIZING SECONDARY HANDLER...",
+            "normal"
+        ],
+
+        [
+            "HANDLER CHANNEL: " +
+            port,
+            "dim"
+        ],
+
+        [
+            "PROCESSING RESPONSE MATRIX...",
+            "normal"
+        ],
+
+        [
+            "COMPARING RESPONSE VARIANCE...",
+            "normal"
+        ],
+
+        [
+            "VARIANCE INDEX: " +
+            (
+                Math.random()
+                .toFixed(4)
+            ),
+            "dim"
+        ],
+
+        [
+            "RECONSTRUCTING SERVICE TOPOLOGY...",
+            "normal"
+        ],
+
+        [
+            "VALIDATING SECONDARY RESPONSE...",
+            "normal"
+        ],
+
+        [
+            "REMOTE RESPONSE CONSISTENCY CHECK...",
+            "normal"
+        ],
+
+        [
+            "SECONDARY RESPONSE RECEIVED.",
+            "green"
+        ],
+
+        [
+            "SECURITY POLICY RESPONSE DETECTED.",
+            "warning"
+        ],
+
+        [
+            "REINITIALIZING SESSION HANDLER...",
+            "normal"
+        ],
+
+        [
+            "RETRYING SESSION NEGOTIATION...",
+            "normal"
+        ],
+
+        [
+            "REMOTE VALIDATION REQUIREMENT DETECTED.",
+            "warning"
+        ],
+
+        [
+            "OPERATION CHANNEL REJECTED.",
+            "error"
+        ],
+
+        [
+            "FATAL ERROR: OPERATION TERMINATED.",
+            "error"
+        ]
+
+    ];
+
+
+    return stages;
+}
+
+
+/* =================================
+   RUN OPERATION
+================================= */
+
+function executeOperation(target) {
+
+    var stages =
+        createStages(target);
+
+
+    /*
+       5 seconds per line.
+    */
+
+    var STAGE_TIME = 5000;
+
+
+    var currentStage = 0;
+
+
+    function runNextStage() {
+
+        if (!operationRunning) {
+            return;
+        }
+
+
+        if (
+            currentStage >=
+            stages.length
+        ) {
+
+            finishOperation();
+
+            return;
+        }
+
+
+        var stage =
+            stages[currentStage];
+
+
+        var number =
+            String(
+                currentStage + 1
+            ).padStart(2, "0");
+
+
+        var message =
+            "[" +
+            number +
+            "/30] " +
+            stage[0];
+
+
+        /*
+           Progress
+        */
+
+        var percentage =
+            Math.round(
+                (
+                    currentStage /
+                    stages.length
+                ) * 100
+            );
+
+
+        document.getElementById(
+            "progress"
+        ).style.width =
+            percentage + "%";
+
+
+        /*
+           Type the line.
+        */
+
+        typeLine(
+            message,
+            stage[1],
+            function() {
+
+                /*
+                   After typing,
+                   wait until the
+                   5-second stage
+                   completes.
+                */
+
+                var typingTime =
+                    message.length * 8;
+
+
+                var remaining =
+                    Math.max(
+                        300,
+                        STAGE_TIME -
+                        typingTime
+                    );
+
+
+                wait(
+                    remaining,
+                    function() {
+
+                        currentStage++;
+
+                        runNextStage();
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    runNextStage();
+}
+
+
+/* =================================
+   FINAL ERROR
+================================= */
+
+function finishOperation() {
+
+    if (!operationRunning) {
+        return;
+    }
+
+
+    document.getElementById(
+        "progress"
+    ).style.width =
+        "100%";
+
+
+    typeLine(
+        "",
+        "normal",
+        function() {
+
+            typeLine(
+                "==================================================",
+                "dim",
+                function() {
+
+                    typeLine(
+                        "CRITICAL OPERATION FAILURE",
+                        "error",
+                        function() {
+
+                            typeLine(
+                                "REMOTE ACCESS CHANNEL CLOSED",
+                                "error",
+                                function() {
+
+                                    typeLine(
+                                        "SESSION TERMINATED",
+                                        "error",
+                                        function() {
+
+                                            typeLine(
+                                                "==================================================",
+                                                "dim",
+                                                function() {
+
+                                                    document.getElementById(
+                                                        "operationStatus"
+                                                    ).textContent =
+                                                        "STATUS: TERMINATED";
+
+
+                                                    /*
+                                                       Return home
+                                                       after 4 seconds.
+                                                    */
+
+                                                    setTimeout(
+                                                        function() {
+
+                                                            operationRunning =
+                                                                false;
+
+
+                                                            document.getElementById(
+                                                                "terminalPanel"
+                                                            ).style.display =
+                                                                "none";
+
+
+                                                            document.getElementById(
+                                                                "home"
+                                                            ).style.display =
+                                                                "block";
+
+
+                                                            document.getElementById(
+                                                                "progress"
+                                                            ).style.width =
+                                                                "0%";
+
+
+                                                            document.getElementById(
+                                                                "targetDescription"
+                                                            ).style.color =
+                                                                "#496a50";
+
+
+                                                            document.getElementById(
+                                                                "targetDescription"
+                                                            ).textContent =
+                                                                "Configure operation parameters.";
+
+                                                        },
+                                                        4000
+                                                    );
+
+                                                }
+                                            );
+
+                                        }
+                                    );
+
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+</script>
+
+</body>
+</html>
