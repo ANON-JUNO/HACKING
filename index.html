@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,10 +54,6 @@ button {
     cursor: pointer;
 }
 
-/* =========================================================
-   HOME
-========================================================= */
-
 #home {
     min-height: 100vh;
     padding: 30px;
@@ -102,33 +97,25 @@ button {
     width: 100%;
     max-width: 1100px;
     margin: auto;
-
     display: grid;
-
     grid-template-columns:
         repeat(auto-fit, minmax(240px, 1fr));
-
     gap: 12px;
 }
 
 .option {
     min-height: 130px;
     padding: 20px;
-
     background: #020503;
     border: 1px solid #163d1e;
-
     color: #8cff9b;
-
     font-family: inherit;
     text-align: left;
-
     transition: .15s;
 }
 
 .option:hover {
     background: #061008;
-
     border-color: #62ff78;
 
     box-shadow:
@@ -156,13 +143,10 @@ button {
 .user-bar {
     width: 100%;
     max-width: 1100px;
-
     margin: 20px auto 0;
     padding: 12px 15px;
-
     border: 1px solid #163d1e;
     background: #020503;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -186,10 +170,8 @@ button {
 
 .small-button {
     padding: 8px 12px;
-
     background: transparent;
     border: 1px solid #234d2b;
-
     color: #6f9977;
     font-size: 9px;
     letter-spacing: 1px;
@@ -202,18 +184,13 @@ button {
 
 .admin-access {
     display: none;
-
     width: 100%;
     max-width: 1100px;
-
     margin: 10px auto 0;
     padding: 10px;
-
     background: #080801;
     border: 1px solid #5c4f17;
-
     color: #d7d36c;
-
     font-size: 10px;
     letter-spacing: 2px;
 }
@@ -225,14 +202,10 @@ button {
 .footer {
     width: 100%;
     max-width: 1100px;
-
     margin: 35px auto 0;
     padding-top: 15px;
-
     border-top: 1px solid #163d1e;
-
     text-align: center;
-
     color: #355a3d;
     font-size: 10px;
     letter-spacing: 2px;
@@ -240,16 +213,10 @@ button {
 
 .footer-warning {
     margin-bottom: 10px;
-
     color: #6d6a35;
-
     font-size: 9px;
     line-height: 1.6;
 }
-
-/* =========================================================
-   AUTH
-========================================================= */
 
 .auth-panel {
     max-width: 500px;
@@ -258,28 +225,21 @@ button {
 .auth-tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     margin-bottom: 25px;
 }
 
 .auth-tab {
     padding: 12px;
-
     background: #010201;
-
     border: 1px solid #163d1e;
-
     color: #496a50;
-
     font-family: inherit;
     letter-spacing: 2px;
 }
 
 .auth-tab.active {
     background: #061008;
-
     border-color: #397746;
-
     color: #8cff9b;
 }
 
@@ -293,17 +253,12 @@ button {
 
 .auth-message {
     display: none;
-
     margin-top: 15px;
     padding: 12px;
-
     border: 1px solid #163d1e;
-
     color: #8cff9b;
-
     font-size: 10px;
     line-height: 1.6;
-
     white-space: pre-line;
 }
 
@@ -314,45 +269,30 @@ button {
 
 .auth-note {
     margin-bottom: 20px;
-
     color: #496a50;
-
     font-size: 10px;
     line-height: 1.7;
 }
 
 .password-strength {
     margin-top: 6px;
-
     color: #355a3d;
-
     font-size: 9px;
 }
 
-/* =========================================================
-   PANELS
-========================================================= */
-
 .panel {
     display: none;
-
     width: calc(100% - 40px);
     max-width: 900px;
-
     margin: 40px auto;
-
     background: #020503;
-
     border: 1px solid #163d1e;
 }
 
 .panel-header {
     padding: 15px 20px;
-
     border-bottom: 1px solid #163d1e;
-
     color: #7dff8e;
-
     font-size: 12px;
     letter-spacing: 3px;
 }
@@ -363,13 +303,9 @@ button {
 
 .back {
     margin-bottom: 25px;
-
     border: 0;
-
     background: transparent;
-
     color: #45694d;
-
     font-family: inherit;
 }
 
@@ -379,28 +315,21 @@ button {
 
 .target-name {
     color: #8cff9b;
-
     font-size: 19px;
     font-weight: normal;
-
     letter-spacing: 3px;
 }
 
 .description {
     margin: 10px 0 25px;
-
     color: #496a50;
-
     font-size: 11px;
 }
 
 label {
     display: block;
-
     margin-bottom: 8px;
-
     color: #668c6d;
-
     font-size: 11px;
 }
 
@@ -408,17 +337,11 @@ input,
 textarea,
 select {
     width: 100%;
-
     padding: 14px;
-
     background: #010201;
-
     border: 1px solid #234d2b;
-
     outline: none;
-
     color: #a5ffb0;
-
     font-family: inherit;
     font-size: 14px;
 }
@@ -440,44 +363,30 @@ select:focus {
 .start,
 .admin-button {
     margin-top: 20px;
-
     padding: 14px 24px;
-
     background: #061008;
-
     border: 1px solid #397746;
-
     color: #8cff9b;
-
     font-family: inherit;
-
     letter-spacing: 2px;
 }
 
 .start:hover,
 .admin-button:hover {
     background: #0a180d;
-
     border-color: #69ff7d;
 }
 
 .admin-button.danger {
     border-color: #7a2424;
-
     color: #ff5555;
-
     background: #080202;
 }
 
 .admin-button.danger:hover {
     border-color: #ff4545;
-
     background: #160505;
 }
-
-/* =========================================================
-   TERMINAL
-========================================================= */
 
 .terminal-panel {
     max-width: 1250px;
@@ -486,32 +395,23 @@ select:focus {
 .progress-container {
     width: 100%;
     height: 3px;
-
     background: #0b1b0e;
 }
 
 .progress {
     width: 0;
     height: 100%;
-
     background: #55ff6c;
-
     box-shadow: 0 0 10px #55ff6c;
-
     transition: width .3s;
 }
 
 .terminal {
     height: 70vh;
-
     padding: 22px;
-
     overflow-y: auto;
-
     background: #010201;
-
     color: #76a67e;
-
     font-size: 12px;
     line-height: 1.7;
 }
@@ -554,41 +454,25 @@ select:focus {
 
 .status {
     display: flex;
-
     justify-content: space-between;
-
     padding: 8px 15px;
-
     border-top: 1px solid #102514;
-
     color: #3f5f45;
-
     font-size: 9px;
-
     letter-spacing: 1px;
 }
 
-/* =========================================================
-   RESULT
-========================================================= */
-
 .final-result {
     margin-top: 25px;
-
     padding: 20px;
-
     background: #080202;
-
     border: 1px solid #5c1717;
 }
 
 .final-title {
     margin-bottom: 20px;
-
     color: #ff4545;
-
     font-size: 14px;
-
     letter-spacing: 2px;
 }
 
@@ -598,23 +482,18 @@ select:focus {
 
 .result-label {
     margin-bottom: 6px;
-
     color: #704444;
-
     font-size: 10px;
 }
 
 .result-value {
     color: #ff4545;
-
     font-size: 13px;
-
     word-break: break-all;
 }
 
 .hash {
     color: #ff3030;
-
     letter-spacing: 1px;
 
     text-shadow:
@@ -623,29 +502,18 @@ select:focus {
 
 .home-button {
     margin-top: 25px;
-
     padding: 14px 22px;
-
     background: #080202;
-
     border: 1px solid #7a2424;
-
     color: #ff4545;
-
     font-family: inherit;
-
     letter-spacing: 2px;
 }
 
 .home-button:hover {
     background: #160505;
-
     border-color: #ff5555;
 }
-
-/* =========================================================
-   ADMIN
-========================================================= */
 
 #adminPanel {
     max-width: 1100px;
@@ -653,30 +521,22 @@ select:focus {
 
 .admin-grid {
     display: grid;
-
     grid-template-columns:
         repeat(auto-fit, minmax(280px, 1fr));
-
     gap: 15px;
 }
 
 .admin-card {
     padding: 18px;
-
     border: 1px solid #163d1e;
-
     background: #010201;
 }
 
 .admin-card h3 {
     margin: 0 0 15px;
-
     color: #8cff9b;
-
     font-size: 12px;
-
     letter-spacing: 2px;
-
     font-weight: normal;
 }
 
@@ -702,19 +562,12 @@ select:focus {
 .account-item,
 .recovery-item {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 15px;
-
     padding: 15px;
-
     margin-bottom: 8px;
-
     border: 1px solid #163d1e;
-
     background: #020503;
 }
 
@@ -728,7 +581,6 @@ select:focus {
 .account-info strong,
 .recovery-info strong {
     color: #8cff9b;
-
     font-size: 12px;
 }
 
@@ -736,62 +588,42 @@ select:focus {
 .account-info small,
 .recovery-info small {
     display: block;
-
     margin-top: 5px;
-
     color: #496a50;
-
     font-size: 9px;
-
     line-height: 1.6;
 }
 
 .method-delete {
     padding: 8px 12px;
-
     border: 1px solid #5c1717;
-
     background: #080202;
-
     color: #ff4545;
 }
 
 .admin-message {
     margin-top: 15px;
-
     padding: 12px;
-
     border: 1px solid #163d1e;
-
     color: #8cff9b;
-
     font-size: 10px;
-
     display: none;
-
     white-space: pre-line;
 }
 
 .admin-section-title {
     margin-top: 20px;
     margin-bottom: 10px;
-
     color: #668c6d;
-
     font-size: 10px;
-
     letter-spacing: 2px;
 }
 
 .badge {
     display: inline-block;
-
     padding: 4px 7px;
-
     border: 1px solid #397746;
-
     color: #8cff9b;
-
     font-size: 8px;
 }
 
@@ -802,17 +634,13 @@ select:focus {
 
 .recovery-code {
     color: #d7d36c !important;
-
     letter-spacing: 2px;
-
     font-size: 12px !important;
 }
 
 .reset-box {
     margin-top: 10px;
-
     padding-top: 10px;
-
     border-top: 1px solid #163d1e;
 }
 
@@ -822,43 +650,26 @@ select:focus {
     line-height: 1.7;
 }
 
-/* =========================================================
-   ACCOUNT
-========================================================= */
-
 .account-card {
     margin-bottom: 20px;
-
     padding: 18px;
-
     border: 1px solid #163d1e;
-
     background: #010201;
 }
 
 .account-card h3 {
     margin: 0 0 10px;
-
     color: #8cff9b;
-
     font-size: 12px;
-
     font-weight: normal;
-
     letter-spacing: 2px;
 }
 
 .account-card p {
     color: #496a50;
-
     font-size: 10px;
-
     line-height: 1.7;
 }
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:600px) {
 
@@ -882,9 +693,7 @@ select:focus {
 
     .terminal {
         height: 70vh;
-
         padding: 14px;
-
         font-size: 10px;
     }
 
@@ -896,13 +705,11 @@ select:focus {
     .account-item,
     .recovery-item {
         align-items: flex-start;
-
         flex-direction: column;
     }
 
     .user-bar {
         align-items: flex-start;
-
         flex-direction: column;
     }
 
@@ -912,11 +719,6 @@ select:focus {
 </head>
 
 <body>
-
-
-<!-- =========================================================
-     AUTH SCREEN
-========================================================= -->
 
 <div class="panel auth-panel" id="authPanel">
 
@@ -945,9 +747,6 @@ select:focus {
             </button>
 
         </div>
-
-
-        <!-- LOGIN -->
 
         <div
             class="auth-section active"
@@ -1012,9 +811,6 @@ select:focus {
             ></div>
 
         </div>
-
-
-        <!-- REGISTER -->
 
         <div
             class="auth-section"
@@ -1090,9 +886,6 @@ select:focus {
 
         </div>
 
-
-        <!-- FORGOT PASSWORD -->
-
         <div
             class="auth-section"
             id="forgotSection"
@@ -1157,11 +950,6 @@ select:focus {
 
 </div>
 
-
-<!-- =========================================================
-     HOME
-========================================================= -->
-
 <div id="home" style="display:none;">
 
     <div class="header">
@@ -1178,7 +966,7 @@ select:focus {
             class="legal-warning"
             id="legalWarning"
         >
-            ⚠ AUTHORIZED USE ONLY.
+            AUTHORIZED USE ONLY.
             DO NOT USE FOR UNAUTHORIZED ACCESS,
             ACCOUNT COMPROMISE, CREDENTIAL THEFT,
             OR ANY ILLEGAL ACTIVITY.
@@ -1186,14 +974,10 @@ select:focus {
 
     </div>
 
-
     <div
         class="menu"
         id="menu"
     ></div>
-
-
-    <!-- USER BAR -->
 
     <div
         class="user-bar"
@@ -1231,9 +1015,6 @@ select:focus {
 
     </div>
 
-
-    <!-- ADMIN ACCESS -->
-
     <button
         class="admin-access"
         id="adminAccess"
@@ -1242,14 +1023,13 @@ select:focus {
         [ ADMIN CONTROL CENTER ]
     </button>
 
-
     <div class="footer">
 
         <div
             class="footer-warning"
             id="footerWarning"
         >
-            ⚠ DO NOT USE THIS WEBSITE FOR ILLEGAL OR
+            DO NOT USE THIS WEBSITE FOR ILLEGAL OR
             UNAUTHORIZED ACTIVITIES.
         </div>
 
@@ -1260,11 +1040,6 @@ select:focus {
     </div>
 
 </div>
-
-
-<!-- =========================================================
-     INPUT PANEL
-========================================================= -->
 
 <div
     class="panel"
@@ -1318,11 +1093,6 @@ select:focus {
 
 </div>
 
-
-<!-- =========================================================
-     TERMINAL
-========================================================= -->
-
 <div
     class="panel terminal-panel"
     id="terminalPanel"
@@ -1359,11 +1129,6 @@ select:focus {
     </div>
 
 </div>
-
-
-<!-- =========================================================
-     ACCOUNT PANEL
-========================================================= -->
 
 <div
     class="panel"
@@ -1423,7 +1188,6 @@ select:focus {
 
         </div>
 
-
         <div class="account-card">
 
             <h3>
@@ -1453,11 +1217,6 @@ select:focus {
 
 </div>
 
-
-<!-- =========================================================
-     ADMIN PANEL
-========================================================= -->
-
 <div
     class="panel"
     id="adminPanel"
@@ -1476,11 +1235,7 @@ select:focus {
             &lt; RETURN TO PLAY
         </button>
 
-
         <div class="admin-grid">
-
-
-            <!-- ADMIN STATUS -->
 
             <div class="admin-card">
 
@@ -1507,9 +1262,6 @@ select:focus {
                 </button>
 
             </div>
-
-
-            <!-- SITE SETTINGS -->
 
             <div class="admin-card">
 
@@ -1561,9 +1313,6 @@ select:focus {
 
             </div>
 
-
-            <!-- COLORS -->
-
             <div class="admin-card">
 
                 <h3>
@@ -1608,9 +1357,6 @@ select:focus {
                 </button>
 
             </div>
-
-
-            <!-- ADD SIMULATION -->
 
             <div class="admin-card admin-full">
 
@@ -1666,9 +1412,6 @@ select:focus {
 
             </div>
 
-
-            <!-- PLAYER ACCOUNTS -->
-
             <div class="admin-card admin-full">
 
                 <h3>
@@ -1681,9 +1424,6 @@ select:focus {
                 ></div>
 
             </div>
-
-
-            <!-- RECOVERY REQUESTS -->
 
             <div class="admin-card admin-full">
 
@@ -1705,9 +1445,6 @@ select:focus {
                 ></div>
 
             </div>
-
-
-            <!-- RESET -->
 
             <div class="admin-card admin-full">
 
@@ -1740,20 +1477,10 @@ select:focus {
 
 </div>
 
-
 <script>
-
-/* =========================================================
-   ADMIN CREDENTIALS
-========================================================= */
 
 const ADMIN_USERNAME = "juno";
 const ADMIN_PASSWORD = "juno";
-
-
-/* =========================================================
-   DEFAULT CONFIGURATION
-========================================================= */
 
 const DEFAULT_CONFIG = {
 
@@ -1764,10 +1491,10 @@ const DEFAULT_CONFIG = {
         "SOCIAL ENGINEERING // SECURITY OPERATIONS TERMINAL",
 
     warning:
-        "⚠ AUTHORIZED USE ONLY. DO NOT USE FOR UNAUTHORIZED ACCESS, ACCOUNT COMPROMISE, CREDENTIAL THEFT, OR ANY ILLEGAL ACTIVITY.",
+        "AUTHORIZED USE ONLY. DO NOT USE FOR UNAUTHORIZED ACCESS, ACCOUNT COMPROMISE, CREDENTIAL THEFT, OR ANY ILLEGAL ACTIVITY.",
 
     footerWarning:
-        "⚠ DO NOT USE THIS WEBSITE FOR ILLEGAL OR UNAUTHORIZED ACTIVITIES.",
+        "DO NOT USE THIS WEBSITE FOR ILLEGAL OR UNAUTHORIZED ACTIVITIES.",
 
     footer:
         "BUILT BY JUNO",
@@ -1843,13 +1570,7 @@ const DEFAULT_CONFIG = {
 
 };
 
-
-/* =========================================================
-   GLOBAL STATE
-========================================================= */
-
 let config;
-
 let currentUser = null;
 
 let selectedType = "";
@@ -1859,11 +1580,6 @@ let selectedMethodScript = "";
 
 let operationRunning = false;
 
-
-/* =========================================================
-   STORAGE
-========================================================= */
-
 function cloneDefaultConfig() {
 
     return JSON.parse(
@@ -1871,7 +1587,6 @@ function cloneDefaultConfig() {
     );
 
 }
-
 
 function loadConfig() {
 
@@ -1898,12 +1613,6 @@ function loadConfig() {
 
     }
 
-
-    /*
-       Make sure older saved configurations
-       still have a methods array.
-    */
-
     if (
         !Array.isArray(config.methods)
     ) {
@@ -1915,7 +1624,6 @@ function loadConfig() {
 
 }
 
-
 function saveConfig() {
 
     localStorage.setItem(
@@ -1924,7 +1632,6 @@ function saveConfig() {
     );
 
 }
-
 
 function loadUsers() {
 
@@ -1944,7 +1651,6 @@ function loadUsers() {
 
 }
 
-
 function getUsers() {
 
     try {
@@ -1963,7 +1669,6 @@ function getUsers() {
 
 }
 
-
 function saveUsers(users) {
 
     localStorage.setItem(
@@ -1972,7 +1677,6 @@ function saveUsers(users) {
     );
 
 }
-
 
 function getRecoveryRequests() {
 
@@ -1992,7 +1696,6 @@ function getRecoveryRequests() {
 
 }
 
-
 function saveRecoveryRequests(requests) {
 
     localStorage.setItem(
@@ -2001,11 +1704,6 @@ function saveRecoveryRequests(requests) {
     );
 
 }
-
-
-/* =========================================================
-   APPLY CONFIG
-========================================================= */
 
 function applyConfig() {
 
@@ -2052,11 +1750,6 @@ function applyConfig() {
 
 }
 
-
-/* =========================================================
-   RENDER METHODS
-========================================================= */
-
 function renderMethods() {
 
     const menu =
@@ -2085,7 +1778,6 @@ function renderMethods() {
 
                 };
 
-
             const number =
                 document.createElement("div");
 
@@ -2097,7 +1789,6 @@ function renderMethods() {
                 String(index + 1).padStart(2, "0") +
                 "]";
 
-
             const title =
                 document.createElement("div");
 
@@ -2107,7 +1798,6 @@ function renderMethods() {
             title.textContent =
                 method.name;
 
-
             const description =
                 document.createElement("div");
 
@@ -2116,7 +1806,6 @@ function renderMethods() {
 
             description.textContent =
                 method.description;
-
 
             button.appendChild(number);
             button.appendChild(title);
@@ -2128,11 +1817,6 @@ function renderMethods() {
     );
 
 }
-
-
-/* =========================================================
-   PANEL NAVIGATION
-========================================================= */
 
 function hideAllPanels() {
 
@@ -2162,7 +1846,6 @@ function hideAllPanels() {
 
 }
 
-
 function showHome() {
 
     hideAllPanels();
@@ -2174,7 +1857,6 @@ function showHome() {
     updateUserBar();
 
 }
-
 
 function returnHome() {
 
@@ -2188,29 +1870,7 @@ function returnHome() {
 
 }
 
-
-/* =========================================================
-   AUTH TABS
-========================================================= */
-
 function showAuthTab(tab) {
-
-    /*
-       Popup notification.
-       The flag prevents the initial page setup from
-       producing multiple popups from nested calls.
-    */
-
-    if (
-        tab === "login" ||
-        tab === "register" ||
-        tab === "forgot"
-    ) {
-
-        showCredentialInfo();
-
-    }
-
 
     document.getElementById(
         "loginSection"
@@ -2232,7 +1892,6 @@ function showAuthTab(tab) {
         "registerTab"
     ).classList.remove("active");
 
-
     if (tab === "login") {
 
         document.getElementById(
@@ -2244,7 +1903,6 @@ function showAuthTab(tab) {
         ).classList.add("active");
 
     }
-
 
     if (tab === "register") {
 
@@ -2258,7 +1916,6 @@ function showAuthTab(tab) {
 
     }
 
-
     if (tab === "forgot") {
 
         document.getElementById(
@@ -2268,41 +1925,6 @@ function showAuthTab(tab) {
     }
 
 }
-
-
-/* =========================================================
-   PASSWORD / RECOVERY INFORMATION POPUP
-========================================================= */
-
-function showCredentialInfo() {
-
-    alert(
-        "SECURITY CREDENTIAL INFORMATION\n\n" +
-
-        "You can use either your PASSWORD or your " +
-        "RECOVERY CODE to login.\n\n" +
-
-        "• PASSWORD:\n" +
-        "Your normal account password.\n\n" +
-
-        "• RECOVERY CODE:\n" +
-        "Your backup credential used for login and " +
-        "password recovery.\n\n" +
-
-        "Your recovery code is generated when you register.\n\n" +
-
-        "If you lose your recovery code, request recovery " +
-        "and the administrator can provide a recovery code.\n\n" +
-
-        "KEEP YOUR RECOVERY CODE PRIVATE."
-    );
-
-}
-
-
-/* =========================================================
-   AUTH MESSAGE
-========================================================= */
 
 function showAuthMessage(
     elementId,
@@ -2327,11 +1949,6 @@ function showAuthMessage(
         "block";
 
 }
-
-
-/* =========================================================
-   PASSWORD STRENGTH
-========================================================= */
 
 function updatePasswordStrength() {
 
@@ -2374,7 +1991,6 @@ function updatePasswordStrength() {
     if (/[^A-Za-z0-9]/.test(password))
         score++;
 
-
     if (score <= 2) {
 
         element.textContent =
@@ -2403,11 +2019,6 @@ function updatePasswordStrength() {
 
 }
 
-
-/* =========================================================
-   REGISTER PLAYER
-========================================================= */
-
 function registerPlayer() {
 
     const username =
@@ -2425,7 +2036,6 @@ function registerPlayer() {
             "registerConfirm"
         ).value;
 
-
     if (!/^[a-zA-Z0-9_-]{3,30}$/.test(username)) {
 
         showAuthMessage(
@@ -2437,7 +2047,6 @@ function registerPlayer() {
         return;
 
     }
-
 
     if (
         username.toLowerCase() ===
@@ -2454,7 +2063,6 @@ function registerPlayer() {
 
     }
 
-
     if (password.length < 6) {
 
         showAuthMessage(
@@ -2466,7 +2074,6 @@ function registerPlayer() {
         return;
 
     }
-
 
     if (password !== confirmPassword) {
 
@@ -2480,10 +2087,8 @@ function registerPlayer() {
 
     }
 
-
     const users =
         getUsers();
-
 
     const exists =
         users.some(
@@ -2491,7 +2096,6 @@ function registerPlayer() {
                 user.username.toLowerCase() ===
                 username.toLowerCase()
         );
-
 
     if (exists) {
 
@@ -2505,15 +2109,8 @@ function registerPlayer() {
 
     }
 
-
-    /*
-       Generate the player's recovery code
-       during account creation.
-    */
-
     const recoveryCode =
         generateRecoveryCode();
-
 
     const newUser = {
 
@@ -2540,13 +2137,11 @@ function registerPlayer() {
 
     };
 
-
     users.push(
         newUser
     );
 
     saveUsers(users);
-
 
     document.getElementById(
         "registerUsername"
@@ -2560,9 +2155,7 @@ function registerPlayer() {
         "registerConfirm"
     ).value = "";
 
-
     updatePasswordStrength();
-
 
     showAuthMessage(
         "registerMessage",
@@ -2584,11 +2177,6 @@ function registerPlayer() {
 
 }
 
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
 function login() {
 
     const username =
@@ -2601,7 +2189,6 @@ function login() {
             "loginPassword"
         ).value;
 
-
     if (!username || !credential) {
 
         showAuthMessage(
@@ -2613,9 +2200,6 @@ function login() {
         return;
 
     }
-
-
-    /* ADMIN AUTO-RECOGNITION */
 
     if (
         username === ADMIN_USERNAME &&
@@ -2641,12 +2225,8 @@ function login() {
 
     }
 
-
-    /* PLAYER LOGIN */
-
     const users =
         getUsers();
-
 
     const user =
         users.find(
@@ -2661,17 +2241,14 @@ function login() {
 
                 }
 
-
                 const passwordMatches =
                     item.password ===
                     credential;
-
 
                 const recoveryMatches =
                     item.recoveryCode &&
                     item.recoveryCode ===
                     credential;
-
 
                 return (
                     passwordMatches ||
@@ -2680,7 +2257,6 @@ function login() {
 
             }
         );
-
 
     if (!user) {
 
@@ -2694,12 +2270,6 @@ function login() {
 
     }
 
-
-    /*
-       Older accounts created before the recovery
-       system existed receive a recovery code here.
-    */
-
     if (!user.recoveryCode) {
 
         user.recoveryCode =
@@ -2708,7 +2278,6 @@ function login() {
         saveUsers(users);
 
     }
-
 
     currentUser = {
 
@@ -2726,15 +2295,9 @@ function login() {
 
     };
 
-
     showHome();
 
 }
-
-
-/* =========================================================
-   UPDATE USER BAR
-========================================================= */
 
 function updateUserBar() {
 
@@ -2742,18 +2305,15 @@ function updateUserBar() {
         return;
     }
 
-
     document.getElementById(
         "currentUsername"
     ).textContent =
         currentUser.username;
 
-
     const badge =
         document.getElementById(
             "roleBadge"
         );
-
 
     if (currentUser.isAdmin) {
 
@@ -2778,11 +2338,6 @@ function updateUserBar() {
     }
 
 }
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
 
 function logout() {
 
@@ -2809,18 +2364,12 @@ function logout() {
 
 }
 
-
-/* =========================================================
-   ACCOUNT PANEL
-========================================================= */
-
 function openAccountPanel() {
 
     if (!currentUser) {
         logout();
         return;
     }
-
 
     hideAllPanels();
 
@@ -2829,12 +2378,10 @@ function openAccountPanel() {
     ).style.display =
         "block";
 
-
     document.getElementById(
         "accountUsername"
     ).textContent =
         currentUser.username;
-
 
     document.getElementById(
         "accountRole"
@@ -2842,7 +2389,6 @@ function openAccountPanel() {
         currentUser.isAdmin
             ? "ADMINISTRATOR"
             : "PLAYER";
-
 
     if (currentUser.isAdmin) {
 
@@ -2868,7 +2414,6 @@ function openAccountPanel() {
                     currentUser.id
             );
 
-
         if (user) {
 
             if (!user.recoveryCode) {
@@ -2880,12 +2425,10 @@ function openAccountPanel() {
 
             }
 
-
             document.getElementById(
                 "accountCreated"
             ).textContent =
                 user.created;
-
 
             document.getElementById(
                 "accountRecoveryCode"
@@ -2910,11 +2453,6 @@ function openAccountPanel() {
 
 }
 
-
-/* =========================================================
-   FORGOT PASSWORD / RECOVERY
-========================================================= */
-
 function requestRecovery() {
 
     const username =
@@ -2927,7 +2465,6 @@ function requestRecovery() {
             "forgotRecoveryCode"
         ).value.trim();
 
-
     if (!username) {
 
         showAuthMessage(
@@ -2939,7 +2476,6 @@ function requestRecovery() {
         return;
 
     }
-
 
     if (
         username.toLowerCase() ===
@@ -2956,10 +2492,8 @@ function requestRecovery() {
 
     }
 
-
     const users =
         getUsers();
-
 
     const user =
         users.find(
@@ -2967,7 +2501,6 @@ function requestRecovery() {
                 item.username.toLowerCase() ===
                 username.toLowerCase()
         );
-
 
     if (!user) {
 
@@ -2981,11 +2514,6 @@ function requestRecovery() {
 
     }
 
-
-    /*
-       Make sure older accounts have a recovery code.
-    */
-
     if (!user.recoveryCode) {
 
         user.recoveryCode =
@@ -2994,13 +2522,6 @@ function requestRecovery() {
         saveUsers(users);
 
     }
-
-
-    /*
-       RECOVERY CODE PROVIDED
-       ----------------------
-       The user can directly reset the password.
-    */
 
     if (recoveryCode) {
 
@@ -3019,18 +2540,15 @@ function requestRecovery() {
 
         }
 
-
         const newPassword =
             prompt(
                 "RECOVERY CODE ACCEPTED.\n\n" +
                 "ENTER YOUR NEW PASSWORD:"
             );
 
-
         if (newPassword === null) {
             return;
         }
-
 
         if (newPassword.length < 6) {
 
@@ -3044,17 +2562,14 @@ function requestRecovery() {
 
         }
 
-
         const confirmNewPassword =
             prompt(
                 "CONFIRM YOUR NEW PASSWORD:"
             );
 
-
         if (confirmNewPassword === null) {
             return;
         }
-
 
         if (
             newPassword !==
@@ -3071,22 +2586,13 @@ function requestRecovery() {
 
         }
 
-
         user.password =
             newPassword;
-
-
-        /*
-           Generate a fresh recovery code after
-           successful password recovery.
-        */
 
         user.recoveryCode =
             generateRecoveryCode();
 
-
         saveUsers(users);
-
 
         showAuthMessage(
             "forgotMessage",
@@ -3101,42 +2607,24 @@ function requestRecovery() {
             "OR THIS NEW RECOVERY CODE TO LOGIN."
         );
 
-
         document.getElementById(
             "forgotRecoveryCode"
         ).value = "";
-
 
         return;
 
     }
 
-
-    /*
-       NO RECOVERY CODE
-       ----------------
-       Create an administrator recovery request.
-    */
-
     const code =
         generateRecoveryCode();
-
-
-    /*
-       The requested recovery code becomes the
-       user's active recovery code.
-    */
 
     user.recoveryCode =
         code;
 
-
     saveUsers(users);
-
 
     const requests =
         getRecoveryRequests();
-
 
     const request = {
 
@@ -3163,7 +2651,6 @@ function requestRecovery() {
 
     };
 
-
     requests.push(
         request
     );
@@ -3171,7 +2658,6 @@ function requestRecovery() {
     saveRecoveryRequests(
         requests
     );
-
 
     showAuthMessage(
         "forgotMessage",
@@ -3192,11 +2678,6 @@ function requestRecovery() {
     );
 
 }
-
-
-/* =========================================================
-   GENERATE RECOVERY CODE
-========================================================= */
 
 function generateRecoveryCode() {
 
@@ -3220,11 +2701,6 @@ function generateRecoveryCode() {
 
 }
 
-
-/* =========================================================
-   ADMIN ACCESS
-========================================================= */
-
 function openAdminPanel() {
 
     if (
@@ -3236,14 +2712,12 @@ function openAdminPanel() {
 
     }
 
-
     hideAllPanels();
 
     document.getElementById(
         "adminPanel"
     ).style.display =
         "block";
-
 
     loadAdminFields();
 
@@ -3254,11 +2728,6 @@ function openAdminPanel() {
     renderRecoveryRequests();
 
 }
-
-
-/* =========================================================
-   ADMIN FIELDS
-========================================================= */
 
 function loadAdminFields() {
 
@@ -3299,11 +2768,6 @@ function loadAdminFields() {
 
 }
 
-
-/* =========================================================
-   SAVE SITE
-========================================================= */
-
 function saveSiteSettings() {
 
     config.title =
@@ -3326,7 +2790,6 @@ function saveSiteSettings() {
             "editFooter"
         ).value.trim();
 
-
     saveConfig();
 
     applyConfig();
@@ -3336,11 +2799,6 @@ function saveSiteSettings() {
     );
 
 }
-
-
-/* =========================================================
-   COLORS
-========================================================= */
 
 function saveColors() {
 
@@ -3359,7 +2817,6 @@ function saveColors() {
             "editAccent"
         ).value;
 
-
     saveConfig();
 
     applyConfig();
@@ -3370,11 +2827,6 @@ function saveColors() {
 
 }
 
-
-/* =========================================================
-   ADD METHOD
-========================================================= */
-
 function addMethod() {
 
     if (
@@ -3383,7 +2835,6 @@ function addMethod() {
     ) {
         return;
     }
-
 
     const name =
         document.getElementById(
@@ -3400,7 +2851,6 @@ function addMethod() {
             "methodScript"
         ).value.trim();
 
-
     if (!name) {
 
         showAdminMessage(
@@ -3411,7 +2861,6 @@ function addMethod() {
         return;
 
     }
-
 
     config.methods.push({
 
@@ -3434,11 +2883,9 @@ function addMethod() {
 
     });
 
-
     saveConfig();
 
     applyConfig();
-
 
     document.getElementById(
         "methodName"
@@ -3452,20 +2899,13 @@ function addMethod() {
         "methodScript"
     ).value = "";
 
-
     renderAdminMethods();
-
 
     showAdminMessage(
         "SIMULATION METHOD ADDED."
     );
 
 }
-
-
-/* =========================================================
-   ADMIN METHOD LIST
-========================================================= */
 
 function renderAdminMethods() {
 
@@ -3476,7 +2916,6 @@ function renderAdminMethods() {
 
     container.innerHTML = "";
 
-
     config.methods.forEach(
         function(method, index) {
 
@@ -3486,13 +2925,11 @@ function renderAdminMethods() {
             item.className =
                 "method-item";
 
-
             const info =
                 document.createElement("div");
 
             info.className =
                 "method-info";
-
 
             const title =
                 document.createElement("strong");
@@ -3500,17 +2937,14 @@ function renderAdminMethods() {
             title.textContent =
                 method.name;
 
-
             const desc =
                 document.createElement("small");
 
             desc.textContent =
                 method.description;
 
-
             info.appendChild(title);
             info.appendChild(desc);
-
 
             const deleteButton =
                 document.createElement("button");
@@ -3521,7 +2955,6 @@ function renderAdminMethods() {
             deleteButton.textContent =
                 "DELETE";
 
-
             deleteButton.onclick =
                 function() {
 
@@ -3529,10 +2962,8 @@ function renderAdminMethods() {
 
                 };
 
-
             item.appendChild(info);
             item.appendChild(deleteButton);
-
 
             container.appendChild(item);
 
@@ -3540,11 +2971,6 @@ function renderAdminMethods() {
     );
 
 }
-
-
-/* =========================================================
-   DELETE METHOD
-========================================================= */
 
 function deleteMethod(index) {
 
@@ -3554,7 +2980,6 @@ function deleteMethod(index) {
     ) {
         return;
     }
-
 
     if (
         config.methods.length <= 1
@@ -3569,10 +2994,8 @@ function deleteMethod(index) {
 
     }
 
-
     const method =
         config.methods[index];
-
 
     if (
         !confirm(
@@ -3585,12 +3008,10 @@ function deleteMethod(index) {
 
     }
 
-
     config.methods.splice(
         index,
         1
     );
-
 
     saveConfig();
 
@@ -3598,17 +3019,11 @@ function deleteMethod(index) {
 
     renderAdminMethods();
 
-
     showAdminMessage(
         "SIMULATION METHOD DELETED."
     );
 
 }
-
-
-/* =========================================================
-   ADMIN MESSAGE
-========================================================= */
 
 function showAdminMessage(
     message,
@@ -3620,20 +3035,16 @@ function showAdminMessage(
             "adminMessage"
         );
 
-
     element.textContent =
         message;
 
-
     element.style.display =
         "block";
-
 
     element.style.color =
         error
             ? "#ff4545"
             : "#8cff9b";
-
 
     setTimeout(
         function() {
@@ -3647,11 +3058,6 @@ function showAdminMessage(
 
 }
 
-
-/* =========================================================
-   ADMIN ACCOUNT LIST
-========================================================= */
-
 function renderAccounts() {
 
     const container =
@@ -3661,18 +3067,11 @@ function renderAccounts() {
 
     container.innerHTML = "";
 
-
     const users =
         getUsers();
 
-
-    /*
-       Give older accounts a recovery code.
-    */
-
     let usersChanged =
         false;
-
 
     users.forEach(
         function(user) {
@@ -3690,13 +3089,11 @@ function renderAccounts() {
         }
     );
 
-
     if (usersChanged) {
 
         saveUsers(users);
 
     }
-
 
     if (!users.length) {
 
@@ -3707,7 +3104,6 @@ function renderAccounts() {
 
     }
 
-
     users.forEach(
         function(user) {
 
@@ -3717,20 +3113,17 @@ function renderAccounts() {
             item.className =
                 "account-item";
 
-
             const info =
                 document.createElement("div");
 
             info.className =
                 "account-info";
 
-
             const title =
                 document.createElement("strong");
 
             title.textContent =
                 user.username;
-
 
             const details =
                 document.createElement("small");
@@ -3740,7 +3133,6 @@ function renderAccounts() {
                 user.id +
                 " | CREATED: " +
                 user.created;
-
 
             const recovery =
                 document.createElement("small");
@@ -3752,11 +3144,9 @@ function renderAccounts() {
                 "RECOVERY CODE: " +
                 user.recoveryCode;
 
-
             info.appendChild(title);
             info.appendChild(details);
             info.appendChild(recovery);
-
 
             const deleteButton =
                 document.createElement("button");
@@ -3767,7 +3157,6 @@ function renderAccounts() {
             deleteButton.textContent =
                 "DELETE ACCOUNT";
 
-
             deleteButton.onclick =
                 function() {
 
@@ -3777,10 +3166,8 @@ function renderAccounts() {
 
                 };
 
-
             item.appendChild(info);
             item.appendChild(deleteButton);
-
 
             container.appendChild(item);
 
@@ -3788,11 +3175,6 @@ function renderAccounts() {
     );
 
 }
-
-
-/* =========================================================
-   DELETE PLAYER ACCOUNT
-========================================================= */
 
 function deletePlayerAccount(id) {
 
@@ -3803,21 +3185,17 @@ function deletePlayerAccount(id) {
         return;
     }
 
-
     let users =
         getUsers();
-
 
     const user =
         users.find(
             u => u.id === id
         );
 
-
     if (!user) {
         return;
     }
-
 
     if (
         !confirm(
@@ -3828,15 +3206,12 @@ function deletePlayerAccount(id) {
         return;
     }
 
-
     users =
         users.filter(
             u => u.id !== id
         );
 
-
     saveUsers(users);
-
 
     const requests =
         getRecoveryRequests()
@@ -3845,27 +3220,19 @@ function deletePlayerAccount(id) {
                     request.userId !== id
             );
 
-
     saveRecoveryRequests(
         requests
     );
 
-
     renderAccounts();
 
     renderRecoveryRequests();
-
 
     showAdminMessage(
         "PLAYER ACCOUNT DELETED."
     );
 
 }
-
-
-/* =========================================================
-   RECOVERY REQUEST LIST
-========================================================= */
 
 function renderRecoveryRequests() {
 
@@ -3876,10 +3243,8 @@ function renderRecoveryRequests() {
 
     container.innerHTML = "";
 
-
     const requests =
         getRecoveryRequests();
-
 
     if (!requests.length) {
 
@@ -3889,7 +3254,6 @@ function renderRecoveryRequests() {
         return;
 
     }
-
 
     requests
         .slice()
@@ -3903,20 +3267,17 @@ function renderRecoveryRequests() {
                 item.className =
                     "recovery-item";
 
-
                 const info =
                     document.createElement("div");
 
                 info.className =
                     "recovery-info";
 
-
                 const title =
                     document.createElement("strong");
 
                 title.textContent =
                     request.username;
-
 
                 const details =
                     document.createElement("small");
@@ -3926,7 +3287,6 @@ function renderRecoveryRequests() {
                     request.created +
                     " | STATUS: " +
                     request.status;
-
 
                 const code =
                     document.createElement("small");
@@ -3938,15 +3298,12 @@ function renderRecoveryRequests() {
                     "RECOVERY CODE: " +
                     request.code;
 
-
                 info.appendChild(title);
                 info.appendChild(details);
                 info.appendChild(code);
 
-
                 const action =
                     document.createElement("div");
-
 
                 if (
                     request.status ===
@@ -3965,7 +3322,6 @@ function renderRecoveryRequests() {
                     resetButton.textContent =
                         "RESET PASSWORD";
 
-
                     resetButton.onclick =
                         function() {
 
@@ -3974,7 +3330,6 @@ function renderRecoveryRequests() {
                             );
 
                         };
-
 
                     action.appendChild(
                         resetButton
@@ -3997,10 +3352,8 @@ function renderRecoveryRequests() {
 
                 }
 
-
                 item.appendChild(info);
                 item.appendChild(action);
-
 
                 container.appendChild(item);
 
@@ -4009,16 +3362,10 @@ function renderRecoveryRequests() {
 
 }
 
-
-/* =========================================================
-   ADMIN PASSWORD RESET
-========================================================= */
-
 function openPasswordReset(request) {
 
     const users =
         getUsers();
-
 
     const user =
         users.find(
@@ -4026,7 +3373,6 @@ function openPasswordReset(request) {
                 u.id ===
                 request.userId
         );
-
 
     if (!user) {
 
@@ -4039,18 +3385,15 @@ function openPasswordReset(request) {
 
     }
 
-
     const newPassword =
         prompt(
             "ENTER A NEW PASSWORD FOR:\n\n" +
             user.username
         );
 
-
     if (newPassword === null) {
         return;
     }
-
 
     if (newPassword.length < 6) {
 
@@ -4063,17 +3406,14 @@ function openPasswordReset(request) {
 
     }
 
-
     const confirmNewPassword =
         prompt(
             "CONFIRM THE NEW PASSWORD:"
         );
 
-
     if (confirmNewPassword === null) {
         return;
     }
-
 
     if (
         newPassword !==
@@ -4089,26 +3429,16 @@ function openPasswordReset(request) {
 
     }
 
-
     user.password =
         newPassword;
-
-
-    /*
-       Administrator password reset creates
-       a fresh recovery code.
-    */
 
     user.recoveryCode =
         generateRecoveryCode();
 
-
     saveUsers(users);
-
 
     const requests =
         getRecoveryRequests();
-
 
     const index =
         requests.findIndex(
@@ -4116,7 +3446,6 @@ function openPasswordReset(request) {
                 r.id ===
                 request.id
         );
-
 
     if (index !== -1) {
 
@@ -4126,27 +3455,18 @@ function openPasswordReset(request) {
         requests[index].resolved =
             new Date().toLocaleString();
 
-        /*
-           Keep the new recovery code in the
-           recovery request so the administrator
-           can provide it to the player.
-        */
-
         requests[index].code =
             user.recoveryCode;
 
     }
 
-
     saveRecoveryRequests(
         requests
     );
 
-
     renderAccounts();
 
     renderRecoveryRequests();
-
 
     showAdminMessage(
 
@@ -4161,11 +3481,6 @@ function openPasswordReset(request) {
 
 }
 
-
-/* =========================================================
-   RESET WEBSITE
-========================================================= */
-
 function resetWebsite() {
 
     if (
@@ -4174,7 +3489,6 @@ function resetWebsite() {
     ) {
         return;
     }
-
 
     if (
         !confirm(
@@ -4189,15 +3503,12 @@ function resetWebsite() {
 
     }
 
-
     localStorage.removeItem(
         "juno_security_hacking_config"
     );
 
-
     config =
         cloneDefaultConfig();
-
 
     applyConfig();
 
@@ -4205,17 +3516,11 @@ function resetWebsite() {
 
     renderAdminMethods();
 
-
     showAdminMessage(
         "WEBSITE RESTORED TO DEFAULT."
     );
 
 }
-
-
-/* =========================================================
-   TARGET SELECTION
-========================================================= */
 
 function selectTarget(
     type,
@@ -4236,49 +3541,40 @@ function selectTarget(
     selectedMethodScript =
         script || "";
 
-
     hideAllPanels();
-
 
     document.getElementById(
         "inputPanel"
     ).style.display =
         "block";
 
-
     document.getElementById(
         "targetName"
     ).textContent =
         name;
-
 
     document.getElementById(
         "targetLabel"
     ).textContent =
         field;
 
-
     document.getElementById(
         "targetInput"
     ).value =
         "";
-
 
     const description =
         document.getElementById(
             "description"
         );
 
-
     description.style.color =
         "#496a50";
-
 
     description.textContent =
         selectedMethodScript
             ? "Custom security simulation configured."
             : "Configure operation parameters.";
-
 
     setTimeout(
         function() {
@@ -4293,11 +3589,6 @@ function selectTarget(
 
 }
 
-
-/* =========================================================
-   VALIDATION
-========================================================= */
-
 function validateTarget(value) {
 
     if (!value) {
@@ -4305,7 +3596,6 @@ function validateTarget(value) {
         return "TARGET PARAMETER IS EMPTY.";
 
     }
-
 
     if (
         selectedType === "GOOGLE" ||
@@ -4324,7 +3614,6 @@ function validateTarget(value) {
 
     }
 
-
     if (
         selectedType === "FACEBOOK"
     ) {
@@ -4339,7 +3628,6 @@ function validateTarget(value) {
         }
 
     }
-
 
     if (
         selectedType === "INSTAGRAM" ||
@@ -4359,7 +3647,6 @@ function validateTarget(value) {
 
     }
 
-
     if (
         selectedType === "NETWORK" ||
         selectedType === "SERVER"
@@ -4377,15 +3664,9 @@ function validateTarget(value) {
 
     }
 
-
     return "";
 
 }
-
-
-/* =========================================================
-   RANDOM DATA
-========================================================= */
 
 function randomHex(length) {
 
@@ -4393,7 +3674,6 @@ function randomHex(length) {
         "0123456789ABCDEF";
 
     let output = "";
-
 
     for (
         let i = 0;
@@ -4411,11 +3691,9 @@ function randomHex(length) {
 
     }
 
-
     return output;
 
 }
-
 
 function randomNumber(
     min,
@@ -4429,11 +3707,6 @@ function randomNumber(
 
 }
 
-
-/* =========================================================
-   TERMINAL
-========================================================= */
-
 function typeLine(
     text,
     className,
@@ -4444,38 +3717,31 @@ function typeLine(
         return;
     }
 
-
     const terminal =
         document.getElementById(
             "terminal"
         );
-
 
     const line =
         document.createElement(
             "div"
         );
 
-
     line.className =
         "line " +
         className;
-
 
     terminal.appendChild(
         line
     );
 
-
     let position = 0;
-
 
     function write() {
 
         if (!operationRunning) {
             return;
         }
-
 
         if (
             position >=
@@ -4490,17 +3756,13 @@ function typeLine(
 
         }
 
-
         line.textContent +=
             text.charAt(position);
 
-
         position++;
-
 
         terminal.scrollTop =
             terminal.scrollHeight;
-
 
         setTimeout(
             write,
@@ -4509,11 +3771,9 @@ function typeLine(
 
     }
 
-
     write();
 
 }
-
 
 function delay(
     callback,
@@ -4533,11 +3793,6 @@ function delay(
 
 }
 
-
-/* =========================================================
-   BEGIN OPERATION
-========================================================= */
-
 function beginOperation() {
 
     if (!currentUser) {
@@ -4548,16 +3803,13 @@ function beginOperation() {
 
     }
 
-
     const target =
         document.getElementById(
             "targetInput"
         ).value.trim();
 
-
     const error =
         validateTarget(target);
-
 
     if (error) {
 
@@ -4566,60 +3818,45 @@ function beginOperation() {
                 "description"
             );
 
-
         description.style.color =
             "#ff4545";
-
 
         description.textContent =
             "[ERROR] " +
             error;
 
-
         return;
 
     }
 
-
     operationRunning =
         true;
 
-
     hideAllPanels();
-
 
     document.getElementById(
         "terminalPanel"
     ).style.display =
         "block";
 
-
     document.getElementById(
         "terminal"
     ).innerHTML =
         "";
-
 
     document.getElementById(
         "progress"
     ).style.width =
         "0%";
 
-
     document.getElementById(
         "operationStatus"
     ).textContent =
         "STATUS: ACTIVE";
 
-
     runOperation(target);
 
 }
-
-
-/* =========================================================
-   SIMULATION ENGINE
-========================================================= */
 
 function runOperation(target) {
 
@@ -4786,9 +4023,6 @@ function runOperation(target) {
 
     ];
 
-
-    /* CUSTOM ADMIN SCRIPT */
-
     if (selectedMethodScript) {
 
         lines.unshift(
@@ -4798,7 +4032,6 @@ function runOperation(target) {
             ]
         );
 
-
         const customLines =
             selectedMethodScript
                 .split("\n")
@@ -4806,7 +4039,6 @@ function runOperation(target) {
                     line =>
                         line.trim() !== ""
                 );
-
 
         customLines.reverse()
             .forEach(
@@ -4827,20 +4059,16 @@ function runOperation(target) {
 
     }
 
-
     const total =
         lines.length;
 
-
     let index = 0;
-
 
     function next() {
 
         if (!operationRunning) {
             return;
         }
-
 
         if (index >= total) {
 
@@ -4852,19 +4080,16 @@ function runOperation(target) {
 
         }
 
-
         const percentage =
             Math.round(
                 (index / total) *
                 100
             );
 
-
         document.getElementById(
             "progress"
         ).style.width =
             percentage + "%";
-
 
         const number =
             String(
@@ -4874,7 +4099,6 @@ function runOperation(target) {
                 "0"
             );
 
-
         const message =
             "[" +
             number +
@@ -4883,14 +4107,12 @@ function runOperation(target) {
             "] " +
             lines[index][0];
 
-
         typeLine(
             message,
             lines[index][1],
             function() {
 
                 index++;
-
 
                 delay(
                     next,
@@ -4902,15 +4124,9 @@ function runOperation(target) {
 
     }
 
-
     next();
 
 }
-
-
-/* =========================================================
-   FINISH
-========================================================= */
 
 function finishOperation(
     target
@@ -4920,7 +4136,6 @@ function finishOperation(
         "progress"
     ).style.width =
         "100%";
-
 
     typeLine(
         "",
@@ -4976,11 +4191,6 @@ function finishOperation(
 
 }
 
-
-/* =========================================================
-   RESULT
-========================================================= */
-
 function showResult(
     target
 ) {
@@ -4990,81 +4200,64 @@ function showResult(
     ).textContent =
         "STATUS: TERMINATED";
 
-
     const terminal =
         document.getElementById(
             "terminal"
         );
-
 
     const result =
         document.createElement(
             "div"
         );
 
-
     result.className =
         "final-result";
-
 
     const title =
         document.createElement(
             "div"
         );
 
-
     title.className =
         "final-title";
-
 
     title.textContent =
         "[ SIMULATION ] TEST COMPLETE";
 
-
     result.appendChild(title);
-
 
     const targetRow =
         document.createElement(
             "div"
         );
 
-
     targetRow.className =
         "result-row";
-
 
     const targetLabel =
         document.createElement(
             "div"
         );
 
-
     targetLabel.className =
         "result-label";
 
-
     targetLabel.textContent =
         "TEST TARGET";
-
 
     const targetValue =
         document.createElement(
             "div"
         );
 
-
     targetValue.className =
         "result-value";
-
 
     targetValue.style.color =
         "#8cff9b";
 
-
     targetValue.textContent =
         target;
-
 
     targetRow.appendChild(
         targetLabel
@@ -5078,44 +4271,35 @@ function showResult(
         targetRow
     );
 
-
     const hashRow =
         document.createElement(
             "div"
         );
 
-
     hashRow.className =
         "result-row";
-
 
     const hashLabel =
         document.createElement(
             "div"
         );
 
-
     hashLabel.className =
         "result-label";
 
-
     hashLabel.textContent =
         "SIMULATION ID";
-
 
     const hashValue =
         document.createElement(
             "div"
         );
 
-
     hashValue.className =
         "result-value hash";
 
-
     hashValue.textContent =
         randomHex(64);
-
 
     hashRow.appendChild(
         hashLabel
@@ -5125,53 +4309,42 @@ function showResult(
         hashValue
     );
 
-
     result.appendChild(
         hashRow
     );
-
 
     const responseRow =
         document.createElement(
             "div"
         );
 
-
     responseRow.className =
         "result-row";
-
 
     const responseLabel =
         document.createElement(
             "div"
         );
 
-
     responseLabel.className =
         "result-label";
 
-
     responseLabel.textContent =
         "SYSTEM RESPONSE";
-
 
     const responseValue =
         document.createElement(
             "div"
         );
 
-
     responseValue.className =
         "result-value";
-
 
     responseValue.style.color =
         "#d7d36c";
 
-
     responseValue.textContent =
         "SIMULATION ONLY // NO REAL ACCESS ATTEMPTED";
-
 
     responseRow.appendChild(
         responseLabel
@@ -5181,25 +4354,20 @@ function showResult(
         responseValue
     );
 
-
     result.appendChild(
         responseRow
     );
-
 
     const button =
         document.createElement(
             "button"
         );
 
-
     button.className =
         "home-button";
 
-
     button.textContent =
         "RETURN TO HOMEPAGE";
-
 
     button.onclick =
         function() {
@@ -5208,36 +4376,26 @@ function showResult(
 
         };
 
-
     result.appendChild(
         button
     );
-
 
     terminal.appendChild(
         result
     );
 
-
     terminal.scrollTop =
         terminal.scrollHeight;
-
 
     operationRunning =
         false;
 
 }
 
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
 function updateClock() {
 
     const now =
         new Date();
-
 
     document.getElementById(
         "clock"
@@ -5246,18 +4404,12 @@ function updateClock() {
 
 }
 
-
 setInterval(
     updateClock,
     1000
 );
 
 updateClock();
-
-
-/* =========================================================
-   ENTER KEY
-========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -5269,10 +4421,8 @@ document.addEventListener(
             return;
         }
 
-
         const active =
             document.activeElement;
-
 
         if (
             active &&
@@ -5284,7 +4434,6 @@ document.addEventListener(
 
         }
 
-
         if (
             active &&
             active.id ===
@@ -5294,7 +4443,6 @@ document.addEventListener(
             registerPlayer();
 
         }
-
 
         if (
             active &&
@@ -5309,22 +4457,11 @@ document.addEventListener(
     }
 );
 
-
-/* =========================================================
-   INITIALIZATION
-========================================================= */
-
 loadConfig();
 
 loadUsers();
 
 applyConfig();
-
-
-/*
-    Everyone starts at the same authentication screen.
-    The admin is NOT required to register.
-*/
 
 hideAllPanels();
 
