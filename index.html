@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOCIAL MEDIA HACKING</title>
+
+<title>SECURITY SIMULATOR</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -30,6 +33,7 @@ body::after {
     inset: 0;
     pointer-events: none;
     z-index: 99999;
+
     background:
         repeating-linear-gradient(
             to bottom,
@@ -50,6 +54,10 @@ select {
 button {
     cursor: pointer;
 }
+
+/* =========================================================
+   HOME
+========================================================= */
 
 #home {
     min-height: 100vh;
@@ -94,27 +102,35 @@ button {
     width: 100%;
     max-width: 1100px;
     margin: auto;
+
     display: grid;
+
     grid-template-columns:
         repeat(auto-fit, minmax(240px, 1fr));
+
     gap: 12px;
 }
 
 .option {
     min-height: 130px;
     padding: 20px;
+
     background: #020503;
     border: 1px solid #163d1e;
+
     color: #8cff9b;
+
     font-family: inherit;
     text-align: left;
-    cursor: pointer;
+
     transition: .15s;
 }
 
 .option:hover {
     background: #061008;
+
     border-color: #62ff78;
+
     box-shadow:
         0 0 20px rgba(0,255,60,.1),
         inset 0 0 20px rgba(0,255,60,.03);
@@ -137,32 +153,86 @@ button {
     font-size: 10px;
 }
 
-.admin-link {
-    display: block;
+.user-bar {
     width: 100%;
     max-width: 1100px;
+
     margin: 20px auto 0;
-    padding: 10px;
-    background: transparent;
+    padding: 12px 15px;
+
     border: 1px solid #163d1e;
-    color: #355a3d;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-align: center;
+    background: #020503;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
 }
 
-.admin-link:hover {
+.user-info {
+    color: #496a50;
+    font-size: 10px;
+}
+
+.user-info strong {
+    color: #8cff9b;
+}
+
+.user-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.small-button {
+    padding: 8px 12px;
+
+    background: transparent;
+    border: 1px solid #234d2b;
+
+    color: #6f9977;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.small-button:hover {
+    border-color: #69ff7d;
     color: #9cffaa;
-    border-color: #397746;
+}
+
+.admin-access {
+    display: none;
+
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 10px auto 0;
+    padding: 10px;
+
+    background: #080801;
+    border: 1px solid #5c4f17;
+
+    color: #d7d36c;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.admin-access:hover {
+    border-color: #d7d36c;
 }
 
 .footer {
     width: 100%;
     max-width: 1100px;
+
     margin: 35px auto 0;
     padding-top: 15px;
+
     border-top: 1px solid #163d1e;
+
     text-align: center;
+
     color: #355a3d;
     font-size: 10px;
     letter-spacing: 2px;
@@ -170,26 +240,119 @@ button {
 
 .footer-warning {
     margin-bottom: 10px;
+
     color: #6d6a35;
+
     font-size: 9px;
     line-height: 1.6;
 }
 
-/* PANELS */
+/* =========================================================
+   AUTH
+========================================================= */
+
+.auth-panel {
+    max-width: 500px;
+}
+
+.auth-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    margin-bottom: 25px;
+}
+
+.auth-tab {
+    padding: 12px;
+
+    background: #010201;
+
+    border: 1px solid #163d1e;
+
+    color: #496a50;
+
+    font-family: inherit;
+    letter-spacing: 2px;
+}
+
+.auth-tab.active {
+    background: #061008;
+
+    border-color: #397746;
+
+    color: #8cff9b;
+}
+
+.auth-section {
+    display: none;
+}
+
+.auth-section.active {
+    display: block;
+}
+
+.auth-message {
+    display: none;
+
+    margin-top: 15px;
+    padding: 12px;
+
+    border: 1px solid #163d1e;
+
+    color: #8cff9b;
+
+    font-size: 10px;
+    line-height: 1.6;
+
+    white-space: pre-line;
+}
+
+.auth-message.error {
+    border-color: #5c1717;
+    color: #ff4545;
+}
+
+.auth-note {
+    margin-bottom: 20px;
+
+    color: #496a50;
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.password-strength {
+    margin-top: 6px;
+
+    color: #355a3d;
+
+    font-size: 9px;
+}
+
+/* =========================================================
+   PANELS
+========================================================= */
 
 .panel {
     display: none;
+
     width: calc(100% - 40px);
     max-width: 900px;
+
     margin: 40px auto;
+
     background: #020503;
+
     border: 1px solid #163d1e;
 }
 
 .panel-header {
     padding: 15px 20px;
+
     border-bottom: 1px solid #163d1e;
+
     color: #7dff8e;
+
     font-size: 12px;
     letter-spacing: 3px;
 }
@@ -200,11 +363,14 @@ button {
 
 .back {
     margin-bottom: 25px;
+
     border: 0;
+
     background: transparent;
+
     color: #45694d;
+
     font-family: inherit;
-    cursor: pointer;
 }
 
 .back:hover {
@@ -213,21 +379,28 @@ button {
 
 .target-name {
     color: #8cff9b;
+
     font-size: 19px;
     font-weight: normal;
+
     letter-spacing: 3px;
 }
 
 .description {
     margin: 10px 0 25px;
+
     color: #496a50;
+
     font-size: 11px;
 }
 
 label {
     display: block;
+
     margin-bottom: 8px;
+
     color: #668c6d;
+
     font-size: 11px;
 }
 
@@ -235,11 +408,17 @@ input,
 textarea,
 select {
     width: 100%;
+
     padding: 14px;
+
     background: #010201;
+
     border: 1px solid #234d2b;
+
     outline: none;
+
     color: #a5ffb0;
+
     font-family: inherit;
     font-size: 14px;
 }
@@ -253,39 +432,52 @@ input:focus,
 textarea:focus,
 select:focus {
     border-color: #61d971;
-    box-shadow: 0 0 15px rgba(0,255,70,.08);
+
+    box-shadow:
+        0 0 15px rgba(0,255,70,.08);
 }
 
 .start,
 .admin-button {
     margin-top: 20px;
+
     padding: 14px 24px;
+
     background: #061008;
+
     border: 1px solid #397746;
+
     color: #8cff9b;
+
     font-family: inherit;
+
     letter-spacing: 2px;
-    cursor: pointer;
 }
 
 .start:hover,
 .admin-button:hover {
     background: #0a180d;
+
     border-color: #69ff7d;
 }
 
 .admin-button.danger {
     border-color: #7a2424;
+
     color: #ff5555;
+
     background: #080202;
 }
 
 .admin-button.danger:hover {
     border-color: #ff4545;
+
     background: #160505;
 }
 
-/* TERMINAL */
+/* =========================================================
+   TERMINAL
+========================================================= */
 
 .terminal-panel {
     max-width: 1250px;
@@ -294,23 +486,32 @@ select:focus {
 .progress-container {
     width: 100%;
     height: 3px;
+
     background: #0b1b0e;
 }
 
 .progress {
     width: 0;
     height: 100%;
+
     background: #55ff6c;
+
     box-shadow: 0 0 10px #55ff6c;
+
     transition: width .3s;
 }
 
 .terminal {
     height: 70vh;
+
     padding: 22px;
+
     overflow-y: auto;
+
     background: #010201;
+
     color: #76a67e;
+
     font-size: 12px;
     line-height: 1.7;
 }
@@ -353,27 +554,41 @@ select:focus {
 
 .status {
     display: flex;
+
     justify-content: space-between;
+
     padding: 8px 15px;
+
     border-top: 1px solid #102514;
+
     color: #3f5f45;
+
     font-size: 9px;
+
     letter-spacing: 1px;
 }
 
-/* RESULT */
+/* =========================================================
+   RESULT
+========================================================= */
 
 .final-result {
     margin-top: 25px;
+
     padding: 20px;
+
     background: #080202;
+
     border: 1px solid #5c1717;
 }
 
 .final-title {
     margin-bottom: 20px;
+
     color: #ff4545;
+
     font-size: 14px;
+
     letter-spacing: 2px;
 }
 
@@ -383,39 +598,54 @@ select:focus {
 
 .result-label {
     margin-bottom: 6px;
+
     color: #704444;
+
     font-size: 10px;
 }
 
 .result-value {
     color: #ff4545;
+
     font-size: 13px;
+
     word-break: break-all;
 }
 
 .hash {
     color: #ff3030;
+
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(255,0,0,.25);
+
+    text-shadow:
+        0 0 8px rgba(255,0,0,.25);
 }
 
 .home-button {
     margin-top: 25px;
+
     padding: 14px 22px;
+
     background: #080202;
+
     border: 1px solid #7a2424;
+
     color: #ff4545;
+
     font-family: inherit;
+
     letter-spacing: 2px;
-    cursor: pointer;
 }
 
 .home-button:hover {
     background: #160505;
+
     border-color: #ff5555;
 }
 
-/* ADMIN */
+/* =========================================================
+   ADMIN
+========================================================= */
 
 #adminPanel {
     max-width: 1100px;
@@ -423,22 +653,30 @@ select:focus {
 
 .admin-grid {
     display: grid;
+
     grid-template-columns:
         repeat(auto-fit, minmax(280px, 1fr));
+
     gap: 15px;
 }
 
 .admin-card {
     padding: 18px;
+
     border: 1px solid #163d1e;
+
     background: #010201;
 }
 
 .admin-card h3 {
     margin: 0 0 15px;
+
     color: #8cff9b;
+
     font-size: 12px;
+
     letter-spacing: 2px;
+
     font-weight: normal;
 }
 
@@ -454,74 +692,173 @@ select:focus {
     grid-column: 1 / -1;
 }
 
-.method-list {
+.method-list,
+.account-list,
+.recovery-list {
     margin-top: 20px;
 }
 
-.method-item {
+.method-item,
+.account-item,
+.recovery-item {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 15px;
+
     padding: 15px;
+
     margin-bottom: 8px;
+
     border: 1px solid #163d1e;
+
     background: #020503;
 }
 
-.method-info {
+.method-info,
+.account-info,
+.recovery-info {
     flex: 1;
 }
 
-.method-info strong {
+.method-info strong,
+.account-info strong,
+.recovery-info strong {
     color: #8cff9b;
+
     font-size: 12px;
 }
 
-.method-info small {
+.method-info small,
+.account-info small,
+.recovery-info small {
     display: block;
+
     margin-top: 5px;
+
     color: #496a50;
+
     font-size: 9px;
+
+    line-height: 1.6;
 }
 
 .method-delete {
     padding: 8px 12px;
+
     border: 1px solid #5c1717;
+
     background: #080202;
+
     color: #ff4545;
 }
 
 .admin-message {
     margin-top: 15px;
+
     padding: 12px;
+
     border: 1px solid #163d1e;
+
     color: #8cff9b;
+
     font-size: 10px;
+
     display: none;
+
+    white-space: pre-line;
 }
 
-/* LOGIN */
+.admin-section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
 
-#loginPanel {
-    max-width: 500px;
+    color: #668c6d;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
 }
 
-.login-error {
-    margin-top: 15px;
-    color: #ff4545;
-    font-size: 10px;
-    display: none;
+.badge {
+    display: inline-block;
+
+    padding: 4px 7px;
+
+    border: 1px solid #397746;
+
+    color: #8cff9b;
+
+    font-size: 8px;
+}
+
+.badge.admin {
+    border-color: #5c4f17;
+    color: #d7d36c;
+}
+
+.recovery-code {
+    color: #d7d36c !important;
+
+    letter-spacing: 2px;
+
+    font-size: 12px !important;
+}
+
+.reset-box {
+    margin-top: 10px;
+
+    padding-top: 10px;
+
+    border-top: 1px solid #163d1e;
 }
 
 .login-note {
-    margin-bottom: 20px;
     color: #496a50;
     font-size: 10px;
     line-height: 1.7;
 }
 
-/* MOBILE */
+/* =========================================================
+   ACCOUNT
+========================================================= */
+
+.account-card {
+    margin-bottom: 20px;
+
+    padding: 18px;
+
+    border: 1px solid #163d1e;
+
+    background: #010201;
+}
+
+.account-card h3 {
+    margin: 0 0 10px;
+
+    color: #8cff9b;
+
+    font-size: 12px;
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+}
+
+.account-card p {
+    color: #496a50;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:600px) {
 
@@ -545,7 +882,9 @@ select:focus {
 
     .terminal {
         height: 70vh;
+
         padding: 14px;
+
         font-size: 10px;
     }
 
@@ -553,21 +892,277 @@ select:focus {
         font-size: 8px;
     }
 
-    .method-item {
+    .method-item,
+    .account-item,
+    .recovery-item {
         align-items: flex-start;
+
         flex-direction: column;
     }
+
+    .user-bar {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HOME
-========================= -->
 
-<div id="home">
+<!-- =========================================================
+     AUTH SCREEN
+========================================================= -->
+
+<div class="panel auth-panel" id="authPanel">
+
+    <div class="panel-header">
+        SECURITY TERMINAL // AUTHENTICATION
+    </div>
+
+    <div class="panel-body">
+
+        <div class="auth-tabs">
+
+            <button
+                class="auth-tab active"
+                id="loginTab"
+                onclick="showAuthTab('login')"
+            >
+                LOGIN
+            </button>
+
+            <button
+                class="auth-tab"
+                id="registerTab"
+                onclick="showAuthTab('register')"
+            >
+                REGISTER
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <div
+            class="auth-section active"
+            id="loginSection"
+        >
+
+            <div class="auth-note">
+
+                Enter your account credentials.
+
+                <br><br>
+
+                You may use either your normal password
+                or your recovery code.
+
+                <br><br>
+
+                Administrator credentials are automatically
+                recognized by the system.
+
+            </div>
+
+            <label>
+                USERNAME
+            </label>
+
+            <input
+                id="loginUsername"
+                type="text"
+                autocomplete="username"
+            >
+
+            <label style="margin-top:15px;">
+                PASSWORD OR RECOVERY CODE
+            </label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                autocomplete="current-password"
+                placeholder="ENTER PASSWORD OR RECOVERY CODE"
+            >
+
+            <button
+                class="admin-button"
+                onclick="login()"
+            >
+                ENTER SYSTEM
+            </button>
+
+            <button
+                class="small-button"
+                style="margin-top:15px;"
+                onclick="showAuthTab('forgot')"
+            >
+                [ FORGOT PASSWORD ]
+            </button>
+
+            <div
+                class="auth-message"
+                id="loginMessage"
+            ></div>
+
+        </div>
+
+
+        <!-- REGISTER -->
+
+        <div
+            class="auth-section"
+            id="registerSection"
+        >
+
+            <div class="auth-note">
+
+                Create a player account to access the
+                hacking interface.
+
+                <br><br>
+
+                A recovery code will automatically be
+                generated when your account is created.
+
+                <br><br>
+
+                You can use either your password or
+                recovery code when logging in.
+
+            </div>
+
+            <label>
+                USERNAME
+            </label>
+
+            <input
+                id="registerUsername"
+                type="text"
+                maxlength="30"
+            >
+
+            <label style="margin-top:15px;">
+                PASSWORD
+            </label>
+
+            <input
+                id="registerPassword"
+                type="password"
+                maxlength="100"
+                oninput="updatePasswordStrength()"
+            >
+
+            <div
+                class="password-strength"
+                id="passwordStrength"
+            >
+                PASSWORD STRENGTH: --
+            </div>
+
+            <label style="margin-top:15px;">
+                CONFIRM PASSWORD
+            </label>
+
+            <input
+                id="registerConfirm"
+                type="password"
+                maxlength="100"
+            >
+
+            <button
+                class="admin-button"
+                onclick="registerPlayer()"
+            >
+                CREATE PLAYER ACCOUNT
+            </button>
+
+            <div
+                class="auth-message"
+                id="registerMessage"
+            ></div>
+
+        </div>
+
+
+        <!-- FORGOT PASSWORD -->
+
+        <div
+            class="auth-section"
+            id="forgotSection"
+        >
+
+            <div class="auth-note">
+
+                If you know your recovery code,
+                you can use it to reset your password.
+
+                <br><br>
+
+                If you do not have your recovery code,
+                leave the recovery code field blank and
+                request administrator assistance.
+
+            </div>
+
+            <label>
+                USERNAME
+            </label>
+
+            <input
+                id="forgotUsername"
+                type="text"
+            >
+
+            <label style="margin-top:15px;">
+                RECOVERY CODE
+            </label>
+
+            <input
+                id="forgotRecoveryCode"
+                type="text"
+                autocomplete="off"
+                placeholder="ENTER RECOVERY CODE OR LEAVE BLANK"
+            >
+
+            <button
+                class="admin-button"
+                onclick="requestRecovery()"
+            >
+                USE CODE / REQUEST RECOVERY
+            </button>
+
+            <button
+                class="small-button"
+                style="margin-top:15px;"
+                onclick="showAuthTab('login')"
+            >
+                [ RETURN TO LOGIN ]
+            </button>
+
+            <div
+                class="auth-message"
+                id="forgotMessage"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     HOME
+========================================================= -->
+
+<div id="home" style="display:none;">
 
     <div class="header">
 
@@ -579,22 +1174,74 @@ select:focus {
             SOCIAL ENGINEERING // SECURITY OPERATIONS TERMINAL
         </p>
 
-        <div class="legal-warning" id="legalWarning">
+        <div
+            class="legal-warning"
+            id="legalWarning"
+        >
             ⚠ AUTHORIZED USE ONLY.
-            DO NOT USE FOR UNAUTHORIZED ACCESS, ACCOUNT
-            COMPROMISE, CREDENTIAL THEFT, OR ANY ILLEGAL ACTIVITY.
+            DO NOT USE FOR UNAUTHORIZED ACCESS,
+            ACCOUNT COMPROMISE, CREDENTIAL THEFT,
+            OR ANY ILLEGAL ACTIVITY.
         </div>
 
     </div>
 
-    <div class="menu" id="menu"></div>
+
+    <div
+        class="menu"
+        id="menu"
+    ></div>
+
+
+    <!-- USER BAR -->
+
+    <div
+        class="user-bar"
+        id="userBar"
+    >
+
+        <div class="user-info">
+
+            LOGGED IN AS:
+            <strong id="currentUsername">
+                PLAYER
+            </strong>
+
+            <span id="roleBadge"></span>
+
+        </div>
+
+        <div class="user-actions">
+
+            <button
+                class="small-button"
+                onclick="openAccountPanel()"
+            >
+                ACCOUNT
+            </button>
+
+            <button
+                class="small-button"
+                onclick="logout()"
+            >
+                LOGOUT
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN ACCESS -->
 
     <button
-        class="admin-link"
-        onclick="openLogin()"
+        class="admin-access"
+        id="adminAccess"
+        onclick="openAdminPanel()"
     >
-        [ ADMINISTRATOR LOGIN ]
+        [ ADMIN CONTROL CENTER ]
     </button>
+
 
     <div class="footer">
 
@@ -615,11 +1262,14 @@ select:focus {
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      INPUT PANEL
-========================= -->
+========================================================= -->
 
-<div class="panel" id="inputPanel">
+<div
+    class="panel"
+    id="inputPanel"
+>
 
     <div class="panel-header">
         TARGET CONFIGURATION
@@ -661,7 +1311,7 @@ select:focus {
             class="start"
             onclick="beginOperation()"
         >
-            INITIALIZE SIMULATION
+            INITIALIZE HACKING
         </button>
 
     </div>
@@ -669,9 +1319,9 @@ select:focus {
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      TERMINAL
-========================= -->
+========================================================= -->
 
 <div
     class="panel terminal-panel"
@@ -683,10 +1333,12 @@ select:focus {
     </div>
 
     <div class="progress-container">
+
         <div
             class="progress"
             id="progress"
         ></div>
+
     </div>
 
     <div
@@ -709,14 +1361,17 @@ select:focus {
 </div>
 
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- =========================================================
+     ACCOUNT PANEL
+========================================================= -->
 
-<div class="panel" id="loginPanel">
+<div
+    class="panel"
+    id="accountPanel"
+>
 
     <div class="panel-header">
-        ADMINISTRATOR AUTHENTICATION
+        PLAYER ACCOUNT
     </div>
 
     <div class="panel-body">
@@ -728,55 +1383,85 @@ select:focus {
             &lt; RETURN
         </button>
 
-        <div class="login-note">
-            Administrator access is intended for this local
-            simulation interface only.
+        <div class="account-card">
+
+            <h3>
+                ACCOUNT INFORMATION
+            </h3>
+
+            <p>
+                USERNAME:
+                <strong
+                    id="accountUsername"
+                    style="color:#8cff9b;"
+                ></strong>
+            </p>
+
+            <p>
+                ROLE:
+                <strong
+                    id="accountRole"
+                    style="color:#8cff9b;"
+                ></strong>
+            </p>
+
+            <p>
+                ACCOUNT CREATED:
+                <strong
+                    id="accountCreated"
+                    style="color:#8cff9b;"
+                ></strong>
+            </p>
+
+            <p>
+                RECOVERY CODE:
+                <strong
+                    id="accountRecoveryCode"
+                    style="color:#d7d36c;letter-spacing:2px;"
+                ></strong>
+            </p>
+
         </div>
 
-        <label>
-            USERNAME
-        </label>
 
-        <input
-            id="adminUsername"
-            type="text"
-            autocomplete="off"
-        >
+        <div class="account-card">
 
-        <label>
-            PASSWORD
-        </label>
+            <h3>
+                PASSWORD / RECOVERY
+            </h3>
 
-        <input
-            id="adminPassword"
-            type="password"
-            autocomplete="off"
-        >
+            <p>
+                You can use either your password or
+                recovery code when logging in.
+            </p>
 
-        <div
-            class="login-error"
-            id="loginError"
-        >
-            INVALID ADMINISTRATOR CREDENTIALS.
+            <p>
+                If you lose your password, use the
+                recovery code on the forgot-password screen.
+            </p>
+
+            <button
+                class="admin-button"
+                onclick="logout()"
+            >
+                LOGOUT
+            </button>
+
         </div>
-
-        <button
-            class="admin-button"
-            onclick="adminLogin()"
-        >
-            AUTHENTICATE
-        </button>
 
     </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      ADMIN PANEL
-========================= -->
+========================================================= -->
 
-<div class="panel" id="adminPanel">
+<div
+    class="panel"
+    id="adminPanel"
+>
 
     <div class="panel-header">
         ADMINISTRATOR CONTROL CENTER
@@ -788,10 +1473,41 @@ select:focus {
             class="back"
             onclick="returnHome()"
         >
-            &lt; EXIT ADMIN
+            &lt; RETURN TO PLAY
         </button>
 
+
         <div class="admin-grid">
+
+
+            <!-- ADMIN STATUS -->
+
+            <div class="admin-card">
+
+                <h3>
+                    ADMIN SESSION
+                </h3>
+
+                <div class="login-note">
+
+                    Administrator mode is active.
+
+                    <br><br>
+
+                    You can continue playing normally or
+                    use the administrator tools below.
+
+                </div>
+
+                <button
+                    class="admin-button"
+                    onclick="returnHome()"
+                >
+                    PLAY SIMULATIONS
+                </button>
+
+            </div>
+
 
             <!-- SITE SETTINGS -->
 
@@ -894,12 +1610,12 @@ select:focus {
             </div>
 
 
-            <!-- ADD SIMULATION -->
+            <!-- ADD HACKING -->
 
             <div class="admin-card admin-full">
 
                 <h3>
-                    ADD SIMULATION METHOD
+                    ADD HACKING METHOD
                 </h3>
 
                 <label>
@@ -919,7 +1635,7 @@ select:focus {
                 <input
                     id="methodDescription"
                     type="text"
-                    placeholder="Example: Demonstrates how suspicious links are identified"
+                    placeholder="Example: Demonstrates defensive awareness"
                 >
 
                 <label>
@@ -951,6 +1667,46 @@ select:focus {
             </div>
 
 
+            <!-- PLAYER ACCOUNTS -->
+
+            <div class="admin-card admin-full">
+
+                <h3>
+                    PLAYER ACCOUNTS
+                </h3>
+
+                <div
+                    class="account-list"
+                    id="accountList"
+                ></div>
+
+            </div>
+
+
+            <!-- RECOVERY REQUESTS -->
+
+            <div class="admin-card admin-full">
+
+                <h3>
+                    PASSWORD RECOVERY REQUESTS
+                </h3>
+
+                <div class="login-note">
+
+                    When a player requests recovery,
+                    their request and recovery code appear
+                    here for the administrator.
+
+                </div>
+
+                <div
+                    class="recovery-list"
+                    id="recoveryList"
+                ></div>
+
+            </div>
+
+
             <!-- RESET -->
 
             <div class="admin-card admin-full">
@@ -960,8 +1716,13 @@ select:focus {
                 </h3>
 
                 <div class="login-note">
-                    This restores the original site configuration
-                    and removes all custom simulation methods.
+
+                    This restores the original site
+                    configuration and removes custom
+                    hacking methods.
+
+                    Player accounts are not removed.
+
                 </div>
 
                 <button
@@ -991,12 +1752,13 @@ const ADMIN_PASSWORD = "juno";
 
 
 /* =========================================================
-   ORIGINAL CONFIGURATION
+   DEFAULT CONFIGURATION
 ========================================================= */
 
 const DEFAULT_CONFIG = {
 
-    title: "SOCIAL MEDIA HACKING",
+    title:
+        "SOCIAL MEDIA HACKING",
 
     subtitle:
         "SOCIAL ENGINEERING // SECURITY OPERATIONS TERMINAL",
@@ -1083,20 +1845,23 @@ const DEFAULT_CONFIG = {
 
 
 /* =========================================================
-   STATE
+   GLOBAL STATE
 ========================================================= */
 
 let config;
+
+let currentUser = null;
+
 let selectedType = "";
 let selectedName = "";
 let selectedField = "";
 let selectedMethodScript = "";
+
 let operationRunning = false;
-let adminAuthenticated = false;
 
 
 /* =========================================================
-   LOAD / SAVE CONFIGURATION
+   STORAGE
 ========================================================= */
 
 function cloneDefaultConfig() {
@@ -1121,7 +1886,7 @@ function loadConfig() {
 
             config = JSON.parse(saved);
 
-        } catch (error) {
+        } catch {
 
             config = cloneDefaultConfig();
 
@@ -1130,6 +1895,21 @@ function loadConfig() {
     } else {
 
         config = cloneDefaultConfig();
+
+    }
+
+
+    /*
+       Make sure older saved configurations
+       still have a methods array.
+    */
+
+    if (
+        !Array.isArray(config.methods)
+    ) {
+
+        config.methods =
+            cloneDefaultConfig().methods;
 
     }
 
@@ -1146,8 +1926,85 @@ function saveConfig() {
 }
 
 
+function loadUsers() {
+
+    const users =
+        localStorage.getItem(
+            "juno_player_accounts"
+        );
+
+    if (!users) {
+
+        localStorage.setItem(
+            "juno_player_accounts",
+            JSON.stringify([])
+        );
+
+    }
+
+}
+
+
+function getUsers() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "juno_player_accounts"
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function saveUsers(users) {
+
+    localStorage.setItem(
+        "juno_player_accounts",
+        JSON.stringify(users)
+    );
+
+}
+
+
+function getRecoveryRequests() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "juno_recovery_requests"
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function saveRecoveryRequests(requests) {
+
+    localStorage.setItem(
+        "juno_recovery_requests",
+        JSON.stringify(requests)
+    );
+
+}
+
+
 /* =========================================================
-   APPLY CONFIGURATION
+   APPLY CONFIG
 ========================================================= */
 
 function applyConfig() {
@@ -1179,12 +2036,6 @@ function applyConfig() {
         "footerText"
     ).textContent =
         config.footer;
-
-    document.documentElement.style
-        .setProperty(
-            "--custom-bg",
-            config.background
-        );
 
     document.body.style.background =
         config.background;
@@ -1234,6 +2085,7 @@ function renderMethods() {
 
                 };
 
+
             const number =
                 document.createElement("div");
 
@@ -1245,6 +2097,7 @@ function renderMethods() {
                 String(index + 1).padStart(2, "0") +
                 "]";
 
+
             const title =
                 document.createElement("div");
 
@@ -1254,6 +2107,7 @@ function renderMethods() {
             title.textContent =
                 method.name;
 
+
             const description =
                 document.createElement("div");
 
@@ -1262,6 +2116,7 @@ function renderMethods() {
 
             description.textContent =
                 method.description;
+
 
             button.appendChild(number);
             button.appendChild(title);
@@ -1276,10 +2131,14 @@ function renderMethods() {
 
 
 /* =========================================================
-   NAVIGATION
+   PANEL NAVIGATION
 ========================================================= */
 
 function hideAllPanels() {
+
+    document.getElementById(
+        "authPanel"
+    ).style.display = "none";
 
     document.getElementById(
         "home"
@@ -1294,12 +2153,25 @@ function hideAllPanels() {
     ).style.display = "none";
 
     document.getElementById(
-        "loginPanel"
+        "accountPanel"
     ).style.display = "none";
 
     document.getElementById(
         "adminPanel"
     ).style.display = "none";
+
+}
+
+
+function showHome() {
+
+    hideAllPanels();
+
+    document.getElementById(
+        "home"
+    ).style.display = "block";
+
+    updateUserBar();
 
 }
 
@@ -1308,11 +2180,7 @@ function returnHome() {
 
     operationRunning = false;
 
-    hideAllPanels();
-
-    document.getElementById(
-        "home"
-    ).style.display = "block";
+    showHome();
 
     document.getElementById(
         "progress"
@@ -1321,95 +2189,1069 @@ function returnHome() {
 }
 
 
-function openLogin() {
+/* =========================================================
+   AUTH TABS
+========================================================= */
 
-    hideAllPanels();
+function showAuthTab(tab) {
+
+    /*
+       Popup notification.
+       The flag prevents the initial page setup from
+       producing multiple popups from nested calls.
+    */
+
+    if (
+        tab === "login" ||
+        tab === "register" ||
+        tab === "forgot"
+    ) {
+
+        showCredentialInfo();
+
+    }
+
 
     document.getElementById(
-        "loginPanel"
-    ).style.display = "block";
+        "loginSection"
+    ).classList.remove("active");
 
     document.getElementById(
-        "adminUsername"
-    ).value = "";
+        "registerSection"
+    ).classList.remove("active");
 
     document.getElementById(
-        "adminPassword"
-    ).value = "";
+        "forgotSection"
+    ).classList.remove("active");
 
     document.getElementById(
-        "loginError"
-    ).style.display = "none";
+        "loginTab"
+    ).classList.remove("active");
 
-    setTimeout(
-        function() {
+    document.getElementById(
+        "registerTab"
+    ).classList.remove("active");
 
-            document.getElementById(
-                "adminUsername"
-            ).focus();
 
-        },
-        50
+    if (tab === "login") {
+
+        document.getElementById(
+            "loginSection"
+        ).classList.add("active");
+
+        document.getElementById(
+            "loginTab"
+        ).classList.add("active");
+
+    }
+
+
+    if (tab === "register") {
+
+        document.getElementById(
+            "registerSection"
+        ).classList.add("active");
+
+        document.getElementById(
+            "registerTab"
+        ).classList.add("active");
+
+    }
+
+
+    if (tab === "forgot") {
+
+        document.getElementById(
+            "forgotSection"
+        ).classList.add("active");
+
+    }
+
+}
+
+
+/* =========================================================
+   PASSWORD / RECOVERY INFORMATION POPUP
+========================================================= */
+
+function showCredentialInfo() {
+
+    alert(
+        "SECURITY CREDENTIAL INFORMATION\n\n" +
+
+        "You can use either your PASSWORD or your " +
+        "RECOVERY CODE to login.\n\n" +
+
+        "• PASSWORD:\n" +
+        "Your normal account password.\n\n" +
+
+        "• RECOVERY CODE:\n" +
+        "Your backup credential used for login and " +
+        "password recovery.\n\n" +
+
+        "Your recovery code is generated when you register.\n\n" +
+
+        "If you lose your recovery code, request recovery " +
+        "and the administrator can provide a recovery code.\n\n" +
+
+        "KEEP YOUR RECOVERY CODE PRIVATE."
     );
 
 }
 
 
 /* =========================================================
-   ADMIN LOGIN
+   AUTH MESSAGE
 ========================================================= */
 
-function adminLogin() {
+function showAuthMessage(
+    elementId,
+    message,
+    error = false
+) {
 
-    const username =
+    const element =
         document.getElementById(
-            "adminUsername"
-        ).value;
+            elementId
+        );
 
-    const password =
-        document.getElementById(
-            "adminPassword"
-        ).value;
+    element.textContent =
+        message;
 
-    if (
-        username === ADMIN_USERNAME &&
-        password === ADMIN_PASSWORD
-    ) {
+    element.classList.toggle(
+        "error",
+        error
+    );
 
-        adminAuthenticated = true;
-
-        openAdminPanel();
-
-        return;
-
-    }
-
-    document.getElementById(
-        "loginError"
-    ).style.display = "block";
+    element.style.display =
+        "block";
 
 }
 
 
-function openAdminPanel() {
+/* =========================================================
+   PASSWORD STRENGTH
+========================================================= */
 
-    if (!adminAuthenticated) {
+function updatePasswordStrength() {
 
-        openLogin();
+    const password =
+        document.getElementById(
+            "registerPassword"
+        ).value;
+
+    const element =
+        document.getElementById(
+            "passwordStrength"
+        );
+
+    if (!password) {
+
+        element.textContent =
+            "PASSWORD STRENGTH: --";
+
+        element.style.color =
+            "#355a3d";
 
         return;
 
     }
+
+    let score = 0;
+
+    if (password.length >= 8)
+        score++;
+
+    if (password.length >= 12)
+        score++;
+
+    if (/[A-Z]/.test(password))
+        score++;
+
+    if (/[0-9]/.test(password))
+        score++;
+
+    if (/[^A-Za-z0-9]/.test(password))
+        score++;
+
+
+    if (score <= 2) {
+
+        element.textContent =
+            "PASSWORD STRENGTH: WEAK";
+
+        element.style.color =
+            "#ff4545";
+
+    } else if (score <= 4) {
+
+        element.textContent =
+            "PASSWORD STRENGTH: MEDIUM";
+
+        element.style.color =
+            "#d7d36c";
+
+    } else {
+
+        element.textContent =
+            "PASSWORD STRENGTH: STRONG";
+
+        element.style.color =
+            "#8cff9b";
+
+    }
+
+}
+
+
+/* =========================================================
+   REGISTER PLAYER
+========================================================= */
+
+function registerPlayer() {
+
+    const username =
+        document.getElementById(
+            "registerUsername"
+        ).value.trim();
+
+    const password =
+        document.getElementById(
+            "registerPassword"
+        ).value;
+
+    const confirmPassword =
+        document.getElementById(
+            "registerConfirm"
+        ).value;
+
+
+    if (!/^[a-zA-Z0-9_-]{3,30}$/.test(username)) {
+
+        showAuthMessage(
+            "registerMessage",
+            "USERNAME MUST BE 3-30 CHARACTERS AND USE ONLY LETTERS, NUMBERS, _ OR -.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (
+        username.toLowerCase() ===
+        ADMIN_USERNAME.toLowerCase()
+    ) {
+
+        showAuthMessage(
+            "registerMessage",
+            "THAT USERNAME IS RESERVED FOR THE ADMINISTRATOR.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (password.length < 6) {
+
+        showAuthMessage(
+            "registerMessage",
+            "PASSWORD MUST BE AT LEAST 6 CHARACTERS.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (password !== confirmPassword) {
+
+        showAuthMessage(
+            "registerMessage",
+            "PASSWORDS DO NOT MATCH.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const users =
+        getUsers();
+
+
+    const exists =
+        users.some(
+            user =>
+                user.username.toLowerCase() ===
+                username.toLowerCase()
+        );
+
+
+    if (exists) {
+
+        showAuthMessage(
+            "registerMessage",
+            "USERNAME IS ALREADY REGISTERED.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Generate the player's recovery code
+       during account creation.
+    */
+
+    const recoveryCode =
+        generateRecoveryCode();
+
+
+    const newUser = {
+
+        id:
+            "USR_" +
+            Date.now() +
+            "_" +
+            randomHex(6),
+
+        username:
+            username,
+
+        password:
+            password,
+
+        recoveryCode:
+            recoveryCode,
+
+        role:
+            "player",
+
+        created:
+            new Date().toLocaleString()
+
+    };
+
+
+    users.push(
+        newUser
+    );
+
+    saveUsers(users);
+
+
+    document.getElementById(
+        "registerUsername"
+    ).value = "";
+
+    document.getElementById(
+        "registerPassword"
+    ).value = "";
+
+    document.getElementById(
+        "registerConfirm"
+    ).value = "";
+
+
+    updatePasswordStrength();
+
+
+    showAuthMessage(
+        "registerMessage",
+
+        "ACCOUNT CREATED SUCCESSFULLY.\n\n" +
+
+        "RECOVERY CODE:\n" +
+        recoveryCode +
+        "\n\n" +
+
+        "SAVE THIS CODE.\n" +
+
+        "YOU CAN USE EITHER YOUR PASSWORD OR " +
+        "RECOVERY CODE TO LOGIN.\n\n" +
+
+        "THE RECOVERY CODE CAN ALSO BE USED " +
+        "TO RESET YOUR PASSWORD."
+    );
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login() {
+
+    const username =
+        document.getElementById(
+            "loginUsername"
+        ).value.trim();
+
+    const credential =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+
+    if (!username || !credential) {
+
+        showAuthMessage(
+            "loginMessage",
+            "USERNAME AND PASSWORD OR RECOVERY CODE ARE REQUIRED.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    /* ADMIN AUTO-RECOGNITION */
+
+    if (
+        username === ADMIN_USERNAME &&
+        credential === ADMIN_PASSWORD
+    ) {
+
+        currentUser = {
+
+            username:
+                ADMIN_USERNAME,
+
+            role:
+                "admin",
+
+            isAdmin:
+                true
+
+        };
+
+        showHome();
+
+        return;
+
+    }
+
+
+    /* PLAYER LOGIN */
+
+    const users =
+        getUsers();
+
+
+    const user =
+        users.find(
+            function(item) {
+
+                if (
+                    item.username.toLowerCase() !==
+                    username.toLowerCase()
+                ) {
+
+                    return false;
+
+                }
+
+
+                const passwordMatches =
+                    item.password ===
+                    credential;
+
+
+                const recoveryMatches =
+                    item.recoveryCode &&
+                    item.recoveryCode ===
+                    credential;
+
+
+                return (
+                    passwordMatches ||
+                    recoveryMatches
+                );
+
+            }
+        );
+
+
+    if (!user) {
+
+        showAuthMessage(
+            "loginMessage",
+            "INVALID USERNAME, PASSWORD, OR RECOVERY CODE.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Older accounts created before the recovery
+       system existed receive a recovery code here.
+    */
+
+    if (!user.recoveryCode) {
+
+        user.recoveryCode =
+            generateRecoveryCode();
+
+        saveUsers(users);
+
+    }
+
+
+    currentUser = {
+
+        id:
+            user.id,
+
+        username:
+            user.username,
+
+        role:
+            "player",
+
+        isAdmin:
+            false
+
+    };
+
+
+    showHome();
+
+}
+
+
+/* =========================================================
+   UPDATE USER BAR
+========================================================= */
+
+function updateUserBar() {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    document.getElementById(
+        "currentUsername"
+    ).textContent =
+        currentUser.username;
+
+
+    const badge =
+        document.getElementById(
+            "roleBadge"
+        );
+
+
+    if (currentUser.isAdmin) {
+
+        badge.innerHTML =
+            ' <span class="badge admin">ADMIN</span>';
+
+        document.getElementById(
+            "adminAccess"
+        ).style.display =
+            "block";
+
+    } else {
+
+        badge.innerHTML =
+            ' <span class="badge">PLAYER</span>';
+
+        document.getElementById(
+            "adminAccess"
+        ).style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout() {
+
+    operationRunning = false;
+
+    currentUser = null;
+
+    hideAllPanels();
+
+    document.getElementById(
+        "authPanel"
+    ).style.display =
+        "block";
+
+    showAuthTab("login");
+
+    document.getElementById(
+        "loginUsername"
+    ).value = "";
+
+    document.getElementById(
+        "loginPassword"
+    ).value = "";
+
+}
+
+
+/* =========================================================
+   ACCOUNT PANEL
+========================================================= */
+
+function openAccountPanel() {
+
+    if (!currentUser) {
+        logout();
+        return;
+    }
+
+
+    hideAllPanels();
+
+    document.getElementById(
+        "accountPanel"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "accountUsername"
+    ).textContent =
+        currentUser.username;
+
+
+    document.getElementById(
+        "accountRole"
+    ).textContent =
+        currentUser.isAdmin
+            ? "ADMINISTRATOR"
+            : "PLAYER";
+
+
+    if (currentUser.isAdmin) {
+
+        document.getElementById(
+            "accountCreated"
+        ).textContent =
+            "SYSTEM ADMINISTRATOR";
+
+        document.getElementById(
+            "accountRecoveryCode"
+        ).textContent =
+            "NOT APPLICABLE";
+
+    } else {
+
+        const users =
+            getUsers();
+
+        const user =
+            users.find(
+                u =>
+                    u.id ===
+                    currentUser.id
+            );
+
+
+        if (user) {
+
+            if (!user.recoveryCode) {
+
+                user.recoveryCode =
+                    generateRecoveryCode();
+
+                saveUsers(users);
+
+            }
+
+
+            document.getElementById(
+                "accountCreated"
+            ).textContent =
+                user.created;
+
+
+            document.getElementById(
+                "accountRecoveryCode"
+            ).textContent =
+                user.recoveryCode;
+
+        } else {
+
+            document.getElementById(
+                "accountCreated"
+            ).textContent =
+                "UNKNOWN";
+
+            document.getElementById(
+                "accountRecoveryCode"
+            ).textContent =
+                "UNKNOWN";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD / RECOVERY
+========================================================= */
+
+function requestRecovery() {
+
+    const username =
+        document.getElementById(
+            "forgotUsername"
+        ).value.trim();
+
+    const recoveryCode =
+        document.getElementById(
+            "forgotRecoveryCode"
+        ).value.trim();
+
+
+    if (!username) {
+
+        showAuthMessage(
+            "forgotMessage",
+            "ENTER YOUR USERNAME.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    if (
+        username.toLowerCase() ===
+        ADMIN_USERNAME.toLowerCase()
+    ) {
+
+        showAuthMessage(
+            "forgotMessage",
+            "THE ADMINISTRATOR ACCOUNT DOES NOT USE PLAYER RECOVERY.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const users =
+        getUsers();
+
+
+    const user =
+        users.find(
+            item =>
+                item.username.toLowerCase() ===
+                username.toLowerCase()
+        );
+
+
+    if (!user) {
+
+        showAuthMessage(
+            "forgotMessage",
+            "NO PLAYER ACCOUNT WAS FOUND WITH THAT USERNAME.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Make sure older accounts have a recovery code.
+    */
+
+    if (!user.recoveryCode) {
+
+        user.recoveryCode =
+            generateRecoveryCode();
+
+        saveUsers(users);
+
+    }
+
+
+    /*
+       RECOVERY CODE PROVIDED
+       ----------------------
+       The user can directly reset the password.
+    */
+
+    if (recoveryCode) {
+
+        if (
+            recoveryCode !==
+            user.recoveryCode
+        ) {
+
+            showAuthMessage(
+                "forgotMessage",
+                "INVALID RECOVERY CODE.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        const newPassword =
+            prompt(
+                "RECOVERY CODE ACCEPTED.\n\n" +
+                "ENTER YOUR NEW PASSWORD:"
+            );
+
+
+        if (newPassword === null) {
+            return;
+        }
+
+
+        if (newPassword.length < 6) {
+
+            showAuthMessage(
+                "forgotMessage",
+                "PASSWORD MUST BE AT LEAST 6 CHARACTERS.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        const confirmNewPassword =
+            prompt(
+                "CONFIRM YOUR NEW PASSWORD:"
+            );
+
+
+        if (confirmNewPassword === null) {
+            return;
+        }
+
+
+        if (
+            newPassword !==
+            confirmNewPassword
+        ) {
+
+            showAuthMessage(
+                "forgotMessage",
+                "PASSWORDS DO NOT MATCH.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        user.password =
+            newPassword;
+
+
+        /*
+           Generate a fresh recovery code after
+           successful password recovery.
+        */
+
+        user.recoveryCode =
+            generateRecoveryCode();
+
+
+        saveUsers(users);
+
+
+        showAuthMessage(
+            "forgotMessage",
+
+            "PASSWORD RESET SUCCESSFULLY.\n\n" +
+
+            "NEW RECOVERY CODE:\n" +
+            user.recoveryCode +
+            "\n\n" +
+
+            "YOU CAN USE EITHER YOUR NEW PASSWORD " +
+            "OR THIS NEW RECOVERY CODE TO LOGIN."
+        );
+
+
+        document.getElementById(
+            "forgotRecoveryCode"
+        ).value = "";
+
+
+        return;
+
+    }
+
+
+    /*
+       NO RECOVERY CODE
+       ----------------
+       Create an administrator recovery request.
+    */
+
+    const code =
+        generateRecoveryCode();
+
+
+    /*
+       The requested recovery code becomes the
+       user's active recovery code.
+    */
+
+    user.recoveryCode =
+        code;
+
+
+    saveUsers(users);
+
+
+    const requests =
+        getRecoveryRequests();
+
+
+    const request = {
+
+        id:
+            "REC_" +
+            Date.now() +
+            "_" +
+            randomHex(5),
+
+        username:
+            user.username,
+
+        userId:
+            user.id,
+
+        code:
+            code,
+
+        status:
+            "pending",
+
+        created:
+            new Date().toLocaleString()
+
+    };
+
+
+    requests.push(
+        request
+    );
+
+    saveRecoveryRequests(
+        requests
+    );
+
+
+    showAuthMessage(
+        "forgotMessage",
+
+        "RECOVERY REQUEST CREATED.\n\n" +
+
+        "RECOVERY CODE:\n" +
+        code +
+        "\n\n" +
+
+        "GIVE THIS CODE TO THE ADMINISTRATOR.\n" +
+
+        "THE ADMINISTRATOR CAN SEE THE SAME REQUEST " +
+        "IN THE ADMIN CONTROL CENTER.\n\n" +
+
+        "YOU CAN USE THIS CODE TO LOGIN OR RESET " +
+        "YOUR PASSWORD."
+    );
+
+}
+
+
+/* =========================================================
+   GENERATE RECOVERY CODE
+========================================================= */
+
+function generateRecoveryCode() {
+
+    const part1 =
+        randomHex(4);
+
+    const part2 =
+        randomHex(4);
+
+    const part3 =
+        randomHex(4);
+
+    return (
+        "REC-" +
+        part1 +
+        "-" +
+        part2 +
+        "-" +
+        part3
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN ACCESS
+========================================================= */
+
+function openAdminPanel() {
+
+    if (
+        !currentUser ||
+        !currentUser.isAdmin
+    ) {
+
+        return;
+
+    }
+
 
     hideAllPanels();
 
     document.getElementById(
         "adminPanel"
-    ).style.display = "block";
+    ).style.display =
+        "block";
+
 
     loadAdminFields();
 
     renderAdminMethods();
+
+    renderAccounts();
+
+    renderRecoveryRequests();
 
 }
 
@@ -1459,7 +3301,7 @@ function loadAdminFields() {
 
 
 /* =========================================================
-   SAVE SITE SETTINGS
+   SAVE SITE
 ========================================================= */
 
 function saveSiteSettings() {
@@ -1483,6 +3325,7 @@ function saveSiteSettings() {
         document.getElementById(
             "editFooter"
         ).value.trim();
+
 
     saveConfig();
 
@@ -1516,6 +3359,7 @@ function saveColors() {
             "editAccent"
         ).value;
 
+
     saveConfig();
 
     applyConfig();
@@ -1528,10 +3372,18 @@ function saveColors() {
 
 
 /* =========================================================
-   ADD CUSTOM SIMULATION
+   ADD METHOD
 ========================================================= */
 
 function addMethod() {
+
+    if (
+        !currentUser ||
+        !currentUser.isAdmin
+    ) {
+        return;
+    }
+
 
     const name =
         document.getElementById(
@@ -1548,6 +3400,7 @@ function addMethod() {
             "methodScript"
         ).value.trim();
 
+
     if (!name) {
 
         showAdminMessage(
@@ -1559,7 +3412,8 @@ function addMethod() {
 
     }
 
-    const method = {
+
+    config.methods.push({
 
         type:
             "CUSTOM_" +
@@ -1569,24 +3423,22 @@ function addMethod() {
             name,
 
         field:
-            "SIMULATION TARGET",
+            "HACK TARGET",
 
         description:
             description ||
-            "Custom security simulation",
+            "Custom security hacking",
 
         script:
             script
 
-    };
+    });
 
-    config.methods.push(
-        method
-    );
 
     saveConfig();
 
     applyConfig();
+
 
     document.getElementById(
         "methodName"
@@ -1600,10 +3452,12 @@ function addMethod() {
         "methodScript"
     ).value = "";
 
+
     renderAdminMethods();
 
+
     showAdminMessage(
-        "SIMULATION METHOD ADDED."
+        "HACKING METHOD ADDED."
     );
 
 }
@@ -1622,6 +3476,7 @@ function renderAdminMethods() {
 
     container.innerHTML = "";
 
+
     config.methods.forEach(
         function(method, index) {
 
@@ -1631,11 +3486,13 @@ function renderAdminMethods() {
             item.className =
                 "method-item";
 
+
             const info =
                 document.createElement("div");
 
             info.className =
                 "method-info";
+
 
             const title =
                 document.createElement("strong");
@@ -1643,14 +3500,17 @@ function renderAdminMethods() {
             title.textContent =
                 method.name;
 
+
             const desc =
                 document.createElement("small");
 
             desc.textContent =
                 method.description;
 
+
             info.appendChild(title);
             info.appendChild(desc);
+
 
             const deleteButton =
                 document.createElement("button");
@@ -1661,6 +3521,7 @@ function renderAdminMethods() {
             deleteButton.textContent =
                 "DELETE";
 
+
             deleteButton.onclick =
                 function() {
 
@@ -1668,8 +3529,10 @@ function renderAdminMethods() {
 
                 };
 
+
             item.appendChild(info);
             item.appendChild(deleteButton);
+
 
             container.appendChild(item);
 
@@ -1679,9 +3542,23 @@ function renderAdminMethods() {
 }
 
 
+/* =========================================================
+   DELETE METHOD
+========================================================= */
+
 function deleteMethod(index) {
 
-    if (config.methods.length <= 1) {
+    if (
+        !currentUser ||
+        !currentUser.isAdmin
+    ) {
+        return;
+    }
+
+
+    if (
+        config.methods.length <= 1
+    ) {
 
         showAdminMessage(
             "AT LEAST ONE METHOD MUST REMAIN.",
@@ -1692,12 +3569,14 @@ function deleteMethod(index) {
 
     }
 
+
     const method =
         config.methods[index];
 
+
     if (
         !confirm(
-            "Delete simulation method:\n\n" +
+            "Delete hacking method?\n\n" +
             method.name
         )
     ) {
@@ -1706,16 +3585,19 @@ function deleteMethod(index) {
 
     }
 
+
     config.methods.splice(
         index,
         1
     );
+
 
     saveConfig();
 
     applyConfig();
 
     renderAdminMethods();
+
 
     showAdminMessage(
         "SIMULATION METHOD DELETED."
@@ -1738,16 +3620,20 @@ function showAdminMessage(
             "adminMessage"
         );
 
+
     element.textContent =
         message;
 
+
     element.style.display =
         "block";
+
 
     element.style.color =
         error
             ? "#ff4545"
             : "#8cff9b";
+
 
     setTimeout(
         function() {
@@ -1756,7 +3642,521 @@ function showAdminMessage(
                 "none";
 
         },
-        3000
+        3500
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN ACCOUNT LIST
+========================================================= */
+
+function renderAccounts() {
+
+    const container =
+        document.getElementById(
+            "accountList"
+        );
+
+    container.innerHTML = "";
+
+
+    const users =
+        getUsers();
+
+
+    /*
+       Give older accounts a recovery code.
+    */
+
+    let usersChanged =
+        false;
+
+
+    users.forEach(
+        function(user) {
+
+            if (!user.recoveryCode) {
+
+                user.recoveryCode =
+                    generateRecoveryCode();
+
+                usersChanged =
+                    true;
+
+            }
+
+        }
+    );
+
+
+    if (usersChanged) {
+
+        saveUsers(users);
+
+    }
+
+
+    if (!users.length) {
+
+        container.innerHTML =
+            '<div class="login-note">NO PLAYER ACCOUNTS REGISTERED.</div>';
+
+        return;
+
+    }
+
+
+    users.forEach(
+        function(user) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "account-item";
+
+
+            const info =
+                document.createElement("div");
+
+            info.className =
+                "account-info";
+
+
+            const title =
+                document.createElement("strong");
+
+            title.textContent =
+                user.username;
+
+
+            const details =
+                document.createElement("small");
+
+            details.textContent =
+                "ID: " +
+                user.id +
+                " | CREATED: " +
+                user.created;
+
+
+            const recovery =
+                document.createElement("small");
+
+            recovery.className =
+                "recovery-code";
+
+            recovery.textContent =
+                "RECOVERY CODE: " +
+                user.recoveryCode;
+
+
+            info.appendChild(title);
+            info.appendChild(details);
+            info.appendChild(recovery);
+
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.className =
+                "method-delete";
+
+            deleteButton.textContent =
+                "DELETE ACCOUNT";
+
+
+            deleteButton.onclick =
+                function() {
+
+                    deletePlayerAccount(
+                        user.id
+                    );
+
+                };
+
+
+            item.appendChild(info);
+            item.appendChild(deleteButton);
+
+
+            container.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DELETE PLAYER ACCOUNT
+========================================================= */
+
+function deletePlayerAccount(id) {
+
+    if (
+        !currentUser ||
+        !currentUser.isAdmin
+    ) {
+        return;
+    }
+
+
+    let users =
+        getUsers();
+
+
+    const user =
+        users.find(
+            u => u.id === id
+        );
+
+
+    if (!user) {
+        return;
+    }
+
+
+    if (
+        !confirm(
+            "DELETE PLAYER ACCOUNT?\n\n" +
+            user.username
+        )
+    ) {
+        return;
+    }
+
+
+    users =
+        users.filter(
+            u => u.id !== id
+        );
+
+
+    saveUsers(users);
+
+
+    const requests =
+        getRecoveryRequests()
+            .filter(
+                request =>
+                    request.userId !== id
+            );
+
+
+    saveRecoveryRequests(
+        requests
+    );
+
+
+    renderAccounts();
+
+    renderRecoveryRequests();
+
+
+    showAdminMessage(
+        "PLAYER ACCOUNT DELETED."
+    );
+
+}
+
+
+/* =========================================================
+   RECOVERY REQUEST LIST
+========================================================= */
+
+function renderRecoveryRequests() {
+
+    const container =
+        document.getElementById(
+            "recoveryList"
+        );
+
+    container.innerHTML = "";
+
+
+    const requests =
+        getRecoveryRequests();
+
+
+    if (!requests.length) {
+
+        container.innerHTML =
+            '<div class="login-note">NO PASSWORD RECOVERY REQUESTS.</div>';
+
+        return;
+
+    }
+
+
+    requests
+        .slice()
+        .reverse()
+        .forEach(
+            function(request) {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "recovery-item";
+
+
+                const info =
+                    document.createElement("div");
+
+                info.className =
+                    "recovery-info";
+
+
+                const title =
+                    document.createElement("strong");
+
+                title.textContent =
+                    request.username;
+
+
+                const details =
+                    document.createElement("small");
+
+                details.textContent =
+                    "REQUESTED: " +
+                    request.created +
+                    " | STATUS: " +
+                    request.status;
+
+
+                const code =
+                    document.createElement("small");
+
+                code.className =
+                    "recovery-code";
+
+                code.textContent =
+                    "RECOVERY CODE: " +
+                    request.code;
+
+
+                info.appendChild(title);
+                info.appendChild(details);
+                info.appendChild(code);
+
+
+                const action =
+                    document.createElement("div");
+
+
+                if (
+                    request.status ===
+                    "pending"
+                ) {
+
+                    const resetButton =
+                        document.createElement("button");
+
+                    resetButton.className =
+                        "admin-button";
+
+                    resetButton.style.marginTop =
+                        "0";
+
+                    resetButton.textContent =
+                        "RESET PASSWORD";
+
+
+                    resetButton.onclick =
+                        function() {
+
+                            openPasswordReset(
+                                request
+                            );
+
+                        };
+
+
+                    action.appendChild(
+                        resetButton
+                    );
+
+                } else {
+
+                    const done =
+                        document.createElement("span");
+
+                    done.className =
+                        "badge";
+
+                    done.textContent =
+                        "RESOLVED";
+
+                    action.appendChild(
+                        done
+                    );
+
+                }
+
+
+                item.appendChild(info);
+                item.appendChild(action);
+
+
+                container.appendChild(item);
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   ADMIN PASSWORD RESET
+========================================================= */
+
+function openPasswordReset(request) {
+
+    const users =
+        getUsers();
+
+
+    const user =
+        users.find(
+            u =>
+                u.id ===
+                request.userId
+        );
+
+
+    if (!user) {
+
+        showAdminMessage(
+            "PLAYER ACCOUNT NO LONGER EXISTS.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const newPassword =
+        prompt(
+            "ENTER A NEW PASSWORD FOR:\n\n" +
+            user.username
+        );
+
+
+    if (newPassword === null) {
+        return;
+    }
+
+
+    if (newPassword.length < 6) {
+
+        showAdminMessage(
+            "PASSWORD MUST BE AT LEAST 6 CHARACTERS.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const confirmNewPassword =
+        prompt(
+            "CONFIRM THE NEW PASSWORD:"
+        );
+
+
+    if (confirmNewPassword === null) {
+        return;
+    }
+
+
+    if (
+        newPassword !==
+        confirmNewPassword
+    ) {
+
+        showAdminMessage(
+            "PASSWORDS DO NOT MATCH.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    user.password =
+        newPassword;
+
+
+    /*
+       Administrator password reset creates
+       a fresh recovery code.
+    */
+
+    user.recoveryCode =
+        generateRecoveryCode();
+
+
+    saveUsers(users);
+
+
+    const requests =
+        getRecoveryRequests();
+
+
+    const index =
+        requests.findIndex(
+            r =>
+                r.id ===
+                request.id
+        );
+
+
+    if (index !== -1) {
+
+        requests[index].status =
+            "resolved";
+
+        requests[index].resolved =
+            new Date().toLocaleString();
+
+        /*
+           Keep the new recovery code in the
+           recovery request so the administrator
+           can provide it to the player.
+        */
+
+        requests[index].code =
+            user.recoveryCode;
+
+    }
+
+
+    saveRecoveryRequests(
+        requests
+    );
+
+
+    renderAccounts();
+
+    renderRecoveryRequests();
+
+
+    showAdminMessage(
+
+        "PASSWORD RESET SUCCESSFULLY FOR " +
+        user.username +
+        ".\n\n" +
+
+        "NEW RECOVERY CODE: " +
+        user.recoveryCode
+
     );
 
 }
@@ -1769,10 +4169,19 @@ function showAdminMessage(
 function resetWebsite() {
 
     if (
+        !currentUser ||
+        !currentUser.isAdmin
+    ) {
+        return;
+    }
+
+
+    if (
         !confirm(
-            "RESET THE ENTIRE WEBSITE?\n\n" +
-            "All custom settings and simulation methods " +
-            "will be deleted."
+            "RESET THE WEBSITE?\n\n" +
+            "Custom site settings and simulation methods " +
+            "will be removed.\n\n" +
+            "Player accounts will remain."
         )
     ) {
 
@@ -1780,18 +4189,22 @@ function resetWebsite() {
 
     }
 
+
     localStorage.removeItem(
         "juno_security_simulator_config"
     );
 
+
     config =
         cloneDefaultConfig();
+
 
     applyConfig();
 
     loadAdminFields();
 
     renderAdminMethods();
+
 
     showAdminMessage(
         "WEBSITE RESTORED TO DEFAULT."
@@ -1823,39 +4236,49 @@ function selectTarget(
     selectedMethodScript =
         script || "";
 
+
     hideAllPanels();
+
 
     document.getElementById(
         "inputPanel"
     ).style.display =
         "block";
 
+
     document.getElementById(
         "targetName"
     ).textContent =
         name;
+
 
     document.getElementById(
         "targetLabel"
     ).textContent =
         field;
 
+
     document.getElementById(
         "targetInput"
     ).value =
         "";
 
-    document.getElementById(
-        "description"
-    ).style.color =
+
+    const description =
+        document.getElementById(
+            "description"
+        );
+
+
+    description.style.color =
         "#496a50";
 
-    document.getElementById(
-        "description"
-    ).textContent =
+
+    description.textContent =
         selectedMethodScript
             ? "Custom security simulation configured."
             : "Configure operation parameters.";
+
 
     setTimeout(
         function() {
@@ -1883,6 +4306,7 @@ function validateTarget(value) {
 
     }
 
+
     if (
         selectedType === "GOOGLE" ||
         selectedType === "EMAIL"
@@ -1900,6 +4324,7 @@ function validateTarget(value) {
 
     }
 
+
     if (
         selectedType === "FACEBOOK"
     ) {
@@ -1914,6 +4339,7 @@ function validateTarget(value) {
         }
 
     }
+
 
     if (
         selectedType === "INSTAGRAM" ||
@@ -1933,6 +4359,7 @@ function validateTarget(value) {
 
     }
 
+
     if (
         selectedType === "NETWORK" ||
         selectedType === "SERVER"
@@ -1950,6 +4377,7 @@ function validateTarget(value) {
 
     }
 
+
     return "";
 
 }
@@ -1966,6 +4394,7 @@ function randomHex(length) {
 
     let output = "";
 
+
     for (
         let i = 0;
         i < length;
@@ -1981,6 +4410,7 @@ function randomHex(length) {
             );
 
     }
+
 
     return output;
 
@@ -2001,7 +4431,7 @@ function randomNumber(
 
 
 /* =========================================================
-   TERMINAL WRITING
+   TERMINAL
 ========================================================= */
 
 function typeLine(
@@ -2014,31 +4444,38 @@ function typeLine(
         return;
     }
 
+
     const terminal =
         document.getElementById(
             "terminal"
         );
+
 
     const line =
         document.createElement(
             "div"
         );
 
+
     line.className =
         "line " +
         className;
+
 
     terminal.appendChild(
         line
     );
 
+
     let position = 0;
+
 
     function write() {
 
         if (!operationRunning) {
             return;
         }
+
 
         if (
             position >=
@@ -2053,13 +4490,17 @@ function typeLine(
 
         }
 
+
         line.textContent +=
             text.charAt(position);
 
+
         position++;
+
 
         terminal.scrollTop =
             terminal.scrollHeight;
+
 
         setTimeout(
             write,
@@ -2067,6 +4508,7 @@ function typeLine(
         );
 
     }
+
 
     write();
 
@@ -2098,15 +4540,24 @@ function delay(
 
 function beginOperation() {
 
+    if (!currentUser) {
+
+        logout();
+
+        return;
+
+    }
+
+
     const target =
         document.getElementById(
             "targetInput"
         ).value.trim();
 
+
     const error =
-        validateTarget(
-            target
-        );
+        validateTarget(target);
+
 
     if (error) {
 
@@ -2115,45 +4566,53 @@ function beginOperation() {
                 "description"
             );
 
+
         description.style.color =
             "#ff4545";
+
 
         description.textContent =
             "[ERROR] " +
             error;
 
+
         return;
 
     }
 
+
     operationRunning =
         true;
 
+
     hideAllPanels();
+
 
     document.getElementById(
         "terminalPanel"
     ).style.display =
         "block";
 
+
     document.getElementById(
         "terminal"
     ).innerHTML =
         "";
+
 
     document.getElementById(
         "progress"
     ).style.width =
         "0%";
 
+
     document.getElementById(
         "operationStatus"
     ).textContent =
         "STATUS: ACTIVE";
 
-    runOperation(
-        target
-    );
+
+    runOperation(target);
 
 }
 
@@ -2183,7 +4642,7 @@ function runOperation(target) {
         ],
 
         [
-            "TARGET LABEL: " +
+            "TEST TARGET LABEL: " +
             target,
             "green"
         ],
@@ -2201,7 +4660,7 @@ function runOperation(target) {
 
         [
             "LATENCY: " +
-            randomNumber(20, 180) +
+            randomNumber(20,180) +
             " ms",
             "normal"
         ],
@@ -2255,7 +4714,7 @@ function runOperation(target) {
 
         [
             "SIMULATION CHANNEL: " +
-            randomNumber(1000, 50000),
+            randomNumber(1000,50000),
             "dim"
         ],
 
@@ -2328,7 +4787,7 @@ function runOperation(target) {
     ];
 
 
-    /* Custom admin simulation text */
+    /* CUSTOM ADMIN SCRIPT */
 
     if (selectedMethodScript) {
 
@@ -2339,6 +4798,7 @@ function runOperation(target) {
             ]
         );
 
+
         const customLines =
             selectedMethodScript
                 .split("\n")
@@ -2347,27 +4807,30 @@ function runOperation(target) {
                         line.trim() !== ""
                 );
 
-        customLines.forEach(
-            function(line) {
 
-                lines.splice(
-                    2,
-                    0,
-                    [
-                        "[CUSTOM] " +
-                        line,
-                        "normal"
-                    ]
-                );
+        customLines.reverse()
+            .forEach(
+                function(line) {
 
-            }
-        );
+                    lines.splice(
+                        2,
+                        0,
+                        [
+                            "[CUSTOM] " +
+                            line,
+                            "normal"
+                        ]
+                    );
+
+                }
+            );
 
     }
 
 
     const total =
         lines.length;
+
 
     let index = 0;
 
@@ -2378,9 +4841,8 @@ function runOperation(target) {
             return;
         }
 
-        if (
-            index >= total
-        ) {
+
+        if (index >= total) {
 
             finishOperation(
                 target
@@ -2390,11 +4852,13 @@ function runOperation(target) {
 
         }
 
+
         const percentage =
             Math.round(
                 (index / total) *
                 100
             );
+
 
         document.getElementById(
             "progress"
@@ -2427,9 +4891,10 @@ function runOperation(target) {
 
                 index++;
 
+
                 delay(
                     next,
-                    500
+                    350
                 );
 
             }
@@ -2437,13 +4902,14 @@ function runOperation(target) {
 
     }
 
+
     next();
 
 }
 
 
 /* =========================================================
-   FINISH OPERATION
+   FINISH
 ========================================================= */
 
 function finishOperation(
@@ -2454,6 +4920,7 @@ function finishOperation(
         "progress"
     ).style.width =
         "100%";
+
 
     typeLine(
         "",
@@ -2523,15 +4990,18 @@ function showResult(
     ).textContent =
         "STATUS: TERMINATED";
 
+
     const terminal =
         document.getElementById(
             "terminal"
         );
 
+
     const result =
         document.createElement(
             "div"
         );
+
 
     result.className =
         "final-result";
@@ -2542,21 +5012,23 @@ function showResult(
             "div"
         );
 
+
     title.className =
         "final-title";
+
 
     title.textContent =
         "[ SIMULATION ] TEST COMPLETE";
 
-    result.appendChild(
-        title
-    );
+
+    result.appendChild(title);
 
 
     const targetRow =
         document.createElement(
             "div"
         );
+
 
     targetRow.className =
         "result-row";
@@ -2567,8 +5039,10 @@ function showResult(
             "div"
         );
 
+
     targetLabel.className =
         "result-label";
+
 
     targetLabel.textContent =
         "TEST TARGET";
@@ -2579,11 +5053,14 @@ function showResult(
             "div"
         );
 
+
     targetValue.className =
         "result-value";
 
+
     targetValue.style.color =
         "#8cff9b";
+
 
     targetValue.textContent =
         target;
@@ -2607,6 +5084,7 @@ function showResult(
             "div"
         );
 
+
     hashRow.className =
         "result-row";
 
@@ -2616,8 +5094,10 @@ function showResult(
             "div"
         );
 
+
     hashLabel.className =
         "result-label";
+
 
     hashLabel.textContent =
         "SIMULATION ID";
@@ -2628,8 +5108,10 @@ function showResult(
             "div"
         );
 
+
     hashValue.className =
         "result-value hash";
+
 
     hashValue.textContent =
         randomHex(64);
@@ -2643,6 +5125,7 @@ function showResult(
         hashValue
     );
 
+
     result.appendChild(
         hashRow
     );
@@ -2653,6 +5136,7 @@ function showResult(
             "div"
         );
 
+
     responseRow.className =
         "result-row";
 
@@ -2662,8 +5146,10 @@ function showResult(
             "div"
         );
 
+
     responseLabel.className =
         "result-label";
+
 
     responseLabel.textContent =
         "SYSTEM RESPONSE";
@@ -2674,11 +5160,14 @@ function showResult(
             "div"
         );
 
+
     responseValue.className =
         "result-value";
 
+
     responseValue.style.color =
         "#d7d36c";
+
 
     responseValue.textContent =
         "SIMULATION ONLY // NO REAL ACCESS ATTEMPTED";
@@ -2692,6 +5181,7 @@ function showResult(
         responseValue
     );
 
+
     result.appendChild(
         responseRow
     );
@@ -2702,11 +5192,14 @@ function showResult(
             "button"
         );
 
+
     button.className =
         "home-button";
 
+
     button.textContent =
         "RETURN TO HOMEPAGE";
+
 
     button.onclick =
         function() {
@@ -2720,12 +5213,15 @@ function showResult(
         button
     );
 
+
     terminal.appendChild(
         result
     );
 
+
     terminal.scrollTop =
         terminal.scrollHeight;
+
 
     operationRunning =
         false;
@@ -2742,12 +5238,14 @@ function updateClock() {
     const now =
         new Date();
 
+
     document.getElementById(
         "clock"
     ).textContent =
         now.toLocaleTimeString();
 
 }
+
 
 setInterval(
     updateClock,
@@ -2758,7 +5256,7 @@ updateClock();
 
 
 /* =========================================================
-   ENTER KEY HANDLERS
+   ENTER KEY
 ========================================================= */
 
 document.addEventListener(
@@ -2766,21 +5264,45 @@ document.addEventListener(
     function(event) {
 
         if (
-            event.key === "Enter"
+            event.key !== "Enter"
+        ) {
+            return;
+        }
+
+
+        const active =
+            document.activeElement;
+
+
+        if (
+            active &&
+            active.id ===
+            "loginPassword"
         ) {
 
-            const active =
-                document.activeElement;
+            login();
 
-            if (
-                active &&
-                active.id ===
-                "adminPassword"
-            ) {
+        }
 
-                adminLogin();
 
-            }
+        if (
+            active &&
+            active.id ===
+            "registerConfirm"
+        ) {
+
+            registerPlayer();
+
+        }
+
+
+        if (
+            active &&
+            active.id ===
+            "forgotRecoveryCode"
+        ) {
+
+            requestRecovery();
 
         }
 
@@ -2789,12 +5311,29 @@ document.addEventListener(
 
 
 /* =========================================================
-   INITIALIZE
+   INITIALIZATION
 ========================================================= */
 
 loadConfig();
 
+loadUsers();
+
 applyConfig();
+
+
+/*
+    Everyone starts at the same authentication screen.
+    The admin is NOT required to register.
+*/
+
+hideAllPanels();
+
+document.getElementById(
+    "authPanel"
+).style.display =
+    "block";
+
+showAuthTab("login");
 
 </script>
 
