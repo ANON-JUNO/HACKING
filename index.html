@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SECURITY SIMULATOR</title>
+<title>SECURITY HACKING</title>
 
 <style>
 
@@ -1024,7 +1024,7 @@ select:focus {
             <div class="auth-note">
 
                 Create a player account to access the
-                hacking interface.
+                simulation interface.
 
                 <br><br>
 
@@ -1311,7 +1311,7 @@ select:focus {
             class="start"
             onclick="beginOperation()"
         >
-            INITIALIZE HACKING
+            INITIALIZE SIMULATION
         </button>
 
     </div>
@@ -1610,12 +1610,12 @@ select:focus {
             </div>
 
 
-            <!-- ADD HACKING -->
+            <!-- ADD SIMULATION -->
 
             <div class="admin-card admin-full">
 
                 <h3>
-                    ADD HACKING METHOD
+                    ADD SIMULATION METHOD
                 </h3>
 
                 <label>
@@ -1719,7 +1719,7 @@ select:focus {
 
                     This restores the original site
                     configuration and removes custom
-                    hacking methods.
+                    simulation methods.
 
                     Player accounts are not removed.
 
@@ -1877,7 +1877,7 @@ function loadConfig() {
 
     const saved =
         localStorage.getItem(
-            "juno_security_simulator_config"
+            "juno_security_hacking_config"
         );
 
     if (saved) {
@@ -1919,7 +1919,7 @@ function loadConfig() {
 function saveConfig() {
 
     localStorage.setItem(
-        "juno_security_simulator_config",
+        "juno_security_hacking_config",
         JSON.stringify(config)
     );
 
@@ -3423,11 +3423,11 @@ function addMethod() {
             name,
 
         field:
-            "HACK TARGET",
+            "SIMULATION TARGET",
 
         description:
             description ||
-            "Custom security hacking",
+            "Custom security simulation",
 
         script:
             script
@@ -3457,7 +3457,7 @@ function addMethod() {
 
 
     showAdminMessage(
-        "HACKING METHOD ADDED."
+        "SIMULATION METHOD ADDED."
     );
 
 }
@@ -3576,7 +3576,7 @@ function deleteMethod(index) {
 
     if (
         !confirm(
-            "Delete hacking method?\n\n" +
+            "Delete simulation method?\n\n" +
             method.name
         )
     ) {
@@ -4191,7 +4191,7 @@ function resetWebsite() {
 
 
     localStorage.removeItem(
-        "juno_security_simulator_config"
+        "juno_security_hacking_config"
     );
 
 
