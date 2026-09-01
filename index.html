@@ -40,6 +40,17 @@ body::after {
         );
 }
 
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
 #home {
     min-height: 100vh;
     padding: 30px;
@@ -126,6 +137,25 @@ body::after {
     font-size: 10px;
 }
 
+.admin-link {
+    display: block;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto 0;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #163d1e;
+    color: #355a3d;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.admin-link:hover {
+    color: #9cffaa;
+    border-color: #397746;
+}
+
 .footer {
     width: 100%;
     max-width: 1100px;
@@ -144,6 +174,8 @@ body::after {
     font-size: 9px;
     line-height: 1.6;
 }
+
+/* PANELS */
 
 .panel {
     display: none;
@@ -199,7 +231,9 @@ label {
     font-size: 11px;
 }
 
-input {
+input,
+textarea,
+select {
     width: 100%;
     padding: 14px;
     background: #010201;
@@ -210,12 +244,20 @@ input {
     font-size: 14px;
 }
 
-input:focus {
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
     border-color: #61d971;
     box-shadow: 0 0 15px rgba(0,255,70,.08);
 }
 
-.start {
+.start,
+.admin-button {
     margin-top: 20px;
     padding: 14px 24px;
     background: #061008;
@@ -226,10 +268,24 @@ input:focus {
     cursor: pointer;
 }
 
-.start:hover {
+.start:hover,
+.admin-button:hover {
     background: #0a180d;
     border-color: #69ff7d;
 }
+
+.admin-button.danger {
+    border-color: #7a2424;
+    color: #ff5555;
+    background: #080202;
+}
+
+.admin-button.danger:hover {
+    border-color: #ff4545;
+    background: #160505;
+}
+
+/* TERMINAL */
 
 .terminal-panel {
     max-width: 1250px;
@@ -305,6 +361,8 @@ input:focus {
     letter-spacing: 1px;
 }
 
+/* RESULT */
+
 .final-result {
     margin-top: 25px;
     padding: 20px;
@@ -355,8 +413,115 @@ input:focus {
 .home-button:hover {
     background: #160505;
     border-color: #ff5555;
-    box-shadow: 0 0 15px rgba(255,0,0,.08);
 }
+
+/* ADMIN */
+
+#adminPanel {
+    max-width: 1100px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.admin-card {
+    padding: 18px;
+    border: 1px solid #163d1e;
+    background: #010201;
+}
+
+.admin-card h3 {
+    margin: 0 0 15px;
+    color: #8cff9b;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+.admin-card label {
+    margin-top: 15px;
+}
+
+.admin-card label:first-of-type {
+    margin-top: 0;
+}
+
+.admin-full {
+    grid-column: 1 / -1;
+}
+
+.method-list {
+    margin-top: 20px;
+}
+
+.method-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 8px;
+    border: 1px solid #163d1e;
+    background: #020503;
+}
+
+.method-info {
+    flex: 1;
+}
+
+.method-info strong {
+    color: #8cff9b;
+    font-size: 12px;
+}
+
+.method-info small {
+    display: block;
+    margin-top: 5px;
+    color: #496a50;
+    font-size: 9px;
+}
+
+.method-delete {
+    padding: 8px 12px;
+    border: 1px solid #5c1717;
+    background: #080202;
+    color: #ff4545;
+}
+
+.admin-message {
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid #163d1e;
+    color: #8cff9b;
+    font-size: 10px;
+    display: none;
+}
+
+/* LOGIN */
+
+#loginPanel {
+    max-width: 500px;
+}
+
+.login-error {
+    margin-top: 15px;
+    color: #ff4545;
+    font-size: 10px;
+    display: none;
+}
+
+.login-note {
+    margin-bottom: 20px;
+    color: #496a50;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* MOBILE */
 
 @media(max-width:600px) {
 
@@ -387,23 +552,34 @@ input:focus {
     .legal-warning {
         font-size: 8px;
     }
+
+    .method-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- =========================
+     HOME
+========================= -->
+
 <div id="home">
 
     <div class="header">
 
-        <h1>SOCIAL MEDIA HACKING</h1>
+        <h1 id="siteTitle">
+            SOCIAL MEDIA HACKING
+        </h1>
 
-        <p>
+        <p id="siteSubtitle">
             SOCIAL ENGINEERING // SECURITY OPERATIONS TERMINAL
         </p>
 
-        <div class="legal-warning">
+        <div class="legal-warning" id="legalWarning">
             ⚠ AUTHORIZED USE ONLY.
             DO NOT USE FOR UNAUTHORIZED ACCESS, ACCOUNT
             COMPROMISE, CREDENTIAL THEFT, OR ANY ILLEGAL ACTIVITY.
@@ -411,144 +587,37 @@ input:focus {
 
     </div>
 
-    <div class="menu">
+    <div class="menu" id="menu"></div>
 
-        <button
-            class="option"
-            onclick="selectTarget(
-                'GOOGLE',
-                'GOOGLE ACCOUNT',
-                'EMAIL ADDRESS'
-            )"
-        >
-            <div class="option-number">[01]</div>
-            <div class="option-title">GOOGLE ACCOUNT</div>
-            <div class="option-description">
-                Account endpoint analysis
-            </div>
-        </button>
-
-        <button
-            class="option"
-            onclick="selectTarget(
-                'FACEBOOK',
-                'FACEBOOK ACCOUNT',
-                'PROFILE URL'
-            )"
-        >
-            <div class="option-number">[02]</div>
-            <div class="option-title">FACEBOOK ACCOUNT</div>
-            <div class="option-description">
-                Profile endpoint analysis
-            </div>
-        </button>
-
-        <button
-            class="option"
-            onclick="selectTarget(
-                'INSTAGRAM',
-                'INSTAGRAM ACCOUNT',
-                'USERNAME'
-            )"
-        >
-            <div class="option-number">[03]</div>
-            <div class="option-title">INSTAGRAM ACCOUNT</div>
-            <div class="option-description">
-                Identity endpoint analysis
-            </div>
-        </button>
-
-        <button
-            class="option"
-            onclick="selectTarget(
-                'TIKTOK',
-                'TIKTOK ACCOUNT',
-                'USERNAME'
-            )"
-        >
-            <div class="option-number">[04]</div>
-            <div class="option-title">TIKTOK ACCOUNT</div>
-            <div class="option-description">
-                Endpoint analysis
-            </div>
-        </button>
-
-        <button
-            class="option"
-            onclick="selectTarget(
-                'DISCORD',
-                'DISCORD ACCOUNT',
-                'USERNAME'
-            )"
-        >
-            <div class="option-number">[05]</div>
-            <div class="option-title">DISCORD ACCOUNT</div>
-            <div class="option-description">
-                Session architecture analysis
-            </div>
-        </button>
-
-        <button
-            class="option"
-            onclick="selectTarget(
-                'NETWORK',
-                'NETWORK ACCESS',
-                'NETWORK IDENTIFIER'
-            )"
-        >
-            <div class="option-number">[06]</div>
-            <div class="option-title">NETWORK ACCESS</div>
-            <div class="option-description">
-                Network perimeter analysis
-            </div>
-        </button>
-
-        <button
-            class="option"
-            onclick="selectTarget(
-                'EMAIL',
-                'EMAIL ACCOUNT',
-                'EMAIL ADDRESS'
-            )"
-        >
-            <div class="option-number">[07]</div>
-            <div class="option-title">EMAIL ACCOUNT</div>
-            <div class="option-description">
-                Authentication analysis
-            </div>
-        </button>
-
-        <button
-            class="option"
-            onclick="selectTarget(
-                'SERVER',
-                'SERVER ACCESS',
-                'SERVER IDENTIFIER'
-            )"
-        >
-            <div class="option-number">[08]</div>
-            <div class="option-title">SERVER ACCESS</div>
-            <div class="option-description">
-                Infrastructure analysis
-            </div>
-        </button>
-
-    </div>
+    <button
+        class="admin-link"
+        onclick="openLogin()"
+    >
+        [ ADMINISTRATOR LOGIN ]
+    </button>
 
     <div class="footer">
 
-        <div class="footer-warning">
+        <div
+            class="footer-warning"
+            id="footerWarning"
+        >
             ⚠ DO NOT USE THIS WEBSITE FOR ILLEGAL OR
             UNAUTHORIZED ACTIVITIES.
         </div>
 
-        <div>
+        <div id="footerText">
             BUILT BY JUNO
         </div>
 
     </div>
 
 </div>
+
+
+<!-- =========================
+     INPUT PANEL
+========================= -->
 
 <div class="panel" id="inputPanel">
 
@@ -558,7 +627,10 @@ input:focus {
 
     <div class="panel-body">
 
-        <button class="back" onclick="returnHome()">
+        <button
+            class="back"
+            onclick="returnHome()"
+        >
             &lt; RETURN
         </button>
 
@@ -589,12 +661,17 @@ input:focus {
             class="start"
             onclick="beginOperation()"
         >
-            INITIALIZE OPERATION
+            INITIALIZE SIMULATION
         </button>
 
     </div>
 
 </div>
+
+
+<!-- =========================
+     TERMINAL
+========================= -->
 
 <div
     class="panel terminal-panel"
@@ -631,64 +708,1179 @@ input:focus {
 
 </div>
 
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div class="panel" id="loginPanel">
+
+    <div class="panel-header">
+        ADMINISTRATOR AUTHENTICATION
+    </div>
+
+    <div class="panel-body">
+
+        <button
+            class="back"
+            onclick="returnHome()"
+        >
+            &lt; RETURN
+        </button>
+
+        <div class="login-note">
+            Administrator access is intended for this local
+            simulation interface only.
+        </div>
+
+        <label>
+            USERNAME
+        </label>
+
+        <input
+            id="adminUsername"
+            type="text"
+            autocomplete="off"
+        >
+
+        <label>
+            PASSWORD
+        </label>
+
+        <input
+            id="adminPassword"
+            type="password"
+            autocomplete="off"
+        >
+
+        <div
+            class="login-error"
+            id="loginError"
+        >
+            INVALID ADMINISTRATOR CREDENTIALS.
+        </div>
+
+        <button
+            class="admin-button"
+            onclick="adminLogin()"
+        >
+            AUTHENTICATE
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ADMIN PANEL
+========================= -->
+
+<div class="panel" id="adminPanel">
+
+    <div class="panel-header">
+        ADMINISTRATOR CONTROL CENTER
+    </div>
+
+    <div class="panel-body">
+
+        <button
+            class="back"
+            onclick="returnHome()"
+        >
+            &lt; EXIT ADMIN
+        </button>
+
+        <div class="admin-grid">
+
+            <!-- SITE SETTINGS -->
+
+            <div class="admin-card">
+
+                <h3>
+                    SITE CONFIGURATION
+                </h3>
+
+                <label>
+                    SITE TITLE
+                </label>
+
+                <input
+                    id="editTitle"
+                    type="text"
+                >
+
+                <label>
+                    SUBTITLE
+                </label>
+
+                <input
+                    id="editSubtitle"
+                    type="text"
+                >
+
+                <label>
+                    WARNING MESSAGE
+                </label>
+
+                <textarea
+                    id="editWarning"
+                ></textarea>
+
+                <label>
+                    FOOTER
+                </label>
+
+                <input
+                    id="editFooter"
+                    type="text"
+                >
+
+                <button
+                    class="admin-button"
+                    onclick="saveSiteSettings()"
+                >
+                    SAVE SITE
+                </button>
+
+            </div>
+
+
+            <!-- COLORS -->
+
+            <div class="admin-card">
+
+                <h3>
+                    TERMINAL COLORS
+                </h3>
+
+                <label>
+                    BACKGROUND
+                </label>
+
+                <input
+                    id="editBackground"
+                    type="color"
+                    value="#010201"
+                >
+
+                <label>
+                    MAIN TEXT
+                </label>
+
+                <input
+                    id="editTextColor"
+                    type="color"
+                    value="#9cffaa"
+                >
+
+                <label>
+                    ACCENT
+                </label>
+
+                <input
+                    id="editAccent"
+                    type="color"
+                    value="#8cff9b"
+                >
+
+                <button
+                    class="admin-button"
+                    onclick="saveColors()"
+                >
+                    APPLY COLORS
+                </button>
+
+            </div>
+
+
+            <!-- ADD SIMULATION -->
+
+            <div class="admin-card admin-full">
+
+                <h3>
+                    ADD SIMULATION METHOD
+                </h3>
+
+                <label>
+                    METHOD NAME
+                </label>
+
+                <input
+                    id="methodName"
+                    type="text"
+                    placeholder="Example: PHISHING AWARENESS SIMULATION"
+                >
+
+                <label>
+                    DESCRIPTION
+                </label>
+
+                <input
+                    id="methodDescription"
+                    type="text"
+                    placeholder="Example: Demonstrates how suspicious links are identified"
+                >
+
+                <label>
+                    SIMULATION SCRIPT / STEPS
+                </label>
+
+                <textarea
+                    id="methodScript"
+                    placeholder="Enter harmless simulation text or steps here..."
+                ></textarea>
+
+                <button
+                    class="admin-button"
+                    onclick="addMethod()"
+                >
+                    ADD SIMULATION
+                </button>
+
+                <div
+                    class="admin-message"
+                    id="adminMessage"
+                ></div>
+
+                <div
+                    class="method-list"
+                    id="methodList"
+                ></div>
+
+            </div>
+
+
+            <!-- RESET -->
+
+            <div class="admin-card admin-full">
+
+                <h3>
+                    WEBSITE RESET
+                </h3>
+
+                <div class="login-note">
+                    This restores the original site configuration
+                    and removes all custom simulation methods.
+                </div>
+
+                <button
+                    class="admin-button danger"
+                    onclick="resetWebsite()"
+                >
+                    RESET WEBSITE
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
-var selectedType = "";
-var selectedName = "";
-var selectedField = "";
-var operationRunning = false;
 
-function selectTarget(type, name, field) {
+/* =========================================================
+   ADMIN CREDENTIALS
+========================================================= */
 
-    selectedType = type;
-    selectedName = name;
-    selectedField = field;
+const ADMIN_USERNAME = "juno";
+const ADMIN_PASSWORD = "juno";
 
-    document.getElementById("home").style.display = "none";
-    document.getElementById("inputPanel").style.display = "block";
-    document.getElementById("terminalPanel").style.display = "none";
 
-    document.getElementById("targetName").textContent = name;
-    document.getElementById("targetLabel").textContent = field;
+/* =========================================================
+   ORIGINAL CONFIGURATION
+========================================================= */
 
-    document.getElementById("targetInput").value = "";
+const DEFAULT_CONFIG = {
 
-    document.getElementById("description").style.color =
-        "#496a50";
+    title: "SOCIAL MEDIA HACKING",
 
-    document.getElementById("description").textContent =
-        "Configure operation parameters.";
+    subtitle:
+        "SOCIAL ENGINEERING // SECURITY OPERATIONS TERMINAL",
 
-    setTimeout(function() {
-        document.getElementById("targetInput").focus();
-    }, 50);
+    warning:
+        "⚠ AUTHORIZED USE ONLY. DO NOT USE FOR UNAUTHORIZED ACCESS, ACCOUNT COMPROMISE, CREDENTIAL THEFT, OR ANY ILLEGAL ACTIVITY.",
+
+    footerWarning:
+        "⚠ DO NOT USE THIS WEBSITE FOR ILLEGAL OR UNAUTHORIZED ACTIVITIES.",
+
+    footer:
+        "BUILT BY JUNO",
+
+    background:
+        "#010201",
+
+    textColor:
+        "#9cffaa",
+
+    accent:
+        "#8cff9b",
+
+    methods: [
+
+        {
+            type: "GOOGLE",
+            name: "GOOGLE ACCOUNT",
+            field: "EMAIL ADDRESS",
+            description: "Account endpoint analysis"
+        },
+
+        {
+            type: "FACEBOOK",
+            name: "FACEBOOK ACCOUNT",
+            field: "PROFILE URL",
+            description: "Profile endpoint analysis"
+        },
+
+        {
+            type: "INSTAGRAM",
+            name: "INSTAGRAM ACCOUNT",
+            field: "USERNAME",
+            description: "Identity endpoint analysis"
+        },
+
+        {
+            type: "TIKTOK",
+            name: "TIKTOK ACCOUNT",
+            field: "USERNAME",
+            description: "Endpoint analysis"
+        },
+
+        {
+            type: "DISCORD",
+            name: "DISCORD ACCOUNT",
+            field: "USERNAME",
+            description: "Session architecture analysis"
+        },
+
+        {
+            type: "NETWORK",
+            name: "NETWORK ACCESS",
+            field: "NETWORK IDENTIFIER",
+            description: "Network perimeter analysis"
+        },
+
+        {
+            type: "EMAIL",
+            name: "EMAIL ACCOUNT",
+            field: "EMAIL ADDRESS",
+            description: "Authentication analysis"
+        },
+
+        {
+            type: "SERVER",
+            name: "SERVER ACCESS",
+            field: "SERVER IDENTIFIER",
+            description: "Infrastructure analysis"
+        }
+
+    ]
+
+};
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let config;
+let selectedType = "";
+let selectedName = "";
+let selectedField = "";
+let selectedMethodScript = "";
+let operationRunning = false;
+let adminAuthenticated = false;
+
+
+/* =========================================================
+   LOAD / SAVE CONFIGURATION
+========================================================= */
+
+function cloneDefaultConfig() {
+
+    return JSON.parse(
+        JSON.stringify(DEFAULT_CONFIG)
+    );
+
 }
+
+
+function loadConfig() {
+
+    const saved =
+        localStorage.getItem(
+            "juno_security_simulator_config"
+        );
+
+    if (saved) {
+
+        try {
+
+            config = JSON.parse(saved);
+
+        } catch (error) {
+
+            config = cloneDefaultConfig();
+
+        }
+
+    } else {
+
+        config = cloneDefaultConfig();
+
+    }
+
+}
+
+
+function saveConfig() {
+
+    localStorage.setItem(
+        "juno_security_simulator_config",
+        JSON.stringify(config)
+    );
+
+}
+
+
+/* =========================================================
+   APPLY CONFIGURATION
+========================================================= */
+
+function applyConfig() {
+
+    document.title =
+        config.title;
+
+    document.getElementById(
+        "siteTitle"
+    ).textContent =
+        config.title;
+
+    document.getElementById(
+        "siteSubtitle"
+    ).textContent =
+        config.subtitle;
+
+    document.getElementById(
+        "legalWarning"
+    ).textContent =
+        config.warning;
+
+    document.getElementById(
+        "footerWarning"
+    ).textContent =
+        config.footerWarning;
+
+    document.getElementById(
+        "footerText"
+    ).textContent =
+        config.footer;
+
+    document.documentElement.style
+        .setProperty(
+            "--custom-bg",
+            config.background
+        );
+
+    document.body.style.background =
+        config.background;
+
+    document.body.style.color =
+        config.textColor;
+
+    document.getElementById(
+        "siteTitle"
+    ).style.color =
+        config.accent;
+
+    renderMethods();
+
+}
+
+
+/* =========================================================
+   RENDER METHODS
+========================================================= */
+
+function renderMethods() {
+
+    const menu =
+        document.getElementById("menu");
+
+    menu.innerHTML = "";
+
+    config.methods.forEach(
+        function(method, index) {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "option";
+
+            button.onclick =
+                function() {
+
+                    selectTarget(
+                        method.type,
+                        method.name,
+                        method.field,
+                        method.script || ""
+                    );
+
+                };
+
+            const number =
+                document.createElement("div");
+
+            number.className =
+                "option-number";
+
+            number.textContent =
+                "[" +
+                String(index + 1).padStart(2, "0") +
+                "]";
+
+            const title =
+                document.createElement("div");
+
+            title.className =
+                "option-title";
+
+            title.textContent =
+                method.name;
+
+            const description =
+                document.createElement("div");
+
+            description.className =
+                "option-description";
+
+            description.textContent =
+                method.description;
+
+            button.appendChild(number);
+            button.appendChild(title);
+            button.appendChild(description);
+
+            menu.appendChild(button);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function hideAllPanels() {
+
+    document.getElementById(
+        "home"
+    ).style.display = "none";
+
+    document.getElementById(
+        "inputPanel"
+    ).style.display = "none";
+
+    document.getElementById(
+        "terminalPanel"
+    ).style.display = "none";
+
+    document.getElementById(
+        "loginPanel"
+    ).style.display = "none";
+
+    document.getElementById(
+        "adminPanel"
+    ).style.display = "none";
+
+}
+
 
 function returnHome() {
 
     operationRunning = false;
 
-    document.getElementById("home").style.display = "block";
-    document.getElementById("inputPanel").style.display = "none";
-    document.getElementById("terminalPanel").style.display = "none";
+    hideAllPanels();
 
-    document.getElementById("progress").style.width = "0%";
+    document.getElementById(
+        "home"
+    ).style.display = "block";
+
+    document.getElementById(
+        "progress"
+    ).style.width = "0%";
+
 }
 
-function updateClock() {
 
-    var now = new Date();
+function openLogin() {
 
-    document.getElementById("clock").textContent =
-        now.toLocaleTimeString();
+    hideAllPanels();
+
+    document.getElementById(
+        "loginPanel"
+    ).style.display = "block";
+
+    document.getElementById(
+        "adminUsername"
+    ).value = "";
+
+    document.getElementById(
+        "adminPassword"
+    ).value = "";
+
+    document.getElementById(
+        "loginError"
+    ).style.display = "none";
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "adminUsername"
+            ).focus();
+
+        },
+        50
+    );
+
 }
 
-setInterval(updateClock, 1000);
-updateClock();
+
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
+
+function adminLogin() {
+
+    const username =
+        document.getElementById(
+            "adminUsername"
+        ).value;
+
+    const password =
+        document.getElementById(
+            "adminPassword"
+        ).value;
+
+    if (
+        username === ADMIN_USERNAME &&
+        password === ADMIN_PASSWORD
+    ) {
+
+        adminAuthenticated = true;
+
+        openAdminPanel();
+
+        return;
+
+    }
+
+    document.getElementById(
+        "loginError"
+    ).style.display = "block";
+
+}
+
+
+function openAdminPanel() {
+
+    if (!adminAuthenticated) {
+
+        openLogin();
+
+        return;
+
+    }
+
+    hideAllPanels();
+
+    document.getElementById(
+        "adminPanel"
+    ).style.display = "block";
+
+    loadAdminFields();
+
+    renderAdminMethods();
+
+}
+
+
+/* =========================================================
+   ADMIN FIELDS
+========================================================= */
+
+function loadAdminFields() {
+
+    document.getElementById(
+        "editTitle"
+    ).value =
+        config.title;
+
+    document.getElementById(
+        "editSubtitle"
+    ).value =
+        config.subtitle;
+
+    document.getElementById(
+        "editWarning"
+    ).value =
+        config.warning;
+
+    document.getElementById(
+        "editFooter"
+    ).value =
+        config.footer;
+
+    document.getElementById(
+        "editBackground"
+    ).value =
+        config.background;
+
+    document.getElementById(
+        "editTextColor"
+    ).value =
+        config.textColor;
+
+    document.getElementById(
+        "editAccent"
+    ).value =
+        config.accent;
+
+}
+
+
+/* =========================================================
+   SAVE SITE SETTINGS
+========================================================= */
+
+function saveSiteSettings() {
+
+    config.title =
+        document.getElementById(
+            "editTitle"
+        ).value.trim();
+
+    config.subtitle =
+        document.getElementById(
+            "editSubtitle"
+        ).value.trim();
+
+    config.warning =
+        document.getElementById(
+            "editWarning"
+        ).value.trim();
+
+    config.footer =
+        document.getElementById(
+            "editFooter"
+        ).value.trim();
+
+    saveConfig();
+
+    applyConfig();
+
+    showAdminMessage(
+        "SITE CONFIGURATION SAVED."
+    );
+
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+function saveColors() {
+
+    config.background =
+        document.getElementById(
+            "editBackground"
+        ).value;
+
+    config.textColor =
+        document.getElementById(
+            "editTextColor"
+        ).value;
+
+    config.accent =
+        document.getElementById(
+            "editAccent"
+        ).value;
+
+    saveConfig();
+
+    applyConfig();
+
+    showAdminMessage(
+        "COLOR CONFIGURATION APPLIED."
+    );
+
+}
+
+
+/* =========================================================
+   ADD CUSTOM SIMULATION
+========================================================= */
+
+function addMethod() {
+
+    const name =
+        document.getElementById(
+            "methodName"
+        ).value.trim();
+
+    const description =
+        document.getElementById(
+            "methodDescription"
+        ).value.trim();
+
+    const script =
+        document.getElementById(
+            "methodScript"
+        ).value.trim();
+
+    if (!name) {
+
+        showAdminMessage(
+            "METHOD NAME IS REQUIRED.",
+            true
+        );
+
+        return;
+
+    }
+
+    const method = {
+
+        type:
+            "CUSTOM_" +
+            Date.now(),
+
+        name:
+            name,
+
+        field:
+            "SIMULATION TARGET",
+
+        description:
+            description ||
+            "Custom security simulation",
+
+        script:
+            script
+
+    };
+
+    config.methods.push(
+        method
+    );
+
+    saveConfig();
+
+    applyConfig();
+
+    document.getElementById(
+        "methodName"
+    ).value = "";
+
+    document.getElementById(
+        "methodDescription"
+    ).value = "";
+
+    document.getElementById(
+        "methodScript"
+    ).value = "";
+
+    renderAdminMethods();
+
+    showAdminMessage(
+        "SIMULATION METHOD ADDED."
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN METHOD LIST
+========================================================= */
+
+function renderAdminMethods() {
+
+    const container =
+        document.getElementById(
+            "methodList"
+        );
+
+    container.innerHTML = "";
+
+    config.methods.forEach(
+        function(method, index) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "method-item";
+
+            const info =
+                document.createElement("div");
+
+            info.className =
+                "method-info";
+
+            const title =
+                document.createElement("strong");
+
+            title.textContent =
+                method.name;
+
+            const desc =
+                document.createElement("small");
+
+            desc.textContent =
+                method.description;
+
+            info.appendChild(title);
+            info.appendChild(desc);
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.className =
+                "method-delete";
+
+            deleteButton.textContent =
+                "DELETE";
+
+            deleteButton.onclick =
+                function() {
+
+                    deleteMethod(index);
+
+                };
+
+            item.appendChild(info);
+            item.appendChild(deleteButton);
+
+            container.appendChild(item);
+
+        }
+    );
+
+}
+
+
+function deleteMethod(index) {
+
+    if (config.methods.length <= 1) {
+
+        showAdminMessage(
+            "AT LEAST ONE METHOD MUST REMAIN.",
+            true
+        );
+
+        return;
+
+    }
+
+    const method =
+        config.methods[index];
+
+    if (
+        !confirm(
+            "Delete simulation method:\n\n" +
+            method.name
+        )
+    ) {
+
+        return;
+
+    }
+
+    config.methods.splice(
+        index,
+        1
+    );
+
+    saveConfig();
+
+    applyConfig();
+
+    renderAdminMethods();
+
+    showAdminMessage(
+        "SIMULATION METHOD DELETED."
+    );
+
+}
+
+
+/* =========================================================
+   ADMIN MESSAGE
+========================================================= */
+
+function showAdminMessage(
+    message,
+    error = false
+) {
+
+    const element =
+        document.getElementById(
+            "adminMessage"
+        );
+
+    element.textContent =
+        message;
+
+    element.style.display =
+        "block";
+
+    element.style.color =
+        error
+            ? "#ff4545"
+            : "#8cff9b";
+
+    setTimeout(
+        function() {
+
+            element.style.display =
+                "none";
+
+        },
+        3000
+    );
+
+}
+
+
+/* =========================================================
+   RESET WEBSITE
+========================================================= */
+
+function resetWebsite() {
+
+    if (
+        !confirm(
+            "RESET THE ENTIRE WEBSITE?\n\n" +
+            "All custom settings and simulation methods " +
+            "will be deleted."
+        )
+    ) {
+
+        return;
+
+    }
+
+    localStorage.removeItem(
+        "juno_security_simulator_config"
+    );
+
+    config =
+        cloneDefaultConfig();
+
+    applyConfig();
+
+    loadAdminFields();
+
+    renderAdminMethods();
+
+    showAdminMessage(
+        "WEBSITE RESTORED TO DEFAULT."
+    );
+
+}
+
+
+/* =========================================================
+   TARGET SELECTION
+========================================================= */
+
+function selectTarget(
+    type,
+    name,
+    field,
+    script
+) {
+
+    selectedType =
+        type;
+
+    selectedName =
+        name;
+
+    selectedField =
+        field;
+
+    selectedMethodScript =
+        script || "";
+
+    hideAllPanels();
+
+    document.getElementById(
+        "inputPanel"
+    ).style.display =
+        "block";
+
+    document.getElementById(
+        "targetName"
+    ).textContent =
+        name;
+
+    document.getElementById(
+        "targetLabel"
+    ).textContent =
+        field;
+
+    document.getElementById(
+        "targetInput"
+    ).value =
+        "";
+
+    document.getElementById(
+        "description"
+    ).style.color =
+        "#496a50";
+
+    document.getElementById(
+        "description"
+    ).textContent =
+        selectedMethodScript
+            ? "Custom security simulation configured."
+            : "Configure operation parameters.";
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "targetInput"
+            ).focus();
+
+        },
+        50
+    );
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
 
 function validateTarget(value) {
 
     if (!value) {
+
         return "TARGET PARAMETER IS EMPTY.";
+
     }
 
     if (
@@ -697,19 +1889,30 @@ function validateTarget(value) {
     ) {
 
         if (
-            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+                value
+            )
         ) {
+
             return "INVALID EMAIL ADDRESS FORMAT.";
+
         }
+
     }
 
-    if (selectedType === "FACEBOOK") {
+    if (
+        selectedType === "FACEBOOK"
+    ) {
 
         if (
-            !/^https?:\/\/(www\.)?facebook\.com\/.+/i.test(value)
+            !/^https?:\/\/(www\.)?facebook\.com\/.+/i
+                .test(value)
         ) {
+
             return "INVALID FACEBOOK PROFILE URL.";
+
         }
+
     }
 
     if (
@@ -719,10 +1922,15 @@ function validateTarget(value) {
     ) {
 
         if (
-            !/^[a-zA-Z0-9._-]{2,40}$/.test(value)
+            !/^[a-zA-Z0-9._-]{2,40}$/.test(
+                value
+            )
         ) {
+
             return "INVALID USERNAME FORMAT.";
+
         }
+
     }
 
     if (
@@ -731,61 +1939,100 @@ function validateTarget(value) {
     ) {
 
         if (
-            !/^[a-zA-Z0-9._:-]{2,80}$/.test(value)
+            !/^[a-zA-Z0-9._:-]{2,80}$/.test(
+                value
+            )
         ) {
+
             return "INVALID IDENTIFIER FORMAT.";
+
         }
+
     }
 
     return "";
+
 }
+
+
+/* =========================================================
+   RANDOM DATA
+========================================================= */
 
 function randomHex(length) {
 
-    var chars = "0123456789ABCDEF";
-    var output = "";
+    const chars =
+        "0123456789ABCDEF";
+
+    let output = "";
 
     for (
-        var i = 0;
+        let i = 0;
         i < length;
         i++
     ) {
 
-        output += chars.charAt(
-            Math.floor(
-                Math.random() * chars.length
-            )
-        );
+        output +=
+            chars.charAt(
+                Math.floor(
+                    Math.random() *
+                    chars.length
+                )
+            );
+
     }
 
     return output;
+
 }
 
-function randomNumber(min, max) {
+
+function randomNumber(
+    min,
+    max
+) {
 
     return Math.floor(
-        Math.random() * (max - min + 1)
+        Math.random() *
+        (max - min + 1)
     ) + min;
+
 }
 
-function typeLine(text, className, callback) {
+
+/* =========================================================
+   TERMINAL WRITING
+========================================================= */
+
+function typeLine(
+    text,
+    className,
+    callback
+) {
 
     if (!operationRunning) {
         return;
     }
 
-    var terminal =
-        document.getElementById("terminal");
+    const terminal =
+        document.getElementById(
+            "terminal"
+        );
 
-    var line =
-        document.createElement("div");
+    const line =
+        document.createElement(
+            "div"
+        );
 
     line.className =
-        "line " + className;
+        "line " +
+        className;
 
-    terminal.appendChild(line);
+    terminal.appendChild(
+        line
+    );
 
-    var position = 0;
+    let position = 0;
 
     function write() {
 
@@ -793,13 +2040,17 @@ function typeLine(text, className, callback) {
             return;
         }
 
-        if (position >= text.length) {
+        if (
+            position >=
+            text.length
+        ) {
 
             if (callback) {
                 callback();
             }
 
             return;
+
         }
 
         line.textContent +=
@@ -810,101 +2061,141 @@ function typeLine(text, className, callback) {
         terminal.scrollTop =
             terminal.scrollHeight;
 
-        setTimeout(write, 5);
+        setTimeout(
+            write,
+            5
+        );
+
     }
 
     write();
+
 }
 
-function delay(callback, milliseconds) {
 
-    setTimeout(function() {
+function delay(
+    callback,
+    milliseconds
+) {
 
-        if (operationRunning) {
-            callback();
-        }
+    setTimeout(
+        function() {
 
-    }, milliseconds);
+            if (operationRunning) {
+                callback();
+            }
+
+        },
+        milliseconds
+    );
+
 }
+
+
+/* =========================================================
+   BEGIN OPERATION
+========================================================= */
 
 function beginOperation() {
 
-    var target =
-        document.getElementById("targetInput")
-        .value
-        .trim();
+    const target =
+        document.getElementById(
+            "targetInput"
+        ).value.trim();
 
-    var error =
-        validateTarget(target);
+    const error =
+        validateTarget(
+            target
+        );
 
     if (error) {
 
-        var description =
-            document.getElementById("description");
+        const description =
+            document.getElementById(
+                "description"
+            );
 
         description.style.color =
             "#ff4545";
 
         description.textContent =
-            "[ERROR] " + error;
+            "[ERROR] " +
+            error;
 
         return;
+
     }
 
-    operationRunning = true;
+    operationRunning =
+        true;
 
-    document.getElementById("inputPanel")
-        .style.display = "none";
+    hideAllPanels();
 
-    document.getElementById("terminalPanel")
-        .style.display = "block";
+    document.getElementById(
+        "terminalPanel"
+    ).style.display =
+        "block";
 
-    document.getElementById("terminal")
-        .innerHTML = "";
+    document.getElementById(
+        "terminal"
+    ).innerHTML =
+        "";
 
-    document.getElementById("progress")
-        .style.width = "0%";
+    document.getElementById(
+        "progress"
+    ).style.width =
+        "0%";
 
-    document.getElementById("operationStatus")
-        .textContent = "STATUS: ACTIVE";
+    document.getElementById(
+        "operationStatus"
+    ).textContent =
+        "STATUS: ACTIVE";
 
-    runOperation(target);
+    runOperation(
+        target
+    );
+
 }
+
+
+/* =========================================================
+   SIMULATION ENGINE
+========================================================= */
 
 function runOperation(target) {
 
-    var lines = [
+    let lines = [
 
         [
-            "INITIALIZING SECURITY ENGINE...",
+            "INITIALIZING SECURITY SIMULATION...",
             "normal"
         ],
 
         [
-            "LOADING SESSION ARCHITECTURE...",
+            "LOADING DEFENSIVE TEST ENVIRONMENT...",
             "normal"
         ],
 
         [
-            "GENERATING SESSION ID: " +
+            "SIMULATION SESSION ID: " +
             randomHex(12),
             "dim"
         ],
 
         [
-            "TARGET IDENTIFIER: " +
+            "TARGET LABEL: " +
             target,
             "green"
         ],
 
         [
-            "NODE SIGNATURE: " +
+            "GENERATED TEST NODE: " +
             randomHex(8),
             "dim"
         ],
 
         [
-            "ANALYZING NETWORK RESPONSE...",
+            "ANALYZING MOCK NETWORK RESPONSE...",
             "normal"
         ],
 
@@ -916,7 +2207,7 @@ function runOperation(target) {
         ],
 
         [
-            "RESPONSE SIGNATURE: " +
+            "MOCK RESPONSE SIGNATURE: " +
             randomHex(16),
             "dim"
         ],
@@ -927,43 +2218,43 @@ function runOperation(target) {
         ],
 
         [
-            "MAPPING SERVICE RESPONSE...",
+            "MAPPING SIMULATED SERVICE RESPONSE...",
             "normal"
         ],
 
         [
-            "SERVICE NODE RESPONSE RECEIVED.",
+            "SIMULATED SERVICE RESPONSE RECEIVED.",
             "green"
         ],
 
         [
-            "PROCESSING SESSION PARAMETERS...",
+            "PROCESSING MOCK SESSION PARAMETERS...",
             "normal"
         ],
 
         [
-            "VALIDATING ACCESS CONTROL RESPONSE...",
+            "VALIDATING SIMULATED ACCESS CONTROL...",
             "normal"
         ],
 
         [
-            "ACCESS SIGNATURE: " +
+            "TEST ACCESS SIGNATURE: " +
             randomHex(12),
             "dim"
         ],
 
         [
-            "BUILDING SECONDARY ANALYSIS PATH...",
+            "BUILDING DEFENSIVE ANALYSIS PATH...",
             "normal"
         ],
 
         [
-            "INITIALIZING SECONDARY HANDLER...",
+            "INITIALIZING MOCK HANDLER...",
             "normal"
         ],
 
         [
-            "HANDLER CHANNEL: " +
+            "SIMULATION CHANNEL: " +
             randomNumber(1000, 50000),
             "dim"
         ],
@@ -974,7 +2265,7 @@ function runOperation(target) {
         ],
 
         [
-            "COMPARING RESPONSE VARIANCE...",
+            "COMPARING SIMULATED RESPONSE VARIANCE...",
             "normal"
         ],
 
@@ -985,57 +2276,101 @@ function runOperation(target) {
         ],
 
         [
-            "RECONSTRUCTING SERVICE TOPOLOGY...",
+            "RECONSTRUCTING MOCK SERVICE TOPOLOGY...",
             "normal"
         ],
 
         [
-            "VALIDATING SECONDARY RESPONSE...",
+            "VALIDATING SECONDARY SIMULATION RESPONSE...",
             "normal"
         ],
 
         [
-            "REMOTE RESPONSE CONSISTENCY CHECK...",
+            "REMOTE ACCESS IS NOT ATTEMPTED.",
+            "warning"
+        ],
+
+        [
+            "NO REAL CREDENTIALS ARE PROCESSED.",
+            "warning"
+        ],
+
+        [
+            "DEFENSIVE SECURITY POLICY CHECK...",
             "normal"
         ],
 
         [
-            "SECONDARY RESPONSE RECEIVED.",
+            "SIMULATION POLICY ACTIVE.",
             "green"
         ],
 
         [
-            "SECURITY POLICY RESPONSE DETECTED.",
+            "REAL-WORLD ACCESS CHANNEL: DISABLED.",
             "warning"
         ],
 
         [
-            "REINITIALIZING SESSION HANDLER...",
+            "SIMULATION COMPLETE.",
+            "green"
+        ],
+
+        [
+            "GENERATING TEST RESULT...",
             "normal"
         ],
 
         [
-            "RETRYING SESSION NEGOTIATION...",
-            "normal"
-        ],
-
-        [
-            "REMOTE VALIDATION REQUIREMENT DETECTED.",
-            "warning"
-        ],
-
-        [
-            "OPERATION CHANNEL REJECTED.",
-            "error"
-        ],
-
-        [
-            "FATAL ERROR: OPERATION TERMINATED.",
+            "TEST ENVIRONMENT TERMINATED.",
             "error"
         ]
+
     ];
 
-    var index = 0;
+
+    /* Custom admin simulation text */
+
+    if (selectedMethodScript) {
+
+        lines.unshift(
+            [
+                "CUSTOM ADMIN SIMULATION LOADED.",
+                "green"
+            ]
+        );
+
+        const customLines =
+            selectedMethodScript
+                .split("\n")
+                .filter(
+                    line =>
+                        line.trim() !== ""
+                );
+
+        customLines.forEach(
+            function(line) {
+
+                lines.splice(
+                    2,
+                    0,
+                    [
+                        "[CUSTOM] " +
+                        line,
+                        "normal"
+                    ]
+                );
+
+            }
+        );
+
+    }
+
+
+    const total =
+        lines.length;
+
+    let index = 0;
+
 
     function next() {
 
@@ -1043,31 +2378,47 @@ function runOperation(target) {
             return;
         }
 
-        if (index >= lines.length) {
+        if (
+            index >= total
+        ) {
 
-            finishOperation(target);
-
-            return;
-        }
-
-        var percentage =
-            Math.round(
-                (index / lines.length) * 100
+            finishOperation(
+                target
             );
 
-        document.getElementById("progress")
-            .style.width =
+            return;
+
+        }
+
+        const percentage =
+            Math.round(
+                (index / total) *
+                100
+            );
+
+        document.getElementById(
+            "progress"
+        ).style.width =
             percentage + "%";
 
-        var number =
-            String(index + 1)
-            .padStart(2, "0");
 
-        var message =
+        const number =
+            String(
+                index + 1
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        const message =
             "[" +
             number +
-            "/30] " +
+            "/" +
+            total +
+            "] " +
             lines[index][0];
+
 
         typeLine(
             message,
@@ -1078,19 +2429,31 @@ function runOperation(target) {
 
                 delay(
                     next,
-                    700
+                    500
                 );
+
             }
         );
+
     }
 
     next();
+
 }
 
-function finishOperation(target) {
 
-    document.getElementById("progress")
-        .style.width = "100%";
+/* =========================================================
+   FINISH OPERATION
+========================================================= */
+
+function finishOperation(
+    target
+) {
+
+    document.getElementById(
+        "progress"
+    ).style.width =
+        "100%";
 
     typeLine(
         "",
@@ -1103,17 +2466,17 @@ function finishOperation(target) {
                 function() {
 
                     typeLine(
-                        "CRITICAL OPERATION FAILURE",
-                        "error",
+                        "SIMULATION COMPLETE",
+                        "green",
                         function() {
 
                             typeLine(
-                                "REMOTE ACCESS CHANNEL CLOSED",
-                                "error",
+                                "NO REAL REMOTE ACCESS WAS PERFORMED",
+                                "warning",
                                 function() {
 
                                     typeLine(
-                                        "SESSION TERMINATED",
+                                        "TEST SESSION TERMINATED",
                                         "error",
                                         function() {
 
@@ -1143,94 +2506,134 @@ function finishOperation(target) {
 
         }
     );
+
 }
 
-function showResult(target) {
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+function showResult(
+    target
+) {
 
     document.getElementById(
         "operationStatus"
     ).textContent =
         "STATUS: TERMINATED";
 
-    var terminal =
-        document.getElementById("terminal");
+    const terminal =
+        document.getElementById(
+            "terminal"
+        );
 
-    var result =
-        document.createElement("div");
+    const result =
+        document.createElement(
+            "div"
+        );
 
     result.className =
         "final-result";
 
-    var title =
-        document.createElement("div");
+
+    const title =
+        document.createElement(
+            "div"
+        );
 
     title.className =
         "final-title";
 
     title.textContent =
-        "[ ERROR ] AUTHENTICATION FAILURE";
+        "[ SIMULATION ] TEST COMPLETE";
 
-    result.appendChild(title);
-
-    var usernameRow =
-        document.createElement("div");
-
-    usernameRow.className =
-        "result-row";
-
-    var usernameLabel =
-        document.createElement("div");
-
-    usernameLabel.className =
-        "result-label";
-
-    usernameLabel.textContent =
-        "USERNAME / TARGET";
-
-    var usernameValue =
-        document.createElement("div");
-
-    usernameValue.className =
-        "result-value";
-
-    usernameValue.textContent =
-        target;
-
-    usernameRow.appendChild(
-        usernameLabel
+    result.appendChild(
+        title
     );
 
-    usernameRow.appendChild(
-        usernameValue
+
+    const targetRow =
+        document.createElement(
+            "div"
+        );
+
+    targetRow.className =
+        "result-row";
+
+
+    const targetLabel =
+        document.createElement(
+            "div"
+        );
+
+    targetLabel.className =
+        "result-label";
+
+    targetLabel.textContent =
+        "TEST TARGET";
+
+
+    const targetValue =
+        document.createElement(
+            "div"
+        );
+
+    targetValue.className =
+        "result-value";
+
+    targetValue.style.color =
+        "#8cff9b";
+
+    targetValue.textContent =
+        target;
+
+
+    targetRow.appendChild(
+        targetLabel
+    );
+
+    targetRow.appendChild(
+        targetValue
     );
 
     result.appendChild(
-        usernameRow
+        targetRow
     );
 
-    var hashRow =
-        document.createElement("div");
+
+    const hashRow =
+        document.createElement(
+            "div"
+        );
 
     hashRow.className =
         "result-row";
 
-    var hashLabel =
-        document.createElement("div");
+
+    const hashLabel =
+        document.createElement(
+            "div"
+        );
 
     hashLabel.className =
         "result-label";
 
     hashLabel.textContent =
-        "GENERATED HASH";
+        "SIMULATION ID";
 
-    var hashValue =
-        document.createElement("div");
+
+    const hashValue =
+        document.createElement(
+            "div"
+        );
 
     hashValue.className =
         "result-value hash";
 
     hashValue.textContent =
         randomHex(64);
+
 
     hashRow.appendChild(
         hashLabel
@@ -1244,44 +2647,60 @@ function showResult(target) {
         hashRow
     );
 
-    var errorRow =
-        document.createElement("div");
 
-    errorRow.className =
+    const responseRow =
+        document.createElement(
+            "div"
+        );
+
+    responseRow.className =
         "result-row";
 
-    var errorLabel =
-        document.createElement("div");
 
-    errorLabel.className =
+    const responseLabel =
+        document.createElement(
+            "div"
+        );
+
+    responseLabel.className =
         "result-label";
 
-    errorLabel.textContent =
+    responseLabel.textContent =
         "SYSTEM RESPONSE";
 
-    var errorValue =
-        document.createElement("div");
 
-    errorValue.className =
+    const responseValue =
+        document.createElement(
+            "div"
+        );
+
+    responseValue.className =
         "result-value";
 
-    errorValue.textContent =
-        "ACCESS DENIED // INVALID AUTHENTICATION RESPONSE";
+    responseValue.style.color =
+        "#d7d36c";
 
-    errorRow.appendChild(
-        errorLabel
+    responseValue.textContent =
+        "SIMULATION ONLY // NO REAL ACCESS ATTEMPTED";
+
+
+    responseRow.appendChild(
+        responseLabel
     );
 
-    errorRow.appendChild(
-        errorValue
+    responseRow.appendChild(
+        responseValue
     );
 
     result.appendChild(
-        errorRow
+        responseRow
     );
 
-    var button =
-        document.createElement("button");
+
+    const button =
+        document.createElement(
+            "button"
+        );
 
     button.className =
         "home-button";
@@ -1296,6 +2715,7 @@ function showResult(target) {
 
         };
 
+
     result.appendChild(
         button
     );
@@ -1307,8 +2727,75 @@ function showResult(target) {
     terminal.scrollTop =
         terminal.scrollHeight;
 
-    operationRunning = false;
+    operationRunning =
+        false;
+
 }
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock() {
+
+    const now =
+        new Date();
+
+    document.getElementById(
+        "clock"
+    ).textContent =
+        now.toLocaleTimeString();
+
+}
+
+setInterval(
+    updateClock,
+    1000
+);
+
+updateClock();
+
+
+/* =========================================================
+   ENTER KEY HANDLERS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            const active =
+                document.activeElement;
+
+            if (
+                active &&
+                active.id ===
+                "adminPassword"
+            ) {
+
+                adminLogin();
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+loadConfig();
+
+applyConfig();
+
 </script>
 
 </body>
